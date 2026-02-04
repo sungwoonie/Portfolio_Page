@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>양성운 | 포트폴리오</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-bg: #1e1e24;
+            --color-surface: #2a2a32;
+            --color-border: #3a3a44;
+            --color-text: #dcd8d6;
+            --color-text-muted: #908a8e;
+            --color-accent: #b8a9c9;
+            --color-accent-hover: #c9bbda;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        a {
+            color: var(--color-accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: var(--color-accent-hover);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(30, 30, 36, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--color-border);
+            z-index: 100;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-text);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav ul a {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        nav ul a:hover {
+            color: var(--color-text);
+        }
+
+        /* Sections */
+        section {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            color: var(--color-text-muted);
+            margin-bottom: 3rem;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 4rem;
+        }
+
+        .hero .greeting {
+            color: var(--color-accent);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--color-text-muted);
+            max-width: 520px;
+            margin-bottom: 2rem;
+        }
+
+        .hero .cta-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.75rem;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: background 0.2s, transform 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn:active {
+            transform: scale(0.97);
+        }
+
+        .btn-primary {
+            background: var(--color-accent);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: var(--color-accent-hover);
+            color: #ffffff;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--color-border);
+            color: var(--color-text);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+
+        /* About */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .about-content p {
+            color: var(--color-text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .stat {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .stat .number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-accent);
+        }
+
+        .stat .label {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+        }
+
+        /* Career */
+        .career-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .career-timeline::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: var(--color-border);
+        }
+
+        .career-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 1.5rem;
+        }
+
+        .career-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .career-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--color-accent);
+            border: 2px solid var(--color-bg);
+        }
+
+        .career-item.current::before {
+            box-shadow: 0 0 0 4px rgba(184, 169, 201, 0.25);
+        }
+
+        .career-item .period {
+            font-size: 0.85rem;
+            color: var(--color-accent);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .career-item .company {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .career-item .role {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+        }
+
+        .employment-type {
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            background: var(--color-border);
+            color: var(--color-text-muted);
+            vertical-align: middle;
+            margin-left: 0.25rem;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            padding: 2rem 1.5rem;
+            transition: border-color 0.2s;
+        }
+
+        .skill-card:hover {
+            border-color: var(--color-accent);
+        }
+
+        .skill-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .skill-card p {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--color-accent);
+        }
+
+        .project-thumb {
+            height: 200px;
+            background: linear-gradient(135deg, #252530, #2e2e3a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .project-thumb img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 22px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover .project-thumb img {
+            transform: scale(1.08);
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-info p {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: #2e2e38;
+            border: 1px solid #3a3a44;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #b8a9c9;
+        }
+
+        .store-links {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .store-btn {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #fff;
+            transition: opacity 0.2s;
+        }
+
+        .store-btn:hover {
+            opacity: 0.8;
+            color: #fff;
+        }
+
+        .store-btn.playstore {
+            background: #6e9a78;
+        }
+
+        .store-btn.appstore {
+            background: #7a8fb5;
+        }
+
+        .project-category {
+            font-size: 0.8rem;
+            color: var(--color-accent);
+            margin-bottom: 2rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        /* Contact */
+        .contact-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: border-color 0.2s;
+        }
+
+        .contact-card:hover {
+            border-color: var(--color-accent);
+        }
+
+        .contact-card .label {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card a {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-text);
+            transition: color 0.2s;
+        }
+
+        .contact-card a:hover {
+            color: var(--color-accent);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        input, textarea {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            padding: 0.75rem 1rem;
+            color: var(--color-text);
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--color-accent);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--color-border);
+            color: var(--color-text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .hero .cta-group {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(30, 30, 36, 0.95);
+                backdrop-filter: blur(10px);
+                padding: 1rem 2rem;
+                gap: 1rem;
+                border-bottom: 1px solid var(--color-border);
+            }
+
+            nav ul.open {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--color-text);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+        }
+
+        /* Scroll Animation */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">양성운</div>
+        <button class="menu-toggle" onclick="document.querySelector('nav ul').classList.toggle('open')">&#9776;</button>
+        <ul>
+            <li><a href="#about">소개</a></li>
+            <li><a href="#career">커리어</a></li>
+            <li><a href="#skills">기술</a></li>
+            <li><a href="#projects">프로젝트</a></li>
+            <li><a href="#contact">연락처</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <p class="greeting">안녕하세요, 저는</p>
+        <h1>양성운</h1>
+        <p>클라이언트 프로그래머로서 깔끔하고 최적화된 소프트웨어를 만듭니다.</p>
+        <div class="cta-group">
+            <a href="#projects" class="btn btn-primary">프로젝트 보기</a>
+            <a href="#contact" class="btn btn-outline">연락하기</a>
+        </div>
+    </section>
+
+    <section id="about" class="fade-up">
+        <h2>소개</h2>
+        <p class="section-subtitle">저에 대해 간단히 알려드립니다.</p>
+        <div class="about-content">
+            <div>
+                <p>클라이언트 프로그래머 양성운입니다. 방치형 RPG와 하이퍼 캐주얼 게임 3종을 1인 개발로 출시한 경험이 있으며, 개발 과정에서 CI/CD 파이프라인과 인프라 구축 등 DevOps 환경을 직접 설계하고 템플릿화하는 작업을 즐깁니다.</p>
+                <p>광고, 결제, 인증, DB 연동 등 다양한 서드파티 SDK 연동 경험이 있으며, 개인 프로젝트를 통해 실제 수익화까지 이어본 경험을 바탕으로 기획부터 출시 및 운영까지 전 과정을 주도적으로 수행할 수 있습니다.</p>
+                <p>출시 이후에도 이벤트 로그 설계 및 수집, 리텐션·퍼널 등 핵심 지표 분석과 마케팅 성과 추적을 통해 데이터 기반으로 서비스를 개선하는 과정을 즐기며 꾸준히 경험을 쌓고 있습니다.</p>
+            </div>
+            <div class="stats">
+                <div class="stat">
+                    <div class="number">2+</div>
+                    <div class="label">경력 (년)</div>
+                </div>
+                <div class="stat">
+                    <div class="number">7</div>
+                    <div class="label">출시 완료한 프로젝트</div>
+                </div>
+                <div class="stat">
+                    <div class="number">4</div>
+                    <div class="label">개인 프로젝트</div>
+                </div>
+                <div class="stat">
+                    <div class="number">3</div>
+                    <div class="label">회사 프로젝트</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="career" class="fade-up">
+        <h2>커리어</h2>
+        <p class="section-subtitle">지금까지의 경력입니다.</p>
+        <div class="career-timeline">
+            <div class="career-item current">
+                <div class="period">2025.10 ~ 현재</div>
+                <div class="company">쿡앱스 <span class="employment-type">계약직</span></div>
+                <div class="role">클라이언트 프로그래머 · Bubble Pops - Blast in 3D</div>
+            </div>
+            <div class="career-item">
+                <div class="period">2024.11 ~ 2025.10</div>
+                <div class="company">슈퍼어썸 <span class="employment-type">정규직</span></div>
+                <div class="role">클라이언트 프로그래머 · 헬로키티 프렌즈 매치</div>
+            </div>
+            <div class="career-item">
+                <div class="period">2023.11 ~ 2024.11</div>
+                <div class="company">에버웨이브 <span class="employment-type">정규직</span></div>
+                <div class="role">클라이언트 프로그래머 · 테일썸 - 빗방울 피하기</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="fade-up">
+        <h2>기술</h2>
+        <p class="section-subtitle">사용하는 기술과 도구입니다.</p>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>클라이언트 개발</h3>
+                <p>Unity, C#을 기반으로 방치형 RPG, 하이퍼 캐주얼 등 다양한 장르의 게임을 1인 개발 및 출시.</p>
+            </div>
+            <div class="skill-card">
+                <h3>DevOps / CI·CD</h3>
+                <p>빌드 자동화, CI/CD 파이프라인 구축, 프로젝트 템플릿화 및 인프라 설계.</p>
+            </div>
+            <div class="skill-card">
+                <h3>서드파티 연동</h3>
+                <p>광고, 결제, 인증, DB 연동 등 다양한 서드파티 SDK 연동 및 수익화 경험.</p>
+            </div>
+            <div class="skill-card">
+                <h3>BaaS / 서버 연동</h3>
+                <p>Firebase, 뒤끝 등 BaaS를 활용한 데이터베이스 연동 및 서버 구축.</p>
+            </div>
+            <div class="skill-card">
+                <h3>데이터 분석 / 라이브 운영</h3>
+                <p>이벤트 로그 설계, 리텐션·퍼널 분석, 마케팅 지표 추적을 통한 데이터 기반 서비스 개선.</p>
+            </div>
+            <div class="skill-card">
+                <h3>AI 활용 개발</h3>
+                <p>Claude, Codex, Gemini 등 AI 코딩 에이전트를 적극 활용하여 개발 생산성과 코드 품질을 향상.</p>
+            </div>
+            <div class="skill-card">
+                <h3>협업 도구</h3>
+                <p>Jira, Slack, Notion, Confluence, Git 등 협업 툴을 활용한 팀 커뮤니케이션 및 프로젝트 관리.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="fade-up">
+        <h2>프로젝트</h2>
+        <p class="section-subtitle">제가 만든 작업물입니다.</p>
+        <p class="project-category">개인 프로젝트</p>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-thumb"><img src="https://play-lh.googleusercontent.com/P2l1IaWM7aC3DCQnd7csJ9nX2WibgaJEGzYoukj_l3ruONgfFajnmRGySM3DMVRF_w=s512" alt="던전파티 키우기"></div>
+                <div class="project-info">
+                    <h3>던전파티 키우기</h3>
+                    <p>1인 개발로 기획부터 출시까지 완료한 방치형 RPG 게임. BaaS 기반 서버 연동, 광고·결제 수익화까지 전 과정을 경험.</p>
+                    <div class="tags">
+                        <span class="tag">Unity</span>
+                        <span class="tag">C#</span>
+                        <span class="tag">방치형 RPG</span>
+                        <span class="tag">BaaS</span>
+                        <span class="tag">수익화</span>
+                    </div>
+                    <div class="store-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.starcloudgames.dungeonparty" target="_blank" class="store-btn playstore">Google Play</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-thumb"><img src="https://play-lh.googleusercontent.com/SBn_vM5724PYJ7L-RfhJ_foSg_dCKM0SFYEpoU0-dqU6uHkLMYlgKUnepXY3s4RPBnbHvO24easPIJ_QDoef=s512" alt="Bounce Wall"></div>
+                <div class="project-info">
+                    <h3>Bounce Wall</h3>
+                    <p>직접 제작한 하이퍼 캐주얼 템플릿 기반으로 개발 및 출시한 수익화 테스트 게임.</p>
+                    <div class="tags">
+                        <span class="tag">Unity</span>
+                        <span class="tag">C#</span>
+                        <span class="tag">하이퍼 캐주얼</span>
+                        <span class="tag">템플릿</span>
+                    </div>
+                    <div class="store-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.starcloudgames.BounceWall" target="_blank" class="store-btn playstore">Google Play</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-thumb"><img src="https://play-lh.googleusercontent.com/PqEaxLBVJL1RAtET0P2DmhMAmAfbAE0adhVTTFIu3TgL1kkh_4Ne2IOGFEL0t8onw9OklqGSg9UkPLILx9Km6A=s512" alt="Circle Circle"></div>
+                <div class="project-info">
+                    <h3>Circle Circle</h3>
+                    <p>직접 제작한 하이퍼 캐주얼 템플릿 기반으로 개발 및 출시한 수익화 테스트 게임.</p>
+                    <div class="tags">
+                        <span class="tag">Unity</span>
+                        <span class="tag">C#</span>
+                        <span class="tag">하이퍼 캐주얼</span>
+                        <span class="tag">템플릿</span>
+                    </div>
+                    <div class="store-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.starcloudgames.CircleCircle" target="_blank" class="store-btn playstore">Google Play</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-thumb"><img src="https://play-lh.googleusercontent.com/ZS5vI_JOpu11uGGljVlt0aMcJR8_y39Fr2DBHzUYiJZViBdltSHv3wKrePqizlPBWO2DY64a-j8WJXK856iUBA=s512" alt="Zig Run"></div>
+                <div class="project-info">
+                    <h3>Zig Run</h3>
+                    <p>직접 제작한 하이퍼 캐주얼 템플릿 기반으로 개발 및 출시한 수익화 테스트 게임.</p>
+                    <div class="tags">
+                        <span class="tag">Unity</span>
+                        <span class="tag">C#</span>
+                        <span class="tag">하이퍼 캐주얼</span>
+                        <span class="tag">템플릿</span>
+                    </div>
+                    <div class="store-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.starcloudgames.zigrun" target="_blank" class="store-btn playstore">Google Play</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="project-category" style="margin-top: 3rem;">회사 프로젝트</p>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-thumb"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/9a/6e/3b/9a6e3b26-730f-aaaf-09e6-27c1fce9ca1b/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg" alt="테일썸 - 빗방울 피하기"></div>
+                <div class="project-info">
+                    <h3>테일썸 - 빗방울 피하기</h3>
+                    <p>인게임·아웃게임 전반 개발 및 서드파티 SDK 연동 등 다양한 파트를 담당.</p>
+                    <div class="tags">
+                        <span class="tag">Unity</span>
+                        <span class="tag">C#</span>
+                        <span class="tag">캐주얼</span>
+                    </div>
+                    <div class="store-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.everwavegames.dodgetherainpaid&hl=ko" target="_blank" class="store-btn playstore">Google Play</a>
+                        <a href="https://apps.apple.com/us/app/%ED%85%8C%EC%9D%BC%EC%8D%B8-%EB%B9%97%EB%B0%A9%EC%9A%B8-%ED%94%BC%ED%95%98%EA%B8%B0/id6475923843?l=ko" target="_blank" class="store-btn appstore">App Store</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-thumb"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/33/07/00/330700d8-247f-66cf-94b6-5c02a32e1921/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg" alt="헬로키티 프렌즈 매치"></div>
+                <div class="project-info">
+                    <h3>헬로키티 프렌즈 매치</h3>
+                    <p>컨텐츠 프로그래밍 및 UGUI 기반 아웃게임 UI 개발을 담당.</p>
+                    <div class="tags">
+                        <span class="tag">Unity</span>
+                        <span class="tag">C#</span>
+                        <span class="tag">매치 퍼즐</span>
+                        <span class="tag">IP</span>
+                    </div>
+                    <div class="store-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.linegames.hkfm&hl=ko" target="_blank" class="store-btn playstore">Google Play</a>
+                        <a href="https://apps.apple.com/kr/app/%ED%97%AC%EB%A1%9C%ED%82%A4%ED%8B%B0-%ED%94%84%EB%A0%8C%EC%A6%88-%EB%A7%A4%EC%B9%98/id6742533643" target="_blank" class="store-btn appstore">App Store</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-thumb"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/d5/0b/27/d50b2741-d5dd-e7d0-2dea-529a5714221f/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg" alt="Bubble Pops - Blast in 3D"></div>
+                <div class="project-info">
+                    <h3>Bubble Pops - Blast in 3D</h3>
+                    <p>인게임·아웃게임 클라이언트 전체를 단독으로 개발. 회사 템플릿을 활용하여 빌드 및 배포.</p>
+                    <div class="tags">
+                        <span class="tag">Unity</span>
+                        <span class="tag">C#</span>
+                        <span class="tag">3D 퍼즐</span>
+                    </div>
+                    <div class="store-links">
+                        <a href="https://play.google.com/store/apps/details?id=com.mintry.crystalblast&hl=ko" target="_blank" class="store-btn playstore">Google Play</a>
+                        <a href="https://apps.apple.com/kr/app/bubble-pops-blast-in-3d/id6755452733" target="_blank" class="store-btn appstore">App Store</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="fade-up">
+        <h2>연락처</h2>
+        <div class="contact-cards">
+            <div class="contact-card">
+                <div class="label">이메일</div>
+                <a href="mailto:sung_woonie@naver.com">sung_woonie@naver.com</a>
+            </div>
+            <div class="contact-card">
+                <div class="label">전화번호</div>
+                <a href="tel:010-9943-1105">010-9943-1105</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 양성운. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
