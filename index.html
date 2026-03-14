@@ -923,8 +923,8 @@
             </div>
             <div class="stats">
                 <div class="stat">
-                    <div class="number">2+</div>
-                    <div class="label">경력 (년)</div>
+                    <div class="number" id="career-duration">-</div>
+                    <div class="label">경력</div>
                 </div>
                 <div class="stat">
                     <div class="number">7</div>
@@ -947,7 +947,13 @@
         <p class="section-subtitle">지금까지의 경력입니다.</p>
         <div class="career-timeline">
             <div class="career-item current">
-                <div class="period">2025.10 ~ 현재</div>
+                <div class="period">2026.03 ~ 현재</div>
+                <div class="company">게이밍고 <span class="employment-type">정규직</span></div>
+                <div class="role">클라이언트 프로그래머</div>
+                <div class="projects"></div>
+            </div>
+            <div class="career-item">
+                <div class="period">2025.10 ~ 2026.02</div>
                 <div class="company">쿡앱스 <span class="employment-type">계약직</span></div>
                 <div class="role">클라이언트 프로그래머</div>
                 <div class="projects">- Bubble Pops - Blast in 3D</div>
@@ -1467,6 +1473,33 @@
         }, { threshold: 0.15 });
 
         document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // 커리어 경력 자동 계산
+        (function calcCareerDuration() {
+            const items = document.querySelectorAll('#career .career-item .period');
+            let totalMonths = 0;
+            items.forEach(el => {
+                const text = el.textContent.trim();
+                const parts = text.split('~').map(s => s.trim());
+                const [startY, startM] = parts[0].split('.').map(Number);
+                let endY, endM;
+                if (parts[1] === '현재') {
+                    const now = new Date();
+                    endY = now.getFullYear();
+                    endM = now.getMonth() + 2; // 이번 달 포함
+                } else {
+                    [endY, endM] = parts[1].split('.').map(Number);
+                }
+                totalMonths += (endY - startY) * 12 + (endM - startM);
+            });
+            const years = Math.floor(totalMonths / 12);
+            const months = totalMonths % 12;
+            let label = '';
+            if (years > 0) label += years + '년 ';
+            if (months > 0) label += months + '개월';
+            if (!label) label = '0개월';
+            document.getElementById('career-duration').textContent = label.trim();
+        })();
 
         // Project modal
         const overlay = document.getElementById('projectOverlay');
