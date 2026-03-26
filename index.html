@@ -852,6 +852,14 @@
             line-height: 1;
         }
 
+        /* Video in Modal */
+        .project-modal video {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            background: #000;
+        }
+
         /* Scroll Animation */
         .fade-up {
             opacity: 0;
@@ -1119,6 +1127,7 @@
                 </div>
                 <div class="project-details">
                     <div class="project-details-inner">
+                        <video src="Resources/TailSome/PlayVideo.mp4" controls preload="none" playsinline></video>
                         <h4>담당 업무</h4>
                         <ul>
                             <li>인게임 핵심 로직 및 아웃게임 UI 전반 개발</li>
@@ -1164,6 +1173,7 @@
                 </div>
                 <div class="project-details">
                     <div class="project-details-inner">
+                        <video src="Resources/HelloKittyFriendMatch/PlayVideo.mp4" controls preload="none" playsinline></video>
                         <h4>담당 업무</h4>
                         <ul>
                             <li>컨텐츠 프로그래밍 및 이벤트 시스템 개발</li>
@@ -1211,6 +1221,7 @@
                 </div>
                 <div class="project-details">
                     <div class="project-details-inner">
+                        <video src="Resources/BubblePops/PlayVideo.mp4" controls preload="none" playsinline></video>
                         <h4>담당 업무</h4>
                         <ul>
                             <li>인게임·아웃게임 클라이언트 전체 단독 개발</li>
@@ -1265,6 +1276,7 @@
                 </div>
                 <div class="project-details">
                     <div class="project-details-inner">
+                        <video src="Resources/DungeonParty/PlayVideo.mp4" controls preload="none" playsinline></video>
                         <h4>주요 기능</h4>
                         <ul>
                             <li>방치형 RPG 핵심 시스템 (자동 전투, 성장, 보상)</li>
@@ -1530,6 +1542,8 @@
         }
 
         function closeModal() {
+            const video = modal.querySelector('video');
+            if (video) video.pause();
             overlay.classList.remove('active');
             modal.classList.remove('active');
             document.body.style.overflow = '';
