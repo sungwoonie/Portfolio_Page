@@ -17,13 +17,13 @@
         }
 
         :root {
-            --color-bg: #1e1e24;
-            --color-surface: #2a2a32;
-            --color-border: #3a3a44;
-            --color-text: #dcd8d6;
-            --color-text-muted: #908a8e;
-            --color-accent: #b8a9c9;
-            --color-accent-hover: #c9bbda;
+            --color-bg: #121212;
+            --color-surface: #1e1e1e;
+            --color-border: #333333;
+            --color-text: #f0f0f0;
+            --color-text-muted: #999999;
+            --color-accent: #ffffff;
+            --color-accent-hover: #cccccc;
         }
 
         html {
@@ -51,7 +51,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(30, 30, 36, 0.85);
+            background: rgba(18, 18, 18, 0.85);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--color-border);
             z-index: 100;
@@ -151,12 +151,12 @@
 
         .btn-primary {
             background: var(--color-accent);
-            color: #fff;
+            color: #121212;
         }
 
         .btn-primary:hover {
             background: var(--color-accent-hover);
-            color: #ffffff;
+            color: #000000;
         }
 
         .btn-outline {
@@ -246,7 +246,7 @@
         }
 
         .career-item.current::before {
-            box-shadow: 0 0 0 4px rgba(184, 169, 201, 0.25);
+            box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.15);
         }
 
         .career-item .period {
@@ -382,7 +382,7 @@
 
         .project-thumb {
             height: 200px;
-            background: linear-gradient(135deg, #252530, #2e2e3a);
+            background: linear-gradient(135deg, #222222, #2a2a2a);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -394,7 +394,7 @@
             height: 150px;
             object-fit: cover;
             border-radius: 22px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
             transition: transform 0.3s;
         }
 
@@ -424,12 +424,12 @@
         }
 
         .tag {
-            background: #2e2e38;
-            border: 1px solid #3a3a44;
+            background: #1a1a1a;
+            border: 1px solid #333333;
             padding: 0.25rem 0.75rem;
             border-radius: 20px;
             font-size: 0.8rem;
-            color: #b8a9c9;
+            color: #f0f0f0;
         }
 
         .store-links {
@@ -454,15 +454,15 @@
         }
 
         .store-btn.playstore {
-            background: #6e9a78;
+            background: #2a2a2a;
         }
 
         .store-btn.appstore {
-            background: #7a8fb5;
+            background: #3a3a3a;
         }
 
         .store-btn.github {
-            background: #333;
+            background: #111111;
         }
 
         /* Source Code */
@@ -578,7 +578,7 @@
 
         .project-modal .modal-thumb {
             height: 200px;
-            background: linear-gradient(135deg, #252530, #2e2e3a);
+            background: linear-gradient(135deg, #222222, #2a2a2a);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -590,7 +590,7 @@
             height: 140px;
             object-fit: cover;
             border-radius: 22px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
         }
 
         .project-modal .modal-close {
@@ -600,7 +600,7 @@
             width: 36px;
             height: 36px;
             border: none;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(255, 255, 255, 0.1);
             color: var(--color-text);
             border-radius: 50%;
             cursor: pointer;
@@ -614,7 +614,7 @@
         }
 
         .project-modal .modal-close:hover {
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(255, 255, 255, 0.2);
         }
 
         .project-modal .modal-info {
@@ -825,7 +825,7 @@
                 top: 100%;
                 left: 0;
                 right: 0;
-                background: rgba(30, 30, 36, 0.95);
+                background: rgba(18, 18, 18, 0.95);
                 backdrop-filter: blur(10px);
                 padding: 1rem 2rem;
                 gap: 1rem;
@@ -1127,7 +1127,8 @@
                 </div>
                 <div class="project-details">
                     <div class="project-details-inner">
-                        <video src="Resources/TailSome/PlayVideo.mp4#t=5" controls preload="metadata" playsinline></video>
+                        <video src="Resources/TailSome/PlayVideo.mp4#t=5" controls preload="metadata"
+                            playsinline></video>
                         <h4>담당 업무</h4>
                         <ul>
                             <li>인게임 핵심 로직 및 아웃게임 UI 전반 개발</li>
@@ -1173,7 +1174,8 @@
                 </div>
                 <div class="project-details">
                     <div class="project-details-inner">
-                        <video src="Resources/HelloKittyFriendMatch/PlayVideo.mp4#t=5" controls preload="metadata" playsinline></video>
+                        <video src="Resources/HelloKittyFriendMatch/PlayVideo.mp4#t=5" controls preload="metadata"
+                            playsinline></video>
                         <h4>담당 업무</h4>
                         <ul>
                             <li>컨텐츠 프로그래밍 및 이벤트 시스템 개발</li>
@@ -1221,7 +1223,8 @@
                 </div>
                 <div class="project-details">
                     <div class="project-details-inner">
-                        <video src="Resources/BubblePops/PlayVideo.mp4#t=5" controls preload="metadata" playsinline></video>
+                        <video src="Resources/BubblePops/PlayVideo.mp4#t=5" controls preload="metadata"
+                            playsinline></video>
                         <h4>담당 업무</h4>
                         <ul>
                             <li>인게임·아웃게임 클라이언트 전체 단독 개발</li>
@@ -1276,7 +1279,8 @@
                 </div>
                 <div class="project-details">
                     <div class="project-details-inner">
-                        <video src="Resources/DungeonParty/PlayVideo.mp4#t=5" controls preload="metadata" playsinline></video>
+                        <video src="Resources/DungeonParty/PlayVideo.mp4#t=5" controls preload="metadata"
+                            playsinline></video>
                         <h4>주요 기능</h4>
                         <ul>
                             <li>방치형 RPG 핵심 시스템 (자동 전투, 성장, 보상)</li>
