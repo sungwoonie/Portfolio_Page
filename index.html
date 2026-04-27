@@ -860,6 +860,99 @@
             background: #000;
         }
 
+        /* Preview Carousel */
+        .preview-carousel {
+            position: relative;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #0a0a0a;
+        }
+
+        .preview-carousel-track {
+            display: flex;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .preview-carousel-track img {
+            width: 100%;
+            flex-shrink: 0;
+            object-fit: contain;
+            aspect-ratio: 16 / 9;
+            background: #0a0a0a;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        .preview-carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 36px;
+            height: 36px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(8px);
+            color: #fff;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, opacity 0.2s;
+            z-index: 2;
+            opacity: 0;
+        }
+
+        .preview-carousel:hover .preview-carousel-btn {
+            opacity: 1;
+        }
+
+        .preview-carousel-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .preview-carousel-btn.disabled {
+            opacity: 0 !important;
+            pointer-events: none;
+        }
+
+        .preview-carousel-btn.prev {
+            left: 8px;
+        }
+
+        .preview-carousel-btn.next {
+            right: 8px;
+        }
+
+        .preview-carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            padding: 10px 0 4px;
+        }
+
+        .preview-carousel-dots .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .preview-carousel-dots .dot.active {
+            background: rgba(255, 255, 255, 0.8);
+            transform: scale(1.3);
+        }
+
+        .preview-carousel-dots .dot:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
         /* Scroll Animation */
         .fade-up {
             opacity: 0;
@@ -888,6 +981,8 @@
                 <p></p>
                 <div class="tags"></div>
                 <div class="store-links"></div>
+                <div class="modal-video" style="margin-top: 1.25rem;"></div>
+                <div class="modal-preview-carousel" style="margin-top: 1.25rem;"></div>
                 <div class="modal-details"></div>
             </div>
         </div>
@@ -1108,7 +1203,7 @@
         <p class="section-subtitle">제가 만든 작업물입니다. 카드를 클릭하면 상세 정보를 볼 수 있습니다.</p>
         <p class="project-category">회사 프로젝트</p>
         <div class="projects-grid">
-            <div class="project-card">
+            <div class="project-card" data-folder="TailSome" data-previews="4">
                 <div class="project-thumb"><img src="Resources/TailSome/Icon.jpg" alt="테일썸 - 빗방울 피하기"></div>
                 <div class="project-info">
                     <h3>테일썸 - 빗방울 피하기</h3>
@@ -1154,7 +1249,7 @@
                     </div>
                 </div>
             </div>
-            <div class="project-card">
+            <div class="project-card" data-folder="HelloKittyFriendMatch" data-previews="4">
                 <div class="project-thumb"><img src="Resources/HelloKittyFriendMatch/Icon.jpg" alt="헬로키티 프렌즈 매치"></div>
                 <div class="project-info">
                     <h3>헬로키티 프렌즈 매치</h3>
@@ -1203,7 +1298,7 @@
                     </div>
                 </div>
             </div>
-            <div class="project-card">
+            <div class="project-card" data-folder="BubblePops" data-previews="4">
                 <div class="project-thumb"><img src="Resources/BubblePops/Icon.jpg" alt="Bubble Pops - Blast in 3D">
                 </div>
                 <div class="project-info">
@@ -1260,7 +1355,7 @@
 
         <p class="project-category" style="margin-top: 3rem;">개인 프로젝트</p>
         <div class="projects-grid">
-            <div class="project-card">
+            <div class="project-card" data-folder="DungeonParty" data-previews="4">
                 <div class="project-thumb"><img src="Resources/DungeonParty/Icon.png" alt="던전파티 키우기"></div>
                 <div class="project-info">
                     <h3>던전파티 키우기</h3>
@@ -1293,7 +1388,7 @@
                     </div>
                 </div>
             </div>
-            <div class="project-card">
+            <div class="project-card" data-folder="BounceWall" data-previews="4">
                 <div class="project-thumb"><img src="Resources/BounceWall/Icon.png" alt="Bounce Wall"></div>
                 <div class="project-info">
                     <h3>Bounce Wall</h3>
@@ -1322,7 +1417,7 @@
                     </div>
                 </div>
             </div>
-            <div class="project-card">
+            <div class="project-card" data-folder="CircleCircle" data-previews="4">
                 <div class="project-thumb"><img src="Resources/CircleCircle/Icon.png" alt="Circle Circle"></div>
                 <div class="project-info">
                     <h3>Circle Circle</h3>
@@ -1351,7 +1446,7 @@
                     </div>
                 </div>
             </div>
-            <div class="project-card">
+            <div class="project-card" data-folder="ZigRun" data-previews="4">
                 <div class="project-thumb"><img src="Resources/ZigRun/Icon.png" alt="Zig Run"></div>
                 <div class="project-info">
                     <h3>Zig Run</h3>
@@ -1521,6 +1616,63 @@
         const overlay = document.getElementById('projectOverlay');
         const modal = document.getElementById('projectModal');
 
+        let carouselIndex = 0;
+        let carouselTotal = 0;
+
+        function buildPreviewCarousel(folder, count) {
+            const container = modal.querySelector('.modal-preview-carousel');
+            if (!folder || count <= 0) {
+                container.innerHTML = '';
+                return;
+            }
+
+            let imagesHtml = '';
+            for (let i = 1; i <= count; i++) {
+                imagesHtml += `<img src="Resources/${folder}/Preview_${i}.png" alt="Preview ${i}" draggable="false">`;
+            }
+
+            container.innerHTML = `
+                <div class="preview-carousel">
+                    <button class="preview-carousel-btn prev" onclick="event.stopPropagation(); moveCarousel(-1)">&#8249;</button>
+                    <div class="preview-carousel-track">${imagesHtml}</div>
+                    <button class="preview-carousel-btn next" onclick="event.stopPropagation(); moveCarousel(1)">&#8250;</button>
+                    <div class="preview-carousel-dots">
+                        ${Array.from({length: count}, (_, i) => `<button class="dot${i === 0 ? ' active' : ''}" onclick="event.stopPropagation(); goToSlide(${i})"></button>`).join('')}
+                    </div>
+                </div>
+            `;
+
+            carouselIndex = 0;
+            carouselTotal = count;
+            updateCarouselButtons();
+        }
+
+        function moveCarousel(dir) {
+            goToSlide(carouselIndex + dir);
+        }
+
+        function goToSlide(index) {
+            if (index < 0 || index >= carouselTotal) return;
+            carouselIndex = index;
+            const track = modal.querySelector('.preview-carousel-track');
+            if (track) {
+                track.style.transform = `translateX(-${carouselIndex * 100}%)`;
+            }
+            updateCarouselButtons();
+        }
+
+        function updateCarouselButtons() {
+            const prevBtn = modal.querySelector('.preview-carousel-btn.prev');
+            const nextBtn = modal.querySelector('.preview-carousel-btn.next');
+            if (prevBtn) prevBtn.classList.toggle('disabled', carouselIndex === 0);
+            if (nextBtn) nextBtn.classList.toggle('disabled', carouselIndex === carouselTotal - 1);
+
+            const dots = modal.querySelectorAll('.preview-carousel-dots .dot');
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === carouselIndex);
+            });
+        }
+
         function openModal(card) {
             // 카드에서 데이터 추출
             const img = card.querySelector('.project-thumb img');
@@ -1528,7 +1680,7 @@
             const desc = card.querySelector('.project-info > p').textContent;
             const tags = card.querySelector('.project-info .tags').innerHTML;
             const links = card.querySelector('.project-info .store-links').innerHTML;
-            const details = card.querySelector('.project-details .project-details-inner').innerHTML;
+            const detailsEl = card.querySelector('.project-details .project-details-inner');
 
             // 모달에 데이터 삽입
             modal.querySelector('.modal-thumb img').src = img.src;
@@ -1537,7 +1689,29 @@
             modal.querySelector('.modal-info > p').textContent = desc;
             modal.querySelector('.modal-info .tags').innerHTML = tags;
             modal.querySelector('.modal-info .store-links').innerHTML = links;
-            modal.querySelector('.modal-details').innerHTML = details;
+
+            // 동영상을 별도 컨테이너에 분리
+            const videoContainer = modal.querySelector('.modal-video');
+            const sourceVideo = detailsEl.querySelector('video');
+            if (sourceVideo) {
+                videoContainer.innerHTML = `<video src="${sourceVideo.src}" controls preload="metadata" playsinline></video>`;
+                videoContainer.style.display = '';
+            } else {
+                videoContainer.innerHTML = '';
+                videoContainer.style.display = 'none';
+            }
+
+            // 동영상 제외한 나머지 상세 내용 삽입
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = detailsEl.innerHTML;
+            const tempVideo = tempDiv.querySelector('video');
+            if (tempVideo) tempVideo.remove();
+            modal.querySelector('.modal-details').innerHTML = tempDiv.innerHTML;
+
+            // 프리뷰 이미지 캐러셀 빌드
+            const folder = card.dataset.folder || '';
+            const previews = parseInt(card.dataset.previews) || 0;
+            buildPreviewCarousel(folder, previews);
 
             // 모달 열기
             overlay.classList.add('active');
