@@ -434,17 +434,21 @@
 
         .store-links {
             display: flex;
+            flex-wrap: wrap;
             gap: 0.5rem;
             margin-top: 1rem;
         }
 
         .store-btn {
             display: inline-block;
+            border: none;
             padding: 0.4rem 1rem;
             border-radius: 6px;
             font-size: 0.8rem;
             font-weight: 600;
             color: #fff;
+            font-family: inherit;
+            cursor: pointer;
             transition: opacity 0.2s;
         }
 
@@ -463,6 +467,10 @@
 
         .store-btn.github {
             background: #111111;
+        }
+
+        .store-btn.preview-video {
+            background: #2f5f73;
         }
 
         /* Source Code */
@@ -673,6 +681,46 @@
             position: absolute;
             left: 0;
             color: var(--color-accent);
+        }
+
+        .project-modal.source-video-mode .modal-thumb {
+            height: 64px;
+            justify-content: flex-start;
+            padding: 0 1.5rem;
+        }
+
+        .project-modal.source-video-mode .modal-thumb img {
+            display: none;
+        }
+
+        .source-video-list {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1.25rem;
+        }
+
+        .source-video-item {
+            border-top: 1px solid var(--color-border);
+            padding-top: 1rem;
+        }
+
+        .source-video-item:first-child {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .source-video-item h4 {
+            font-size: 0.95rem;
+            color: var(--color-accent);
+            margin-bottom: 0.6rem;
+        }
+
+        .source-video-item video {
+            display: block;
+            width: min(100%, 360px);
+            max-height: 240px;
+            margin-bottom: 0;
+            object-fit: contain;
         }
 
         .project-details {
@@ -1483,7 +1531,7 @@
         <p class="section-subtitle">진행 중인 프로젝트의 소스코드입니다.</p>
         <div class="source-grid">
 
-            <div class="source-card">
+            <div class="source-card" data-project="SCG002">
                 <div class="source-info">
                     <h3>SCG002</h3>
                     <p>랜덤 디펜스 장르의 게임을 SCG001 기반으로 개발 중인 프로젝트입니다.</p>
@@ -1496,11 +1544,14 @@
                     <div class="store-links">
                         <a href="https://github.com/StarCloudgames-Official/SCG002" target="_blank"
                             class="store-btn github">GitHub</a>
+                        <button type="button" class="store-btn preview-video source-preview-btn"
+                            style="display: none;">프리뷰 영상</button>
                     </div>
                 </div>
             </div>
 
-            <div class="source-card">
+            <div class="source-card" data-project="SCG003"
+                data-preview-video-files="PreviewVideo_1_보스.mov,PreviewVideo_2_플레이영상.mov,PreviewVideo_3_에픽몬스터.mov">
                 <div class="source-info">
                     <h3>SCG003</h3>
                     <p>로그라이트 장르의 게임을 SCG001 기반으로 개발 중인 프로젝트입니다.</p>
@@ -1513,6 +1564,8 @@
                     <div class="store-links">
                         <a href="https://github.com/StarCloudgames-Official/SCG003" target="_blank"
                             class="store-btn github">GitHub</a>
+                        <button type="button" class="store-btn preview-video source-preview-btn"
+                            style="display: none;">프리뷰 영상</button>
                     </div>
                 </div>
             </div>
@@ -1691,6 +1744,7 @@
         }
 
         function openModal(card) {
+            modal.classList.remove('source-video-mode');
             // 카드에서 데이터 추출
             const img = card.querySelector('.project-thumb img');
             const title = card.querySelector('.project-info h3').textContent;
@@ -1736,11 +1790,118 @@
             document.body.style.overflow = 'hidden';
         }
 
+        const SOURCE_VIDEO_EXTENSIONS = ['mov', 'mp4', 'webm'];
+        const MAX_SOURCE_PREVIEW_VIDEOS = 30;
+        const SOURCE_VIDEO_PREFIX_PATTERN = /^PreviewVideo_(\d+)(?:_(.+))?\.[^.]+$/i;
+
+        function videoResourceExists(url) {
+            return new Promise(resolve => {
+                const video = document.createElement('video');
+                let settled = false;
+
+                const finish = exists => {
+                    if (settled) return;
+                    settled = true;
+                    video.removeAttribute('src');
+                    video.load();
+                    resolve(exists);
+                };
+
+                video.preload = 'metadata';
+                video.muted = true;
+                video.onloadedmetadata = () => finish(true);
+                video.oncanplay = () => finish(true);
+                video.onerror = () => finish(false);
+                video.src = url;
+                video.load();
+
+                setTimeout(() => finish(false), 2500);
+            });
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        async function findSourcePreviewVideos(card) {
+            const projectName = card.dataset.project;
+            const configuredVideos = card.dataset.previewVideoFiles;
+            if (configuredVideos) {
+                return configuredVideos.split(',')
+                    .map(fileName => fileName.trim())
+                    .filter(Boolean)
+                    .map(fileName => {
+                        const match = fileName.match(SOURCE_VIDEO_PREFIX_PATTERN);
+                        return {
+                            index: match ? parseInt(match[1], 10) : 0,
+                            title: match && match[2] ? match[2] : fileName.replace(/\.[^.]+$/, ''),
+                            url: `Resources/Git/${projectName}/${fileName}`
+                        };
+                    })
+                    .sort((a, b) => a.index - b.index);
+            }
+
+            const videos = [];
+            for (let i = 1; i <= MAX_SOURCE_PREVIEW_VIDEOS; i++) {
+                let foundCurrentIndex = false;
+                for (const extension of SOURCE_VIDEO_EXTENSIONS) {
+                    const url = `Resources/Git/${projectName}/PreviewVideo_${i}.${extension}`;
+                    if (await videoResourceExists(url)) {
+                        videos.push({ index: i, title: `PreviewVideo_${i}`, url });
+                        foundCurrentIndex = true;
+                        break;
+                    }
+                }
+
+                if (!foundCurrentIndex) {
+                    break;
+                }
+            }
+            return videos;
+        }
+
+        function openSourcePreviewModal(card) {
+            const projectName = card.dataset.project;
+            const title = card.querySelector('.source-info h3').textContent;
+            const desc = card.querySelector('.source-info > p').textContent;
+            const tags = card.querySelector('.source-info .tags').innerHTML;
+            const links = card.querySelector('.source-info .store-links').innerHTML;
+            const videos = JSON.parse(card.dataset.previewVideos || '[]');
+
+            modal.classList.add('source-video-mode');
+            modal.querySelector('.modal-thumb img').src = '';
+            modal.querySelector('.modal-thumb img').alt = '';
+            modal.querySelector('.modal-info h3').textContent = `${title} 프리뷰 영상`;
+            modal.querySelector('.modal-info > p').textContent = desc;
+            modal.querySelector('.modal-info .tags').innerHTML = tags;
+            modal.querySelector('.modal-info .store-links').innerHTML = links;
+            modal.querySelector('.modal-info .source-preview-btn')?.remove();
+            modal.querySelector('.modal-video').innerHTML = '';
+            modal.querySelector('.modal-video').style.display = 'none';
+            modal.querySelector('.modal-preview-carousel').innerHTML = '';
+            modal.querySelector('.modal-details').innerHTML = `
+                <div class="source-video-list">
+                    ${videos.map(video => `
+                        <div class="source-video-item">
+                            <h4>${escapeHtml(video.title)}</h4>
+                            <video src="${video.url}" controls preload="metadata" playsinline></video>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+
+            overlay.classList.add('active');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
         function closeModal() {
-            const video = modal.querySelector('video');
-            if (video) video.pause();
+            modal.querySelectorAll('video').forEach(video => video.pause());
             overlay.classList.remove('active');
             modal.classList.remove('active');
+            modal.classList.remove('source-video-mode');
             document.body.style.overflow = '';
         }
 
@@ -1750,6 +1911,18 @@
                 if (e.target.closest('.store-links')) return;
                 openModal(card);
             });
+        });
+
+        document.querySelectorAll('.source-card[data-project]').forEach(async card => {
+            const button = card.querySelector('.source-preview-btn');
+            if (!button) return;
+
+            const videos = await findSourcePreviewVideos(card);
+            if (videos.length === 0) return;
+
+            card.dataset.previewVideos = JSON.stringify(videos);
+            button.style.display = '';
+            button.addEventListener('click', () => openSourcePreviewModal(card));
         });
 
         // 닫기
