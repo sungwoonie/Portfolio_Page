@@ -79,9 +79,18 @@ for (const width of WIDTHS) {
     }
   }
 
-  // C14 AI 카드를 누르면 모달이 열려야 한다
+  // C14 AI 카드를 누르면 모달이 열려야 한다.
+  // 스크롤을 내린 상태에서 열어야 닫을 때의 복원까지 볼 수 있다
+  await page.evaluate(() => {
+    const el = document.querySelector('#ai');
+    window.scrollTo({ top: el.offsetTop + 200, behavior: 'instant' });
+  });
+  await page.waitForTimeout(300);
   await page.click('.ai-card');
   await page.waitForTimeout(500);
+  // Playwright 는 클릭 전에 요소를 화면 안으로 스크롤한다. 그래서 클릭 전에 잰 값이
+  // 아니라 페이지가 실제로 잠근 값(body.style.top)을 기준으로 삼는다
+  const scrollAtOpen = await page.evaluate(() => -parseInt(document.body.style.top || '0', 10));
   const modalOpen = await page.evaluate(() => {
     const m = document.getElementById('projectModal');
     return m && m.classList.contains('active') && m.classList.contains('ai-mode')
@@ -132,8 +141,18 @@ for (const width of WIDTHS) {
       console.log(`  \x1b[32mPASS\x1b[0m  C15  ${width}px 모달 중 배경 스크롤 잠김`);
     }
   }
+  // C17 닫으면 원래 자리로 "즉시" 돌아와야 한다.
+  // scroll-behavior: smooth 가 살아 있으면 굴러가는 게 눈에 보인다
   await page.keyboard.press('Escape');
-  await page.waitForTimeout(400);
+  await page.waitForTimeout(80);
+  const rightAfterClose = await page.evaluate(() => window.scrollY);
+  if (Math.abs(rightAfterClose - scrollAtOpen) > 4) {
+    console.log(`  \x1b[31mFAIL\x1b[0m  C17  ${width}px 닫은 뒤 제자리로 굴러감 (${rightAfterClose} -> 기대 ${scrollAtOpen})`);
+    failed = true;
+  } else {
+    console.log(`  \x1b[32mPASS\x1b[0m  C17  ${width}px 닫자마자 원래 자리 (${rightAfterClose}px)`);
+  }
+  await page.waitForTimeout(320);
 
   // 닫은 뒤 스크롤이 복원되고 페이지가 다시 움직여야 한다.
   // scroll-behavior: smooth 라 바로 읽으면 옛 값이 나온다. 적용을 기다린다

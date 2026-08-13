@@ -207,14 +207,38 @@ else:
     else:
         ok("C11", "AI 카드 4장, 썸네일 전부 존재")
 
-# ---------- C12 자동화 섹션 인라인 SVG ----------
+# ---------- C18 캐러셀 이미지 실존 ----------
+# 캐러셀은 JS 가 data-folder/data-previews 로 경로를 만든다. 정적 검사가 안 잡는 사각지대다
+carousels = re.findall(r'data-folder="([^"]+)"\s+data-previews="(\d+)"', html)
+missing_prev = []
+for folder, count in carousels:
+    for i in range(1, int(count) + 1):
+        rel = f"Resources/{folder}/Preview_{i}.png"
+        if not os.path.exists(os.path.join(ROOT, rel)):
+            missing_prev.append(rel)
+if not carousels:
+    fail("C18", "캐러셀이 하나도 없음")
+elif missing_prev:
+    fail("C18", f"캐러셀 이미지 {len(missing_prev)}건 없음: {', '.join(missing_prev[:5])}")
+else:
+    total = sum(int(c) for _, c in carousels)
+    ok("C18", f"캐러셀 {len(carousels)}개 / 이미지 {total}장 전부 존재")
+
+# ---------- C12 자동화 흐름 도식 ----------
+# 원래는 인라인 SVG 를 요구했다. SVG 박스 나열이 글자가 작고 좁은 화면에서
+# 가로 스크롤을 만들어 HTML 스텝 레일로 바꿨으므로 조건도 그 구조를 본다
 auto = re.search(r'<section id="automation".*?</section>', html, re.S)
 if not auto:
     fail("C12", "자동화 섹션을 못 찾음")
-elif "<svg" not in auto.group(0):
-    fail("C12", "자동화 섹션에 인라인 svg 없음")
 else:
-    ok("C12", "자동화 섹션에 인라인 SVG 도식 존재")
+    body = auto.group(0)
+    rails = body.count('<ol class="rail">')
+    steps = body.count('class="rail-step')
+    works = body.count("rail-step-work")
+    if rails < 3 or steps != rails * 3 or works != rails:
+        fail("C12", f"흐름 레일이 어긋남: 레일 {rails}개, 칸 {steps}개(기대 {rails*3}), 처리칸 {works}개")
+    else:
+        ok("C12", f"흐름 레일 {rails}개, 입력/처리/결과 {steps}칸")
 
 # ---------- C13 네비 링크 7개 ----------
 nav = re.search(r"<nav>.*?</nav>", html, re.S)

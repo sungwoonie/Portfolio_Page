@@ -61,12 +61,18 @@ function lockScroll(on) {
         document.body.style.right = '0';
         document.body.style.overflow = 'hidden';
     } else {
+        // html 에 scroll-behavior: smooth 가 걸려 있어 그냥 되돌리면
+        // 제자리로 굴러가는 게 눈에 보인다. 복원 동안만 끈다
+        const root = document.documentElement;
+        const prev = root.style.scrollBehavior;
+        root.style.scrollBehavior = 'auto';
         document.body.style.position = '';
         document.body.style.top = '';
         document.body.style.left = '';
         document.body.style.right = '';
         document.body.style.overflow = '';
         window.scrollTo(0, lockedScrollY);
+        root.style.scrollBehavior = prev;
     }
 }
 const modal = document.getElementById('projectModal');
