@@ -324,6 +324,11 @@ document.querySelectorAll('.source-card[data-project]').forEach(async card => {
 // 닫기
 modal.querySelector('.modal-close').addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
+// 모달 컨테이너가 화면 전체를 덮으므로 여백을 눌렀을 때도 닫아야 한다.
+// 내용 안을 누른 건 e.target 이 자식이라 걸리지 않는다
+modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+});
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeModal();
 });

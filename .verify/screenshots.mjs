@@ -114,7 +114,7 @@ for (const width of WIDTHS) {
         const m = t.match(/matrix\(([^)]+)\)/);
         if (m) {
           const v = m[1].split(',').map(Number);
-          // [a,b,c,d,tx,ty] — 확대와 이동이 정수여야 한다
+          // [a,b,c,d,tx,ty] 확대와 이동이 정수여야 한다
           frac = Math.max(Math.abs(v[0] - 1), Math.abs(v[3] - 1),
                           Math.abs(v[4] - Math.round(v[4])), Math.abs(v[5] - Math.round(v[5])));
         }
@@ -140,7 +140,62 @@ for (const width of WIDTHS) {
     } else {
       console.log(`  \x1b[32mPASS\x1b[0m  C15  ${width}px 모달 중 배경 스크롤 잠김`);
     }
+
+    // C20 닫기 버튼은 모달 안을 스크롤해도 제자리에 있어야 한다
+    const closeStay = await page.evaluate(async () => {
+      const scroller = document.querySelector('.modal-scroll');
+      const btn = document.querySelector('.modal-close');
+      const y0 = btn.getBoundingClientRect().top;
+      scroller.scrollTop = scroller.scrollHeight;
+      await new Promise((r) => setTimeout(r, 250));
+      return { y0, y1: btn.getBoundingClientRect().top, scrolled: scroller.scrollTop };
+    });
+    if (closeStay.scrolled < 10) {
+      console.log(`  \x1b[33mSKIP\x1b[0m  C20  ${width}px 모달 내용이 짧아 스크롤 없음`);
+    } else if (Math.abs(closeStay.y1 - closeStay.y0) > 2) {
+      console.log(`  \x1b[31mFAIL\x1b[0m  C20  ${width}px 닫기 버튼이 같이 흘러감 (${Math.round(closeStay.y0)} -> ${Math.round(closeStay.y1)})`);
+      failed = true;
+    } else {
+      console.log(`  \x1b[32mPASS\x1b[0m  C20  ${width}px 닫기 버튼 고정 (${closeStay.scrolled}px 스크롤해도 제자리)`);
+    }
+
+    // C19 닫는 길이 셋 다 살아 있어야 한다: 배경 클릭 · 닫기 버튼 · Esc
+    const isOpen = () => page.evaluate(() => document.getElementById('projectModal').classList.contains('active'));
+    const ways = [];
+
+    // 배경(여백) 클릭 — 모달 컨테이너의 맨 위쪽 여백을 노린다
+    await page.mouse.click(Math.round(width / 2), 8);
+    await page.waitForTimeout(400);
+    ways.push(['배경 클릭', !(await isOpen())]);
+    if (await isOpen()) { await page.keyboard.press('Escape'); await page.waitForTimeout(400); }
+
+    // 닫기 버튼
+    await page.click('.ai-card');
+    await page.waitForTimeout(400);
+    await page.click('.modal-close');
+    await page.waitForTimeout(400);
+    ways.push(['닫기 버튼', !(await isOpen())]);
+
+    // Esc
+    await page.click('.ai-card');
+    await page.waitForTimeout(400);
+    await page.keyboard.press('Escape');
+    await page.waitForTimeout(400);
+    ways.push(['Esc', !(await isOpen())]);
+
+    const broken = ways.filter(([, okd]) => !okd).map(([n]) => n);
+    if (broken.length) {
+      console.log(`  \x1b[31mFAIL\x1b[0m  C19  ${width}px 모달이 안 닫히는 길: ${broken.join(', ')}`);
+      failed = true;
+    } else {
+      console.log(`  \x1b[32mPASS\x1b[0m  C19  ${width}px 배경 클릭 · 닫기 버튼 · Esc 전부 닫힘`);
+    }
+
+    // C17 을 재려면 다시 열어 둔다
+    await page.click('.ai-card');
+    await page.waitForTimeout(400);
   }
+
   // C17 닫으면 원래 자리로 "즉시" 돌아와야 한다.
   // scroll-behavior: smooth 가 살아 있으면 굴러가는 게 눈에 보인다
   await page.keyboard.press('Escape');

@@ -1077,19 +1077,27 @@ footer {
     pointer-events: auto;
 }
 
+/* 상자는 안 움직이고 안쪽만 스크롤한다. 닫기 버튼이 내용과 같이 흘러가면 안 된다 */
 .project-modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
     width: 100%;
     max-width: 860px;
     max-height: 88svh;
-    overflow-y: auto;
-    /* 모달 끝까지 스크롤해도 뒤 페이지로 넘어가지 않게 */
-    overscroll-behavior: contain;
+    overflow: hidden;
     background: var(--color-surface);
     border: 1px solid var(--color-border-strong);
     border-radius: var(--radius-card);
     box-shadow: var(--shadow-modal);
     transform: translateY(10px);
     transition: transform var(--dur-base) var(--ease-out);
+}
+
+.modal-scroll {
+    overflow-y: auto;
+    /* 모달 끝까지 스크롤해도 뒤 페이지로 넘어가지 않게 */
+    overscroll-behavior: contain;
 }
 
 .project-modal.active .project-modal-content {
@@ -1117,6 +1125,7 @@ footer {
     position: absolute;
     top: var(--space-4);
     right: var(--space-4);
+    z-index: 3;
     width: 36px;
     height: 36px;
     border: 1px solid var(--color-border-strong);
