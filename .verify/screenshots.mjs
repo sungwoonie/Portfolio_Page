@@ -55,6 +55,48 @@ for (const width of WIDTHS) {
 
   await page.screenshot({ path: path.join(shots, `${width}.png`), fullPage: true });
 
+  // C13 네비는 데스크톱에서 한 줄이어야 한다. 링크들의 top 이 전부 같은지로 판정한다
+  if (width >= 1024) {
+    const navRows = await page.evaluate(() => {
+      const tops = [...document.querySelectorAll('nav ul a')].map((a) => Math.round(a.getBoundingClientRect().top));
+      return new Set(tops).size;
+    });
+    if (navRows > 1) {
+      console.log(`  \x1b[31mFAIL\x1b[0m  C13  ${width}px 네비가 ${navRows}줄로 접힘`);
+      failed = true;
+    } else {
+      console.log(`  \x1b[32mPASS\x1b[0m  C13  ${width}px 네비 한 줄`);
+    }
+
+    // C11 AI 카드 4장의 렌더 폭이 같은지
+    const widths = await page.evaluate(() =>
+      [...document.querySelectorAll('.ai-card')].map((c) => Math.round(c.getBoundingClientRect().width)));
+    if (widths.length !== 4 || new Set(widths).size !== 1) {
+      console.log(`  \x1b[31mFAIL\x1b[0m  C11  ${width}px AI 카드 폭이 제각각: ${widths.join(', ')}`);
+      failed = true;
+    } else {
+      console.log(`  \x1b[32mPASS\x1b[0m  C11  ${width}px AI 카드 4장 동일 폭 ${widths[0]}px`);
+    }
+  }
+
+  // C14 AI 카드를 누르면 모달이 열려야 한다
+  await page.click('.ai-card');
+  await page.waitForTimeout(500);
+  const modalOpen = await page.evaluate(() => {
+    const m = document.getElementById('projectModal');
+    return m && m.classList.contains('active') && m.classList.contains('ai-mode')
+      && (m.querySelector('.modal-info h3')?.textContent || '').trim().length > 0;
+  });
+  if (!modalOpen) {
+    console.log(`  \x1b[31mFAIL\x1b[0m  C14  ${width}px AI 카드 클릭에도 모달이 안 열림`);
+    failed = true;
+  } else {
+    console.log(`  \x1b[32mPASS\x1b[0m  C14  ${width}px AI 카드 모달 열림`);
+    await page.screenshot({ path: path.join(shots, `${width}-modal.png`) });
+  }
+  await page.keyboard.press('Escape');
+  await page.waitForTimeout(300);
+
   if (overflow.scrollWidth > overflow.innerWidth + 1) {
     console.log(
       `  \x1b[31mFAIL\x1b[0m  C10  ${width}px 가로스크롤: scrollWidth ${overflow.scrollWidth} > ${overflow.innerWidth}` +

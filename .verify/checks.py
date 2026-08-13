@@ -89,12 +89,12 @@ else:
     ok("C1", f"로컬 에셋 {len(col.assets)}건 전부 존재")
 
 # ---------- C2 섹션 앵커 ----------
-required = {"about", "career", "projects", "source", "contact"}
+required = {"about", "career", "ai", "automation", "projects", "source", "contact"}
 lost = sorted(required - col.anchors)
 if lost:
     fail("C2", f"앵커 누락: {', '.join('#' + a for a in lost)}")
 else:
-    ok("C2", "앵커 5개 전부 존재")
+    ok("C2", f"앵커 {len(required)}개 전부 존재")
 
 # ---------- C3 :root 밖 하드코딩 hex ----------
 root_spans = [m.span() for m in re.finditer(r":root\s*\{[^}]*\}", css)]
@@ -118,7 +118,8 @@ else:
 bad_radius = []
 for m in re.finditer(r"border-radius\s*:\s*([^;}]+)", css):
     value = m.group(1).strip()
-    if re.fullmatch(r"(var\(--radius-[a-z-]+\)|50%|inherit)", value):
+    # 0 은 "모서리 없음"이지 임의 값이 아니다
+    if re.fullmatch(r"(var\(--radius-[a-z-]+\)|50%|inherit|0)", value):
         continue
     bad_radius.append(value)
 if bad_radius:
@@ -184,17 +185,44 @@ else:
     base = read(baseline).splitlines()
     from collections import Counter
 
+    # 새 섹션은 문구를 더한다. 삭제만 막고 추가는 허용한다
     added = Counter(current) - Counter(base)
     removed = Counter(base) - Counter(current)
-    if added or removed:
-        detail = []
-        for t, c in list(removed.items())[:5]:
-            detail.append(f"  - {t[:70]}" + (f" (x{c})" if c > 1 else ""))
-        for t, c in list(added.items())[:5]:
-            detail.append(f"  + {t[:70]}" + (f" (x{c})" if c > 1 else ""))
-        fail("C9", f"본문 텍스트 diff {len(removed)}줄 삭제 / {len(added)}줄 추가\n" + "\n".join(detail))
+    if removed:
+        detail = [f"  - {t[:70]}" + (f" (x{c})" if c > 1 else "") for t, c in list(removed.items())[:8]]
+        fail("C9", f"기존 본문 {len(removed)}줄이 사라짐\n" + "\n".join(detail))
     else:
-        ok("C9", f"본문 텍스트 {len(base)}줄 그대로")
+        ok("C9", f"기존 본문 {len(base)}줄 보존 (추가 {sum(added.values())}줄)")
+
+# ---------- C11 AI 카드 4장 + 썸네일 실존 ----------
+ai_cards = re.findall(r'<div class="project-card ai-card"[^>]*>(.*?)(?=<div class="project-card ai-card"|</div>\s*</section>)',
+                      html, re.S)
+ai_imgs = re.findall(r'class="project-thumb[^"]*"><img[^>]+src="(Resources/AI/[^"]+)"', html)
+if len(ai_imgs) != 4:
+    fail("C11", f"AI 카드 썸네일 {len(ai_imgs)}개 (기대: 4)")
+else:
+    lost = [s for s in ai_imgs if not os.path.exists(os.path.join(ROOT, s))]
+    if lost:
+        fail("C11", f"AI 썸네일 경로 유실: {', '.join(lost)}")
+    else:
+        ok("C11", "AI 카드 4장, 썸네일 전부 존재")
+
+# ---------- C12 자동화 섹션 인라인 SVG ----------
+auto = re.search(r'<section id="automation".*?</section>', html, re.S)
+if not auto:
+    fail("C12", "자동화 섹션을 못 찾음")
+elif "<svg" not in auto.group(0):
+    fail("C12", "자동화 섹션에 인라인 svg 없음")
+else:
+    ok("C12", "자동화 섹션에 인라인 SVG 도식 존재")
+
+# ---------- C13 네비 링크 7개 ----------
+nav = re.search(r"<nav>.*?</nav>", html, re.S)
+nav_links = re.findall(r'<a href="#([a-z]+)"', nav.group(0)) if nav else []
+if len(nav_links) != 7:
+    fail("C13", f"네비 링크 {len(nav_links)}개 (기대: 7) -> {nav_links}")
+else:
+    ok("C13", f"네비 링크 7개: {' '.join(nav_links)}")
 
 # ---------- 출력 ----------
 for line in notes:

@@ -41,6 +41,8 @@
             <ul>
                 <li><a href="#about">소개</a></li>
                 <li><a href="#career">커리어</a></li>
+                <li><a href="#ai">AI 활용</a></li>
+                <li><a href="#automation">자동화</a></li>
                 <li><a href="#projects">프로젝트</a></li>
                 <li><a href="#source">소스 코드</a></li>
                 <li><a href="#contact">연락처</a></li>
@@ -318,6 +320,263 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section id="ai" class="fade-up">
+        <h2>AI 활용</h2>
+        <p class="section-subtitle">필요한 도구는 사서 쓰지 않고 직접 만들어 씁니다. 아래 넷은 전부 비공개 저장소라 화면과 구조로 대신 보여드립니다.</p>
+
+        <div class="ai-grid">
+            <div class="project-card ai-card">
+                <div class="project-thumb"><img loading="lazy" src="Resources/AI/scg-dev.png"
+                        alt="SCG Dev 프로젝트 목록 화면"></div>
+                <div class="project-info">
+                    <h3>SCG Dev</h3>
+                    <p>게임 하나를 기획, 리소스, 개발 세 단계로 완주시키는 파이프라인 매니저. 단계마다 AI 세션을 붙여 문서와 구현을 이어붙입니다.</p>
+                    <div class="tags">
+                        <span class="tag">Electron</span>
+                        <span class="tag">TypeScript</span>
+                        <span class="tag">Claude Code</span>
+                        <span class="tag">커밋 245</span>
+                    </div>
+                </div>
+                <div class="project-details">
+                    <div class="project-details-inner">
+                        <h4>하는 일</h4>
+                        <ul>
+                            <li>기획 단계: 기획 세션, 문서 생성, 밸런싱 시뮬레이션</li>
+                            <li>리소스 단계: 에셋 추출과 매칭, 사운드 생성, UI 와이어프레임</li>
+                            <li>개발 단계: 페이즈 분해 후 세션이 자동 구현, 검증 게이트 통과분만 다음으로</li>
+                        </ul>
+                        <h4>스스로 건 제약</h4>
+                        <ul>
+                            <li>개발 진입 전제를 하드로 걸었습니다. MVP 컷 문서와 데이터테이블 시트 연결이 없으면 개발 단계로 못 넘어갑니다</li>
+                            <li>MVP와 프로덕션 사이에는 사람 게이트를 남겨 자동화가 판단까지 대신하지 않게 했습니다</li>
+                        </ul>
+                        <h4>기술</h4>
+                        <ul>
+                            <li>Electron, TypeScript, macOS</li>
+                            <li>구독 하네스로 구동. API 키 없이 Claude Code 구독으로만 돕니다</li>
+                            <li>Obsidian 심링크로 기획 문서를 앱 밖에서도 봅니다</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card ai-card" data-folder="AI/CLOUDIE" data-previews="8">
+                <div class="project-thumb ai-thumb-mark"><img loading="lazy" src="Resources/AI/cloudie.png"
+                        alt="CLOUDIE 구름을 눌러 부채꼴 메뉴가 원형으로 펼쳐진 화면"></div>
+                <div class="project-info">
+                    <h3>CLOUDIE</h3>
+                    <p>화면 위에 늘 떠 있으면서 하루를 기록하고, 계획하고, 돌아보는 비서. 구름은 드래그로 어디든 옮길 수 있고, 놓인 자리에 따라 메뉴가 펼쳐지는 각도가 달라집니다.</p>
+                    <div class="tags">
+                        <span class="tag">Electron</span>
+                        <span class="tag">TypeScript</span>
+                        <span class="tag">Obsidian</span>
+                        <span class="tag">커밋 35</span>
+                    </div>
+                </div>
+                <div class="project-details">
+                    <div class="project-details-inner">
+                        <h4>하는 일</h4>
+                        <ul>
+                            <li>어제 한 일을 정리해 옵시디언 볼트에 남깁니다</li>
+                            <li>오늘 할 일을 프로젝트별로 추천하고 카드에서 체크하게 합니다</li>
+                            <li>주간, 월간 회고를 쌓습니다</li>
+                        </ul>
+                        <h4>가장자리 처리</h4>
+                        <ul>
+                            <li>구름은 드래그로 옮기고, 그 위치는 재시작 후에도 유지됩니다</li>
+                            <li>화면 가운데면 온전한 원, 오른쪽 끝이면 왼쪽 반원, 구석이면 사분원으로 접힙니다</li>
+                            <li>공간이 좁다고 메뉴를 숨기거나 버튼을 줄이지 않습니다. 펼치는 각도만 바꾸고 항목이 늘면 반지름을 키웁니다</li>
+                            <li>화면 좌표를 아는 건 메인 프로세스뿐이라, 접는 계산은 electron 의존 없는 순수 함수로 빼고 테스트로 고정했습니다</li>
+                        </ul>
+                        <h4>스스로 건 제약</h4>
+                        <ul>
+                            <li>읽기 전용이 하드 제약입니다. 쓰기와 실행 도구를 아예 안 싣습니다</li>
+                            <li>산출물은 옵시디언 마크다운뿐입니다. 앱이 죽어도 기록은 남습니다</li>
+                            <li>외부로 아무것도 안 보냅니다</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card ai-card">
+                <div class="project-thumb"><img loading="lazy" src="Resources/AI/scg-sound.png"
+                        alt="SCG Sound 사운드 라이브러리 화면"></div>
+                <div class="project-info">
+                    <h3>SCG Sound</h3>
+                    <p>게임 효과음과 BGM 루프를 로컬 신경망으로 만들어 폴더와 태그로 정리하고 Unity 로 넘기는 도구.</p>
+                    <div class="tags">
+                        <span class="tag">Electron</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Stable Audio 3</span>
+                        <span class="tag">MLX</span>
+                    </div>
+                </div>
+                <div class="project-details">
+                    <div class="project-details-inner">
+                        <h4>하는 일</h4>
+                        <ul>
+                            <li>자연어로 원하는 소리를 말하면 생성 프롬프트로 옮겨 씁니다</li>
+                            <li>후보를 여러 개 뽑아 점수를 매기고, 그중 채택한 것만 라이브러리에 남깁니다</li>
+                            <li>폴더, 태그, 평점으로 정리해 Unity 프로젝트로 내보냅니다</li>
+                        </ul>
+                        <h4>어디까지 로컬인가</h4>
+                        <ul>
+                            <li>파형은 Stable Audio 3 가 이 맥에서 직접 계산합니다. 오디오 API 과금이 없습니다</li>
+                            <li>AI 는 소리를 만들지 않습니다. 요청을 프롬프트로 번역하는 역할만 합니다</li>
+                            <li>Apple Silicon 의 MLX 와 Metal 을 씁니다</li>
+                        </ul>
+                        <h4>기술</h4>
+                        <ul>
+                            <li>Electron, JavaScript, Python 사이드카</li>
+                            <li>CLAP 임베딩으로 요청과 결과의 일치도를 점수화</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card ai-card">
+                <div class="project-thumb"><img loading="lazy" src="Resources/AI/ai-skills.png"
+                        alt="AI-SKILLS 저장소의 스킬 목록 터미널 출력"></div>
+                <div class="project-info">
+                    <h3>AI-SKILLS</h3>
+                    <p>요구사항을 끝까지 캐묻고, 커밋까지 밀어붙이고, 결과를 반박으로 검증하는 Claude Code 스킬 12개. 이 페이지도 이 스킬로 만들었습니다.</p>
+                    <div class="tags">
+                        <span class="tag">Shell</span>
+                        <span class="tag">Claude Code</span>
+                        <span class="tag">스킬 12개</span>
+                        <span class="tag">커밋 16</span>
+                    </div>
+                </div>
+                <div class="project-details">
+                    <div class="project-details-inner">
+                        <h4>네 계열</h4>
+                        <ul>
+                            <li>계획: 느슨한 요청을 결정이 마를 때까지 캐물어 잠급니다</li>
+                            <li>실행: 잠긴 목표를 전용 브랜치 위에서 검증하고 커밋할 때까지 밉니다</li>
+                            <li>검증: 끝난 결과물을 목표 대비 적대적으로 반박합니다</li>
+                            <li>상시: 부르지 않아도 붙는 규약. 가장 게으른 해법을 강제하고, 턴 끝에 코드리뷰를 겁니다</li>
+                        </ul>
+                        <h4>왜 만들었나</h4>
+                        <ul>
+                            <li>AI 는 요구사항이 흐린 채로 출발하면 흐린 방향으로 아주 효율적으로 달립니다</li>
+                            <li>그래서 묻는 단계와 안 묻는 단계를 분리했습니다. 인터뷰가 끝나면 목표에 닿을 때까지 멈추지 않습니다</li>
+                            <li>완료 조건을 증거로 판정하게 만들어 스스로 끝났다고 착각하지 못하게 했습니다</li>
+                        </ul>
+                        <h4>설치</h4>
+                        <ul>
+                            <li>원라이너 한 줄로 어느 프로젝트에나 설치됩니다</li>
+                            <li>스킬 12개, 출력 스타일, 코드리뷰 훅, 규약 문서가 함께 깔립니다</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="automation" class="fade-up">
+        <h2>자동화</h2>
+        <p class="section-subtitle">반복되는 출시 작업은 Jenkins 로 넘겼습니다. 시트를 고치면 스토어 상품이 따라 바뀌고, 폴더명 하나만 넣으면 빌드가 스토어까지 올라갑니다.</p>
+
+        <figure class="pipeline-figure">
+            <svg viewBox="0 0 860 360" role="img" aria-labelledby="pipelineTitle pipelineDesc">
+                <title id="pipelineTitle">Jenkins 자동화 파이프라인 세 갈래</title>
+                <desc id="pipelineDesc">스프레드시트와 Unity 프로젝트가 각각 Jenkins 잡을 거쳐 구글 플레이, 앱스토어,
+                    테스트플라이트로 배포되는 흐름입니다.</desc>
+                <defs>
+                    <marker id="pipeArrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7"
+                        orient="auto-start-reverse">
+                        <path d="M0 0 L10 5 L0 10 z" class="pipe-arrow-head" />
+                    </marker>
+                </defs>
+
+                <g class="pipe-lane">
+                    <rect class="pipe-box" x="8" y="26" width="176" height="56" rx="8" />
+                    <text class="pipe-label" x="96" y="49">스프레드시트</text>
+                    <text class="pipe-sub" x="96" y="68">IAPDataTable 탭</text>
+                    <path class="pipe-arrow" d="M192 54 H300" />
+                    <rect class="pipe-box pipe-box-job" x="308" y="26" width="184" height="56" rx="8" />
+                    <text class="pipe-job" x="400" y="49">IAP-Deploy</text>
+                    <text class="pipe-sub" x="400" y="68">빌드 5회</text>
+                    <path class="pipe-arrow" d="M500 54 H608" />
+                    <rect class="pipe-box" x="616" y="12" width="200" height="38" rx="8" />
+                    <text class="pipe-label" x="716" y="36">Google Play 인앱 상품</text>
+                    <rect class="pipe-box" x="616" y="58" width="200" height="38" rx="8" />
+                    <text class="pipe-label" x="716" y="82">App Store 인앱 상품</text>
+                </g>
+
+                <g class="pipe-lane">
+                    <rect class="pipe-box" x="8" y="152" width="176" height="56" rx="8" />
+                    <text class="pipe-label" x="96" y="175">Unity 프로젝트</text>
+                    <text class="pipe-sub" x="96" y="194">폴더명 하나만 입력</text>
+                    <path class="pipe-arrow" d="M192 180 H300" />
+                    <rect class="pipe-box pipe-box-job" x="308" y="152" width="184" height="56" rx="8" />
+                    <text class="pipe-job" x="400" y="175">UnityBuild_AOS</text>
+                    <text class="pipe-sub" x="400" y="194">빌드 51회</text>
+                    <path class="pipe-arrow" d="M500 180 H608" />
+                    <rect class="pipe-box" x="616" y="152" width="200" height="56" rx="8" />
+                    <text class="pipe-label" x="716" y="175">Google Play</text>
+                    <text class="pipe-sub" x="716" y="194">트랙과 배포 비율 지정</text>
+                </g>
+
+                <g class="pipe-lane">
+                    <rect class="pipe-box" x="8" y="278" width="176" height="56" rx="8" />
+                    <text class="pipe-label" x="96" y="301">Unity 프로젝트</text>
+                    <text class="pipe-sub" x="96" y="320">폴더명 하나만 입력</text>
+                    <path class="pipe-arrow" d="M192 306 H300" />
+                    <rect class="pipe-box pipe-box-job" x="308" y="278" width="184" height="56" rx="8" />
+                    <text class="pipe-job" x="400" y="301">Unity-IOS-Build</text>
+                    <text class="pipe-sub" x="400" y="320">빌드 39회</text>
+                    <path class="pipe-arrow" d="M500 306 H608" />
+                    <rect class="pipe-box" x="616" y="278" width="200" height="56" rx="8" />
+                    <text class="pipe-label" x="716" y="301">TestFlight</text>
+                    <text class="pipe-sub" x="716" y="320">dSYM 도 함께 업로드</text>
+                </g>
+            </svg>
+        </figure>
+
+        <div class="pipeline-list">
+            <article class="pipeline-row">
+                <div class="pipeline-head">
+                    <h3>인앱 상품 등록</h3>
+                    <span class="pipeline-job">IAP-Deploy</span>
+                </div>
+                <p>시트의 상품표를 읽어 구글 플레이와 앱스토어에 상품을 등록하고 갱신합니다. 없던 건 새로 만들고, 있던 건 바뀐 항목만 고치고, 그대로면 넘어갑니다.</p>
+                <ul class="pipeline-points">
+                    <li>달러 가격 하나만 적으면 전 지역 가격표를 각 스토어 규칙에 맞춰 만들어 줍니다</li>
+                    <li>앱스토어 심사용 스크린샷까지 같이 올립니다</li>
+                    <li>신규 지역이 열리면 자동으로 포함됩니다</li>
+                </ul>
+            </article>
+
+            <article class="pipeline-row">
+                <div class="pipeline-head">
+                    <h3>안드로이드 빌드와 배포</h3>
+                    <span class="pipeline-job">UnityBuild_AOS</span>
+                </div>
+                <p>Unity 빌드부터 구글 플레이 업로드까지 한 잡에서 끝납니다.</p>
+                <ul class="pipeline-points">
+                    <li>Unity Android Build, AAB 수집, Google Play 업로드 순으로 돕니다</li>
+                    <li>빌드 종류, 배포 트랙, 배포 비율, 프로젝트 폴더명을 파라미터로 받습니다</li>
+                    <li>단계적 출시 비율을 잡 파라미터로 넘겨 한 번에 전체 배포되지 않게 합니다</li>
+                </ul>
+            </article>
+
+            <article class="pipeline-row">
+                <div class="pipeline-head">
+                    <h3>iOS 빌드와 배포</h3>
+                    <span class="pipeline-job">Unity-IOS-Build</span>
+                </div>
+                <p>Unity 빌드, Xcode 아카이브, 심볼 업로드, 테스트플라이트 업로드를 이어서 처리합니다.</p>
+                <ul class="pipeline-points">
+                    <li>Unity iOS Build, Xcode 아카이브와 내보내기, dSYM 업로드, TestFlight 업로드 순입니다</li>
+                    <li>크래시 리포트가 바로 읽히도록 심볼 파일을 매 빌드마다 함께 올립니다</li>
+                    <li>빌드 종류, 프로젝트 폴더명, 산출물 이름을 파라미터로 받습니다</li>
+                </ul>
+            </article>
         </div>
     </section>
 

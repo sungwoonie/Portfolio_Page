@@ -110,12 +110,15 @@ function updateCarouselButtons() {
 
 function openModal(card) {
     modal.classList.remove('source-video-mode');
+    // AI 카드는 앱 아이콘이 아니라 화면 캡처다. 아이콘 크기로 찌그러뜨리지 않는다
+    modal.classList.toggle('ai-mode', card.classList.contains('ai-card'));
     // 카드에서 데이터 추출
     const img = card.querySelector('.project-thumb img');
     const title = card.querySelector('.project-info h3').textContent;
     const desc = card.querySelector('.project-info > p').textContent;
-    const tags = card.querySelector('.project-info .tags').innerHTML;
-    const links = card.querySelector('.project-info .store-links').innerHTML;
+    // AI 카드는 비공개 저장소라 스토어 링크가 없다. 없으면 빈 칸으로 둔다
+    const tags = card.querySelector('.project-info .tags')?.innerHTML || '';
+    const links = card.querySelector('.project-info .store-links')?.innerHTML || '';
     const detailsEl = card.querySelector('.project-details .project-details-inner');
 
     // 모달에 데이터 삽입

@@ -756,6 +756,197 @@ h2 {
     display: none;
 }
 
+/* ---------- AI: 스크린샷을 위로 올린 카드 ----------
+   프로젝트 카드(아이콘 좌측 60px)와 같은 문법을 쓰면 두 섹션이 구분이 안 된다.
+   여기서는 화면이 근거이므로 이미지를 카드의 주인공으로 둔다 */
+.ai-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+    gap: var(--space-4);
+}
+
+.project-card.ai-card {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.ai-card .project-thumb {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    background: var(--color-well);
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.ai-card .project-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top left;
+    border: none;
+    border-radius: 0;
+}
+
+/* 스크린샷이 아니라 마크에 가까운 것은 잘리면 안 된다 */
+.ai-card .ai-thumb-mark {
+    background: var(--color-surface-2);
+    padding: var(--space-5);
+}
+
+.ai-card .ai-thumb-mark img {
+    width: auto;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.ai-card .project-info {
+    padding: var(--space-5);
+}
+
+.ai-card .project-info h3 {
+    font-size: 1.15rem;
+    margin-bottom: var(--space-3);
+}
+
+/* ---------- 자동화 ---------- */
+.pipeline-figure {
+    margin: 0 0 var(--space-7);
+    padding: var(--space-5) 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    /* 좁은 화면에서 도식만 스크롤한다. 페이지는 안 밀린다 */
+    overflow-x: auto;
+}
+
+.pipeline-figure svg {
+    display: block;
+    width: 100%;
+    min-width: 700px;
+    height: auto;
+}
+
+.pipe-box {
+    fill: var(--color-surface);
+    stroke: var(--color-border-strong);
+    stroke-width: 1;
+}
+
+.pipe-box-job {
+    fill: var(--color-accent-faint);
+    stroke: var(--color-accent-dim);
+}
+
+.pipe-arrow {
+    stroke: var(--color-border-strong);
+    stroke-width: 1.5;
+    fill: none;
+    marker-end: url(#pipeArrowHead);
+}
+
+.pipe-arrow-head {
+    fill: var(--color-border-strong);
+    stroke: none;
+}
+
+.pipe-label {
+    fill: var(--color-text);
+    font-size: 14px;
+    font-weight: 600;
+    text-anchor: middle;
+    font-family: var(--font-sans);
+}
+
+.pipe-job {
+    fill: var(--color-accent);
+    font-size: 14px;
+    font-weight: 500;
+    text-anchor: middle;
+    font-family: var(--font-mono);
+}
+
+.pipe-sub {
+    fill: var(--color-text-muted);
+    font-size: 12px;
+    text-anchor: middle;
+    font-family: var(--font-sans);
+}
+
+.pipeline-list {
+    display: grid;
+    gap: 0;
+}
+
+.pipeline-row {
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-5) 0;
+}
+
+.pipeline-row:first-child {
+    border-top: none;
+    padding-top: 0;
+}
+
+.pipeline-head {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+}
+
+.pipeline-head h3 {
+    font-size: var(--text-h4);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+}
+
+.pipeline-job {
+    font-family: var(--font-mono);
+    font-size: var(--text-micro);
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent-dim);
+    border-radius: var(--radius-chip);
+    padding: 0.1rem 0.5rem;
+}
+
+.pipeline-row > p {
+    font-size: var(--text-body-s);
+    color: var(--color-text-soft);
+    max-width: var(--measure);
+    margin-bottom: var(--space-3);
+}
+
+.pipeline-points {
+    list-style: none;
+    display: grid;
+    gap: var(--space-2);
+    max-width: var(--measure);
+}
+
+.pipeline-points li {
+    position: relative;
+    padding-left: var(--space-4);
+    font-size: var(--text-body-s);
+    color: var(--color-text-muted);
+}
+
+.pipeline-points li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.72em;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--color-accent-dim);
+}
+
 /* ---------- Source ---------- */
 .source-grid {
     display: grid;
@@ -994,6 +1185,22 @@ footer {
     border-radius: var(--radius-control);
     margin-bottom: var(--space-4);
     background: var(--color-well);
+}
+
+.project-modal.ai-mode .modal-thumb {
+    height: auto;
+    max-height: 52svh;
+    background: var(--color-well);
+    padding: 0;
+}
+
+.project-modal.ai-mode .modal-thumb img {
+    width: 100%;
+    height: auto;
+    max-height: 52svh;
+    object-fit: contain;
+    border-radius: 0;
+    box-shadow: none;
 }
 
 .project-modal.source-video-mode .modal-thumb {
