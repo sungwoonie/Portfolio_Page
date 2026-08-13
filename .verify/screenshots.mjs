@@ -25,6 +25,14 @@ for (const width of WIDTHS) {
   await page.goto(pathToFileURL(path.join(root, 'index.html')).href, { waitUntil: 'load' });
   await page.waitForTimeout(1500);
 
+  // 스크롤 등장 애니메이션은 뷰포트 밖 섹션을 opacity 0 으로 둔다.
+  // 전체 페이지를 찍으려면 먼저 펼쳐야 한다. 레이아웃 자체는 이 클래스와 무관하다.
+  await page.evaluate(() => {
+    document.querySelectorAll('.fade-up').forEach((el) => el.classList.add('visible'));
+  });
+  await page.evaluate(() => document.fonts.ready);
+  await page.waitForTimeout(400);
+
   const overflow = await page.evaluate(() => {
     const doc = document.documentElement;
     const over = [];
