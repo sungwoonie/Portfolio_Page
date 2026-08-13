@@ -325,56 +325,94 @@
 
     <section id="ai" class="fade-up">
         <h2>AI 활용</h2>
-        <p class="section-subtitle">필요한 도구는 사서 쓰지 않고 직접 만들어 씁니다. 아래 넷은 전부 비공개 저장소라 화면과 구조로 대신 보여드립니다.</p>
+        <p class="section-subtitle">필요한 도구는 사서 쓰지 않고 직접 만들어 씁니다. 넷 다 비공개 저장소라 실제 화면과 설계 판단으로 대신 보여드립니다.</p>
 
         <div class="ai-grid">
-            <div class="project-card ai-card">
+            <div class="project-card ai-card" data-folder="AI/SCGDEV" data-previews="12">
+                <div class="ai-head">
+                    <img class="ai-icon" loading="lazy" src="Resources/AI/icons/scg-dev.png" alt="">
+                    <div class="ai-head-text">
+                        <h3>SCG Dev</h3>
+                        <span class="ai-meta">Electron · TypeScript · 커밋 245</span>
+                    </div>
+                </div>
                 <div class="project-thumb"><img loading="lazy" src="Resources/AI/scg-dev.png"
                         alt="SCG Dev 프로젝트 목록 화면"></div>
                 <div class="project-info">
-                    <h3>SCG Dev</h3>
-                    <p>게임 하나를 기획, 리소스, 개발 세 단계로 완주시키는 파이프라인 매니저. 단계마다 AI 세션을 붙여 문서와 구현을 이어붙입니다.</p>
+                    <p>목표는 하나입니다. 책상 앞에 없어도 게임이 만들어지게 하는 것. 폰의 슬랙만으로 기획부터 리소스, 개발 완주까지 끝낼 수 있게 만들고 있습니다. 지금 세 개의 게임이 이 앱 안에서 동시에 개발 단계를 지나고 있습니다.</p>
                     <div class="tags">
                         <span class="tag">Electron</span>
                         <span class="tag">TypeScript</span>
-                        <span class="tag">Claude Code</span>
-                        <span class="tag">커밋 245</span>
+                        <span class="tag">슬랙 원격</span>
+                        <span class="tag">Auto 모드</span>
                     </div>
                 </div>
                 <div class="project-details">
                     <div class="project-details-inner">
-                        <h4>하는 일</h4>
+                        <h4>기획 단계</h4>
                         <ul>
-                            <li>기획 단계: 기획 세션, 문서 생성, 밸런싱 시뮬레이션</li>
-                            <li>리소스 단계: 에셋 추출과 매칭, 사운드 생성, UI 와이어프레임</li>
-                            <li>개발 단계: 페이즈 분해 후 세션이 자동 구현, 검증 게이트 통과분만 다음으로</li>
+                            <li>그릴링 세션이 결정을 캐묻고, 답을 고르면 기획 문서가 쌓입니다. 문서 스무 개가 서로를 링크한 채로 자랍니다</li>
+                            <li>밸런싱은 글이 아니라 시뮬레이션으로 봅니다. 처리량 곡선을 확정값과 역산 보정으로 나눠 그려 비교합니다</li>
+                            <li>새 프로젝트를 만들면 org 에 비공개 레포가 생기고, 템플릿이 코드명으로 각인된 채 첫 커밋과 푸시까지 끝납니다</li>
                         </ul>
-                        <h4>스스로 건 제약</h4>
+                        <h4>리소스 단계</h4>
                         <ul>
-                            <li>개발 진입 전제를 하드로 걸었습니다. MVP 컷 문서와 데이터테이블 시트 연결이 없으면 개발 단계로 못 넘어갑니다</li>
-                            <li>MVP와 프로덕션 사이에는 사람 게이트를 남겨 자동화가 판단까지 대신하지 않게 했습니다</li>
+                            <li>그래픽, 사운드, UI 를 항목별로 세워 두고 상태와 파일 경로를 추적합니다</li>
+                            <li>필요한 에셋을 실제 스토어에서 찾아 가격까지 비교하고, 예산에 맞는 조합을 추천합니다</li>
+                            <li>사운드는 SCG Sound 로 넘겨 생성하고 결과를 다시 받아옵니다</li>
+                            <li>UI 는 와이어프레임 후보를 여러 안으로 그려 고르게 합니다</li>
+                        </ul>
+                        <h4>개발 단계</h4>
+                        <ul>
+                            <li>마일스톤을 페이즈로 쪼개고, 세션이 페이즈 단위로 구현합니다</li>
+                            <li>검증 게이트를 통과한 것만 다음 페이즈로 넘어갑니다</li>
+                            <li>UI 는 개별 프리팹 그레이박스로 먼저 세우고, 스킨은 나중에 한 번에 전파합니다</li>
+                            <li>기획이 바뀌면 해당 구간만 다시 컷해 재구현합니다</li>
+                        </ul>
+                        <h4>폰만으로 완주하기</h4>
+                        <ul>
+                            <li>명령 문법이 없습니다. 카드의 버튼으로만 조작합니다. 완료면 다음 액션, 작업 중이면 중단, 에러면 재시도</li>
+                            <li>스레드 하나가 작업 단위 하나입니다. 채널에 아무 메시지나 보내면 프로젝트별 상태판이 올라옵니다</li>
+                            <li>와이어프레임 후보 고르기 같은 판단도 슬랙에서 그대로 합니다. A안, B안, C안, 다시 그리기, 보류</li>
+                            <li>게이트에 닿거나 Auto 가 멈추면 채널로 알립니다. 상태판을 부르지 않아도 알게 됩니다</li>
+                            <li>공개 서버가 필요 없게 소켓 모드로 붙였고, 창을 닫아도 백그라운드에 남습니다</li>
+                        </ul>
+                        <h4>왜 이렇게 만들었나</h4>
+                        <ul>
+                            <li>개발 진입 전제를 하드로 걸었습니다. MVP 컷 문서와 데이터테이블 시트 연결이 없으면 개발 단계로 못 넘어갑니다. 기획이 흐린 채 출발하면 AI 는 흐린 방향으로 아주 효율적으로 달립니다</li>
+                            <li>MVP 와 프로덕션 사이에는 사람 게이트를 남겼습니다. 자동화가 판단까지 대신하지는 않게 했습니다</li>
+                            <li>사용량 한도는 응답 문구가 아니라 이벤트로 판정합니다. 문구는 바뀌지만 이벤트는 안 바뀝니다. 한도에 걸리면 스스로 멈췄다가 풀리면 재개합니다</li>
+                            <li>스킬마다 모델과 추론 강도를 따로 겁니다. 전부 최고 사양으로 돌리면 한도만 태웁니다</li>
+                            <li>브릿지는 페이로드 중립으로 설계했습니다. 그래서 개발 단계를 붙일 때 슬랙 쪽은 한 줄도 안 고쳤습니다</li>
                         </ul>
                         <h4>기술</h4>
                         <ul>
-                            <li>Electron, TypeScript, macOS</li>
-                            <li>구독 하네스로 구동. API 키 없이 Claude Code 구독으로만 돕니다</li>
-                            <li>Obsidian 심링크로 기획 문서를 앱 밖에서도 봅니다</li>
+                            <li>Electron, TypeScript, macOS. 밸런싱 시뮬은 Python</li>
+                            <li>구독 하네스로 구동합니다. API 키 없이 Claude Code 구독으로만 돕니다</li>
+                            <li>슬랙은 소켓 모드와 웹 API 만 씁니다</li>
+                            <li>기획 문서는 옵시디언 심링크로 앱 밖에서도 봅니다</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
             <div class="project-card ai-card" data-folder="AI/CLOUDIE" data-previews="8">
-                <div class="project-thumb ai-thumb-mark"><img loading="lazy" src="Resources/AI/cloudie.png"
-                        alt="CLOUDIE 구름을 눌러 부채꼴 메뉴가 원형으로 펼쳐진 화면"></div>
+                <div class="ai-head">
+                    <img class="ai-icon" loading="lazy" src="Resources/AI/icons/cloudie.png" alt="">
+                    <div class="ai-head-text">
+                        <h3>CLOUDIE</h3>
+                        <span class="ai-meta">Electron · TypeScript · 커밋 35</span>
+                    </div>
+                </div>
+                <div class="project-thumb"><img loading="lazy" src="Resources/AI/cloudie.png"
+                        alt="CLOUDIE 부채꼴 메뉴가 원형으로 펼쳐진 화면"></div>
                 <div class="project-info">
-                    <h3>CLOUDIE</h3>
-                    <p>화면 위에 늘 떠 있으면서 하루를 기록하고, 계획하고, 돌아보는 비서. 구름은 드래그로 어디든 옮길 수 있고, 놓인 자리에 따라 메뉴가 펼쳐지는 각도가 달라집니다.</p>
+                    <p>목표는 기록을 남기려고 따로 시간을 쓰지 않는 것입니다. 화면 구석의 구름이 어제 한 일을 알아서 정리하고 오늘 할 일을 골라 주니, 하루를 돌아보는 일이 따로 마음먹어야 하는 일이 아니게 됩니다.</p>
                     <div class="tags">
                         <span class="tag">Electron</span>
                         <span class="tag">TypeScript</span>
                         <span class="tag">Obsidian</span>
-                        <span class="tag">커밋 35</span>
+                        <span class="tag">읽기 전용</span>
                     </div>
                 </div>
                 <div class="project-details">
@@ -383,36 +421,43 @@
                         <ul>
                             <li>어제 한 일을 정리해 옵시디언 볼트에 남깁니다</li>
                             <li>오늘 할 일을 프로젝트별로 추천하고 카드에서 체크하게 합니다</li>
-                            <li>주간, 월간 회고를 쌓습니다</li>
+                            <li>주간과 월간 회고를 쌓습니다</li>
+                            <li>로컬 git 저장소를 훑어 최근 작업 맥락을 만듭니다</li>
                         </ul>
                         <h4>가장자리 처리</h4>
                         <ul>
                             <li>구름은 드래그로 옮기고, 그 위치는 재시작 후에도 유지됩니다</li>
                             <li>화면 가운데면 온전한 원, 오른쪽 끝이면 왼쪽 반원, 구석이면 사분원으로 접힙니다</li>
                             <li>공간이 좁다고 메뉴를 숨기거나 버튼을 줄이지 않습니다. 펼치는 각도만 바꾸고 항목이 늘면 반지름을 키웁니다</li>
-                            <li>화면 좌표를 아는 건 메인 프로세스뿐이라, 접는 계산은 electron 의존 없는 순수 함수로 빼고 테스트로 고정했습니다</li>
                         </ul>
-                        <h4>스스로 건 제약</h4>
+                        <h4>왜 이렇게 만들었나</h4>
                         <ul>
-                            <li>읽기 전용이 하드 제약입니다. 쓰기와 실행 도구를 아예 안 싣습니다</li>
+                            <li>읽기 전용이 하드 제약입니다. 쓰기와 실행 도구를 아예 안 싣습니다. 기록하러 띄운 도구가 코드를 고치면 안 됩니다</li>
                             <li>산출물은 옵시디언 마크다운뿐입니다. 앱이 죽어도 기록은 남습니다</li>
                             <li>외부로 아무것도 안 보냅니다</li>
+                            <li>화면 좌표를 아는 건 메인 프로세스뿐이라, 부채꼴을 접는 계산은 electron 의존이 없는 순수 함수로 빼고 테스트로 고정했습니다</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
             <div class="project-card ai-card">
+                <div class="ai-head">
+                    <img class="ai-icon" loading="lazy" src="Resources/AI/icons/scg-sound.png" alt="">
+                    <div class="ai-head-text">
+                        <h3>SCG Sound</h3>
+                        <span class="ai-meta">Electron · JavaScript · 커밋 9</span>
+                    </div>
+                </div>
                 <div class="project-thumb"><img loading="lazy" src="Resources/AI/scg-sound.png"
                         alt="SCG Sound 사운드 라이브러리 화면"></div>
                 <div class="project-info">
-                    <h3>SCG Sound</h3>
-                    <p>게임 효과음과 BGM 루프를 로컬 신경망으로 만들어 폴더와 태그로 정리하고 Unity 로 넘기는 도구.</p>
+                    <p>목표는 게임에 필요한 소리를 사거나 맡기지 않고 그 자리에서 만들어 쓰는 것입니다. 효과음 하나가 아쉬워 스토어를 뒤지는 대신, 원하는 소리를 말하면 이 맥이 계산해 냅니다.</p>
                     <div class="tags">
-                        <span class="tag">Electron</span>
-                        <span class="tag">JavaScript</span>
                         <span class="tag">Stable Audio 3</span>
                         <span class="tag">MLX</span>
+                        <span class="tag">CLAP</span>
+                        <span class="tag">로컬 추론</span>
                     </div>
                 </div>
                 <div class="project-details">
@@ -420,56 +465,69 @@
                         <h4>하는 일</h4>
                         <ul>
                             <li>자연어로 원하는 소리를 말하면 생성 프롬프트로 옮겨 씁니다</li>
-                            <li>후보를 여러 개 뽑아 점수를 매기고, 그중 채택한 것만 라이브러리에 남깁니다</li>
+                            <li>후보를 여러 개 뽑아 점수를 매기고, 채택한 것만 라이브러리에 남깁니다</li>
                             <li>폴더, 태그, 평점으로 정리해 Unity 프로젝트로 내보냅니다</li>
+                            <li>마음에 드는 소리의 변주를 뽑아 같은 결의 세트를 만듭니다</li>
+                            <li>SCG Dev 의 리소스 단계가 여기로 생성을 넘깁니다</li>
                         </ul>
                         <h4>어디까지 로컬인가</h4>
                         <ul>
                             <li>파형은 Stable Audio 3 가 이 맥에서 직접 계산합니다. 오디오 API 과금이 없습니다</li>
                             <li>AI 는 소리를 만들지 않습니다. 요청을 프롬프트로 번역하는 역할만 합니다</li>
                             <li>Apple Silicon 의 MLX 와 Metal 을 씁니다</li>
+                            <li>CLAP 임베딩으로 요청과 결과가 얼마나 맞는지 점수를 매겨 후보를 줄 세웁니다</li>
                         </ul>
-                        <h4>기술</h4>
+                        <h4>왜 이렇게 만들었나</h4>
                         <ul>
-                            <li>Electron, JavaScript, Python 사이드카</li>
-                            <li>CLAP 임베딩으로 요청과 결과의 일치도를 점수화</li>
+                            <li>효과음은 한 번에 맞는 게 나오지 않습니다. 그래서 한 장이 아니라 후보를 뽑고 고르는 구조로 만들었습니다</li>
+                            <li>생성 비용이 호출당 돈이면 마음껏 못 굽습니다. 로컬 추론이라야 스무 번 다시 뽑는 게 부담이 없습니다</li>
+                            <li>생성기와 정리 도구를 나누지 않았습니다. 만든 소리를 어디에 뒀는지 잊는 게 진짜 비용이라서입니다</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
             <div class="project-card ai-card">
+                <div class="ai-head">
+                    <img class="ai-icon ai-icon-mono" loading="lazy" src="Resources/AI/ai-skills.png" alt="">
+                    <div class="ai-head-text">
+                        <h3>AI-SKILLS</h3>
+                        <span class="ai-meta">Shell · 스킬 12개 · 커밋 16</span>
+                    </div>
+                </div>
                 <div class="project-thumb"><img loading="lazy" src="Resources/AI/ai-skills.png"
                         alt="AI-SKILLS 저장소의 스킬 목록 터미널 출력"></div>
                 <div class="project-info">
-                    <h3>AI-SKILLS</h3>
-                    <p>요구사항을 끝까지 캐묻고, 커밋까지 밀어붙이고, 결과를 반박으로 검증하는 Claude Code 스킬 12개. 이 페이지도 이 스킬로 만들었습니다.</p>
+                    <p>목표는 AI 가 흐린 요구사항으로 달리지 않게 하는 것입니다. 묻는 단계와 안 묻는 단계를 갈라 놓아, 결정이 다 잠긴 뒤에는 목표에 닿을 때까지 멈추지 않게 만들었습니다. 이 페이지도 이 스킬로 만들었습니다.</p>
                     <div class="tags">
                         <span class="tag">Shell</span>
                         <span class="tag">Claude Code</span>
-                        <span class="tag">스킬 12개</span>
-                        <span class="tag">커밋 16</span>
+                        <span class="tag">서브에이전트</span>
+                        <span class="tag">Stop 훅</span>
                     </div>
                 </div>
                 <div class="project-details">
                     <div class="project-details-inner">
                         <h4>네 계열</h4>
                         <ul>
-                            <li>계획: 느슨한 요청을 결정이 마를 때까지 캐물어 잠급니다</li>
-                            <li>실행: 잠긴 목표를 전용 브랜치 위에서 검증하고 커밋할 때까지 밉니다</li>
-                            <li>검증: 끝난 결과물을 목표 대비 적대적으로 반박합니다</li>
-                            <li>상시: 부르지 않아도 붙는 규약. 가장 게으른 해법을 강제하고, 턴 끝에 코드리뷰를 겁니다</li>
+                            <li>계획: 느슨한 요청 하나를 결정이 마를 때까지 캐묻습니다. 두 라운드 연속으로 새 결정이 안 나올 때 멈춥니다</li>
+                            <li>실행: 잠긴 목표를 전용 브랜치에서 작업 단위마다 검증하고 커밋하며 끝까지 밉니다</li>
+                            <li>검증: 끝난 결과물을 완료 조건 단위로 반박형 에이전트를 붙여 증거로 판정합니다</li>
+                            <li>상시: 부르지 않아도 붙습니다. 가장 게으른 해법을 강제하고, 턴이 끝나면 코드리뷰를 겁니다</li>
                         </ul>
-                        <h4>왜 만들었나</h4>
+                        <h4>왜 이렇게 만들었나</h4>
                         <ul>
-                            <li>AI 는 요구사항이 흐린 채로 출발하면 흐린 방향으로 아주 효율적으로 달립니다</li>
-                            <li>그래서 묻는 단계와 안 묻는 단계를 분리했습니다. 인터뷰가 끝나면 목표에 닿을 때까지 멈추지 않습니다</li>
-                            <li>완료 조건을 증거로 판정하게 만들어 스스로 끝났다고 착각하지 못하게 했습니다</li>
+                            <li>AI 는 요구사항이 흐린 채로 출발하면 흐린 방향으로 아주 효율적으로 달립니다. 그래서 인터뷰를 앞에 붙이고, 넘어간 뒤에는 안 묻습니다</li>
+                            <li>완료 조건을 증거로 판정하게 만들었습니다. 명령 출력과 파일 내용으로 대조하지 않으면 스스로 끝났다고 착각합니다</li>
+                            <li>진전 없는 라운드가 두 번 이어지면 멈추고 왜 막혔는지 보고합니다. 수렴하지 않는 루프는 토큰만 태웁니다</li>
+                            <li>한 세션에 안 끝날 크기로 판정되면 자율 루프에 안 넘깁니다. 대신 맵과 티켓을 남기고 멈춥니다</li>
+                            <li>인터뷰 스킬은 자동 발화를 막았습니다. 사용자를 붙잡는 스킬이 멋대로 뜨면 안 됩니다</li>
                         </ul>
                         <h4>설치</h4>
                         <ul>
                             <li>원라이너 한 줄로 어느 프로젝트에나 설치됩니다</li>
                             <li>스킬 12개, 출력 스타일, 코드리뷰 훅, 규약 문서가 함께 깔립니다</li>
+                            <li>이미 설정이 있으면 훅 키만 병합하고 나머지는 안 건드립니다</li>
                         </ul>
                     </div>
                 </div>

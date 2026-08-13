@@ -93,9 +93,33 @@ for (const width of WIDTHS) {
   } else {
     console.log(`  \x1b[32mPASS\x1b[0m  C14  ${width}px AI 카드 모달 열림`);
     await page.screenshot({ path: path.join(shots, `${width}-modal.png`) });
+
+    // C15 모달이 떠 있는 동안 뒤 페이지가 스크롤되면 안 된다
+    const before = await page.evaluate(() => window.scrollY);
+    await page.mouse.wheel(0, 1200);
+    await page.waitForTimeout(400);
+    const after = await page.evaluate(() => window.scrollY);
+    if (Math.abs(after - before) > 2) {
+      console.log(`  \x1b[31mFAIL\x1b[0m  C15  ${width}px 모달 뒤 페이지가 스크롤됨 (${before} -> ${after})`);
+      failed = true;
+    } else {
+      console.log(`  \x1b[32mPASS\x1b[0m  C15  ${width}px 모달 중 배경 스크롤 잠김`);
+    }
   }
   await page.keyboard.press('Escape');
-  await page.waitForTimeout(300);
+  await page.waitForTimeout(400);
+
+  // 닫은 뒤 스크롤이 복원되고 페이지가 다시 움직여야 한다.
+  // scroll-behavior: smooth 라 바로 읽으면 옛 값이 나온다. 적용을 기다린다
+  const s0 = await page.evaluate(() => window.scrollY);
+  await page.evaluate(() => window.scrollBy(0, 300));
+  await page.waitForTimeout(700);
+  const s1 = await page.evaluate(() => window.scrollY);
+  if (s1 === s0) {
+    console.log(`  \x1b[31mFAIL\x1b[0m  C15  ${width}px 모달을 닫았는데 페이지가 안 움직임`);
+    failed = true;
+  }
+  await page.evaluate(() => window.scrollTo(0, 0));
 
   if (overflow.scrollWidth > overflow.innerWidth + 1) {
     console.log(

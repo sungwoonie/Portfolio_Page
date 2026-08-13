@@ -49,6 +49,26 @@ navList.querySelectorAll('a').forEach(link => {
 
 // Project modal
 const overlay = document.getElementById('projectOverlay');
+
+// body 만 잠그면 html 이 스크롤러라 페이지가 계속 밀린다. 스크롤 위치를 고정해 되돌린다
+let lockedScrollY = 0;
+function lockScroll(on) {
+    if (on) {
+        lockedScrollY = window.scrollY;
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${lockedScrollY}px`;
+        document.body.style.left = '0';
+        document.body.style.right = '0';
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.left = '';
+        document.body.style.right = '';
+        document.body.style.overflow = '';
+        window.scrollTo(0, lockedScrollY);
+    }
+}
 const modal = document.getElementById('projectModal');
 
 let carouselIndex = 0;
@@ -114,7 +134,8 @@ function openModal(card) {
     modal.classList.toggle('ai-mode', card.classList.contains('ai-card'));
     // 카드에서 데이터 추출
     const img = card.querySelector('.project-thumb img');
-    const title = card.querySelector('.project-info h3').textContent;
+    // AI 카드는 제목이 아이콘 옆(.ai-head)에 있어 .project-info 밖이다
+    const title = (card.querySelector('.project-info h3') || card.querySelector('h3')).textContent;
     const desc = card.querySelector('.project-info > p').textContent;
     // AI 카드는 비공개 저장소라 스토어 링크가 없다. 없으면 빈 칸으로 둔다
     const tags = card.querySelector('.project-info .tags')?.innerHTML || '';
@@ -155,7 +176,7 @@ function openModal(card) {
     // 모달 열기
     overlay.classList.add('active');
     modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    lockScroll(true);
 }
 
 const SOURCE_VIDEO_EXTENSIONS = ['mov', 'mp4', 'webm'];
@@ -262,7 +283,7 @@ function openSourcePreviewModal(card) {
 
     overlay.classList.add('active');
     modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    lockScroll(true);
 }
 
 function closeModal() {
@@ -270,7 +291,8 @@ function closeModal() {
     overlay.classList.remove('active');
     modal.classList.remove('active');
     modal.classList.remove('source-video-mode');
-    document.body.style.overflow = '';
+    modal.classList.remove('ai-mode');
+    lockScroll(false);
 }
 
 // 카드 클릭

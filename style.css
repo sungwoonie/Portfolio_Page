@@ -767,9 +767,50 @@ h2 {
 
 .project-card.ai-card {
     grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto 1fr;
     gap: 0;
     padding: 0;
     overflow: hidden;
+}
+
+/* 아이콘과 이름이 먼저, 그 아래 화면 */
+.ai-head {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-5);
+}
+
+.ai-icon {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: var(--radius-icon);
+    border: 1px solid var(--color-border);
+}
+
+/* 앱 아이콘이 아닌 것은 잘리면 안 된다 */
+.ai-icon-mono {
+    object-fit: contain;
+    background: var(--color-well);
+}
+
+.ai-head-text {
+    min-width: 0;
+}
+
+.ai-head-text h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+}
+
+.ai-meta {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: var(--text-micro);
+    color: var(--color-text-muted);
 }
 
 .ai-card .project-thumb {
@@ -777,6 +818,7 @@ h2 {
     height: auto;
     aspect-ratio: 16 / 10;
     background: var(--color-well);
+    border-top: 1px solid var(--color-border);
     border-bottom: 1px solid var(--color-border);
     display: flex;
     align-items: center;
@@ -1047,9 +1089,9 @@ footer {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0.97);
-    width: 90%;
-    max-width: 640px;
-    max-height: 85svh;
+    width: 92%;
+    max-width: 860px;
+    max-height: 88svh;
     background: var(--color-surface);
     border: 1px solid var(--color-border-strong);
     border-radius: var(--radius-card);
@@ -1070,8 +1112,10 @@ footer {
 }
 
 .project-modal-content {
-    max-height: 85svh;
+    max-height: 88svh;
     overflow-y: auto;
+    /* 모달 끝까지 스크롤해도 뒤 페이지로 넘어가지 않게 */
+    overscroll-behavior: contain;
 }
 
 .project-modal .modal-thumb {
