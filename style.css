@@ -1084,38 +1084,47 @@ footer {
     visibility: visible;
 }
 
+/* 가운데 정렬을 transform 이 아니라 flex 로 한다.
+   translate(-50%,-50%) 는 박스를 반 픽셀 경계에 앉히고, 그 레이어 위에서
+   글자가 래스터되면 흐려진다. 쉬는 상태의 transform 은 항상 정수 이동으로 끝낸다 */
 .project-modal {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.97);
-    width: 92%;
-    max-width: 860px;
-    max-height: 88svh;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border-strong);
-    border-radius: var(--radius-card);
-    overflow: hidden;
+    inset: 0;
     z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-5);
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
     transition: opacity var(--dur-base) var(--ease-out),
-        transform var(--dur-base) var(--ease-out),
         visibility var(--dur-base) var(--ease-out);
-    box-shadow: var(--shadow-modal);
 }
 
 .project-modal.active {
     opacity: 1;
     visibility: visible;
-    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto;
 }
 
 .project-modal-content {
+    width: 100%;
+    max-width: 860px;
     max-height: 88svh;
     overflow-y: auto;
     /* 모달 끝까지 스크롤해도 뒤 페이지로 넘어가지 않게 */
     overscroll-behavior: contain;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-modal);
+    transform: translateY(10px);
+    transition: transform var(--dur-base) var(--ease-out);
+}
+
+.project-modal.active .project-modal-content {
+    transform: translateY(0);
 }
 
 .project-modal .modal-thumb {

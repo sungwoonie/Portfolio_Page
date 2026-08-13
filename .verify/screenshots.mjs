@@ -94,6 +94,32 @@ for (const width of WIDTHS) {
     console.log(`  \x1b[32mPASS\x1b[0m  C14  ${width}px AI 카드 모달 열림`);
     await page.screenshot({ path: path.join(shots, `${width}-modal.png`) });
 
+    // C16 글자가 흐려지지 않으려면 모달이 정수 픽셀에 앉고, 쉬는 상태의
+    // transform 이 소수 이동을 남기지 않아야 한다
+    const crisp = await page.evaluate(() => {
+      const el = document.querySelector('.project-modal-content');
+      const r = el.getBoundingClientRect();
+      const t = getComputedStyle(el).transform;
+      let frac = 0;
+      if (t && t !== 'none') {
+        const m = t.match(/matrix\(([^)]+)\)/);
+        if (m) {
+          const v = m[1].split(',').map(Number);
+          // [a,b,c,d,tx,ty] — 확대와 이동이 정수여야 한다
+          frac = Math.max(Math.abs(v[0] - 1), Math.abs(v[3] - 1),
+                          Math.abs(v[4] - Math.round(v[4])), Math.abs(v[5] - Math.round(v[5])));
+        }
+      }
+      const off = Math.max(Math.abs(r.left - Math.round(r.left)), Math.abs(r.top - Math.round(r.top)));
+      return { transform: t, frac, off: +off.toFixed(3) };
+    });
+    if (crisp.frac > 0.001 || crisp.off > 0.51) {
+      console.log(`  \x1b[31mFAIL\x1b[0m  C16  ${width}px 모달이 소수 픽셀에 앉음 (어긋남 ${crisp.off}px, transform ${crisp.transform})`);
+      failed = true;
+    } else {
+      console.log(`  \x1b[32mPASS\x1b[0m  C16  ${width}px 모달 정수 픽셀 정렬 (어긋남 ${crisp.off}px)`);
+    }
+
     // C15 모달이 떠 있는 동안 뒤 페이지가 스크롤되면 안 된다
     const before = await page.evaluate(() => window.scrollY);
     await page.mouse.wheel(0, 1200);
