@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
-# 포트폴리오 리디자인 완료 조건 C1~C10 을 판정한다. 전부 통과하면 exit 0.
+# 포트폴리오 완료 조건(정적 + 렌더)을 판정한다. 전부 통과하면 exit 0.
 set -uo pipefail
 cd "$(dirname "$0")"
 
 status=0
 
-echo "== 정적 검사 (C1~C9) =="
+echo "== 정적 검사 =="
 python3 .verify/checks.py || status=1
 
 echo
-echo "== 렌더 검사 (C10) =="
+echo "== 렌더 검사 =="
 if [ ! -d .verify/node_modules/playwright ]; then
   echo "  Playwright 설치 중..."
   (cd .verify && npm install --silent) || { echo "  설치 실패"; exit 1; }

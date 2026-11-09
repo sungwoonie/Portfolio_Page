@@ -1,4 +1,4 @@
-// C10: 320/768/1440px 실제 렌더 스크린샷 + 가로스크롤 검사.
+// 렌더 검사: 320/768/1440px 실제 렌더 스크린샷, 가로스크롤, 왼쪽 칼럼, 스크린샷 띠, 모달 동작.
 import { chromium } from 'playwright';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import path from 'node:path';
@@ -16,7 +16,6 @@ let failed = false;
 
 for (const width of WIDTHS) {
   const page = await browser.newPage({ viewport: { width, height: 900 } });
-  // 범위 밖으로 합의된 SCG002 영상 404 3건이 콘솔을 채우므로 무시한다.
   page.on('pageerror', (err) => {
     console.log(`  \x1b[31mFAIL\x1b[0m  C10  ${width}px JS 에러: ${err.message}`);
     failed = true;
@@ -55,28 +54,63 @@ for (const width of WIDTHS) {
 
   await page.screenshot({ path: path.join(shots, `${width}.png`), fullPage: true });
 
-  // C13 네비는 데스크톱에서 한 줄이어야 한다. 링크들의 top 이 전부 같은지로 판정한다
+  // C13 데스크톱에선 상단 내비 7개가 한 줄로 다 보여야 한다
   if (width >= 1024) {
-    const navRows = await page.evaluate(() => {
-      const tops = [...document.querySelectorAll('nav ul a')].map((a) => Math.round(a.getBoundingClientRect().top));
-      return new Set(tops).size;
+    const nav = await page.evaluate(() => {
+      const links = [...document.querySelectorAll('.topbar ul a')];
+      const tops = new Set(links.map((a) => Math.round(a.getBoundingClientRect().top)));
+      const clipped = links.filter((a) => a.getBoundingClientRect().right > innerWidth).length;
+      return { n: links.length, rows: tops.size, clipped };
     });
-    if (navRows > 1) {
-      console.log(`  \x1b[31mFAIL\x1b[0m  C13  ${width}px 네비가 ${navRows}줄로 접힘`);
+    if (nav.n !== 7 || nav.rows !== 1 || nav.clipped) {
+      console.log(`  \x1b[31mFAIL\x1b[0m  C13  ${width}px 상단 내비 이상 (링크 ${nav.n}개, ${nav.rows}줄, 잘림 ${nav.clipped})`);
       failed = true;
     } else {
-      console.log(`  \x1b[32mPASS\x1b[0m  C13  ${width}px 네비 한 줄`);
+      console.log(`  \x1b[32mPASS\x1b[0m  C13  ${width}px 상단 내비 7개 한 줄`);
     }
 
-    // C11 AI 카드 4장의 렌더 폭이 같은지
+    // C11 AI 카드 수가 맞고 렌더 폭이 전부 같은지. 개수 오류를 폭 오류로 보고하지 않게 나눈다
     const widths = await page.evaluate(() =>
       [...document.querySelectorAll('.ai-card')].map((c) => Math.round(c.getBoundingClientRect().width)));
-    if (widths.length !== 4 || new Set(widths).size !== 1) {
+    if (widths.length !== 7) {
+      console.log(`  \x1b[31mFAIL\x1b[0m  C11  ${width}px AI 카드 ${widths.length}장 (기대: 7)`);
+      failed = true;
+    } else if (new Set(widths).size !== 1) {
       console.log(`  \x1b[31mFAIL\x1b[0m  C11  ${width}px AI 카드 폭이 제각각: ${widths.join(', ')}`);
       failed = true;
     } else {
-      console.log(`  \x1b[32mPASS\x1b[0m  C11  ${width}px AI 카드 4장 동일 폭 ${widths[0]}px`);
+      console.log(`  \x1b[32mPASS\x1b[0m  C11  ${width}px AI 카드 ${widths.length}장 동일 폭 ${widths[0]}px`);
     }
+  }
+
+  // C21 프로젝트 탭: 탭마다 눌렀을 때 그 패널 하나만 보이고, 미디어 이미지가 실제로 그려져야 한다
+  const tabs = await page.evaluate(async () => {
+    const bad = [];
+    let n = 0;
+    for (const sc of document.querySelectorAll('.showcase')) {
+      for (const tab of sc.querySelectorAll('.tab')) {
+        tab.click();
+        n += 1;
+        const shown = [...sc.querySelectorAll('.game')].filter((g) => !g.hidden && g.offsetHeight > 0);
+        const target = document.getElementById(tab.dataset.target);
+        if (shown.length !== 1 || shown[0] !== target) { bad.push(`${tab.dataset.target}(보이는 패널 ${shown.length})`); continue; }
+        const visual = target.querySelector('.media-visual');
+        const imgs = [...visual.querySelectorAll('img')];
+        imgs.forEach((img) => { img.loading = 'eager'; });
+        await Promise.all(imgs.map((img) => (img.complete ? null : new Promise((r) => { img.onload = img.onerror = r; }))));
+        const broken = imgs.filter((img) => img.naturalWidth === 0).length;
+        const videos = [...visual.querySelectorAll('video')].filter((v) => !v.getAttribute('poster') || !v.dataset.src).length;
+        if (visual.offsetHeight < 100 || broken || videos) bad.push(`${tab.dataset.target}(높이 ${visual.offsetHeight}, 깨진 이미지 ${broken}, 포스터·소스 없는 영상 ${videos})`);
+      }
+      sc.querySelector('.tab').click();
+    }
+    return { n, bad };
+  });
+  if (tabs.bad.length) {
+    console.log(`  \x1b[31mFAIL\x1b[0m  C21  ${width}px 프로젝트 탭 이상: ${tabs.bad.join(', ')}`);
+    failed = true;
+  } else {
+    console.log(`  \x1b[32mPASS\x1b[0m  C21  ${width}px 프로젝트 탭 ${tabs.n}개 전부 패널·미디어 정상`);
   }
 
   // C14 AI 카드를 누르면 모달이 열려야 한다.
@@ -94,7 +128,7 @@ for (const width of WIDTHS) {
   const modalOpen = await page.evaluate(() => {
     const m = document.getElementById('projectModal');
     return m && m.classList.contains('active') && m.classList.contains('ai-mode')
-      && (m.querySelector('.modal-info h3')?.textContent || '').trim().length > 0;
+      && (m.querySelector('.modal-head-text h3')?.textContent || '').trim().length > 0;
   });
   if (!modalOpen) {
     console.log(`  \x1b[31mFAIL\x1b[0m  C14  ${width}px AI 카드 클릭에도 모달이 안 열림`);

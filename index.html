@@ -16,1035 +16,1341 @@
 
 <body>
     <div class="project-overlay" id="projectOverlay"></div>
-    <div class="project-modal" id="projectModal">
+    <div class="project-modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
         <div class="project-modal-content">
             <button class="modal-close" aria-label="닫기">&times;</button>
             <div class="modal-scroll">
-                <div class="modal-thumb">
-                    <img src="" alt="">
+                <div class="modal-head">
+                    <div class="modal-thumb">
+                        <img src="" alt="">
+                    </div>
+                    <div class="modal-head-text">
+                        <h3 id="modalTitle"></h3>
+                        <p class="modal-meta"></p>
+                    </div>
                 </div>
                 <div class="modal-info">
-                    <h3></h3>
-                    <p></p>
+                    <p class="modal-desc"></p>
                     <div class="tags"></div>
                     <div class="store-links"></div>
-                    <div class="modal-video" style="margin-top: 1.25rem;"></div>
-                    <div class="modal-preview-carousel" style="margin-top: 1.25rem;"></div>
+                    <div class="modal-video"></div>
+                    <div class="modal-preview-carousel"></div>
                     <div class="modal-details"></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <nav>
-        <div class="nav-inner">
-            <div class="logo">양성운</div>
-            <button class="menu-toggle" aria-label="메뉴 열기">&#9776;</button>
+    <nav class="topbar" aria-label="섹션">
+        <div class="topbar-inner">
+            <a class="logo" href="#top">양성운<span>.</span></a>
             <ul>
                 <li><a href="#about">소개</a></li>
                 <li><a href="#career">커리어</a></li>
                 <li><a href="#projects">프로젝트</a></li>
                 <li><a href="#ai">AI 활용</a></li>
                 <li><a href="#automation">자동화</a></li>
-                <li><a href="#source">소스 코드</a></li>
+                <li><a href="#wip">개발 중</a></li>
                 <li><a href="#contact">연락처</a></li>
             </ul>
         </div>
     </nav>
 
-    <section class="hero">
-        <div class="hero-inner">
-            <div class="hero-copy">
+    <header class="hero" id="top">
+        <div class="wrap hero-grid">
+            <div class="inspector" aria-label="프로필 요약">
+                <div class="insp-bar">
+                    <span class="insp-dots"><i></i><i></i><i></i></span>
+                    <span class="insp-tab">Inspector</span>
+                    <span class="insp-chip">Prefab</span>
+                </div>
+                <div class="insp-object">
+                    <span class="insp-check" aria-hidden="true"></span>
+                    <b>YangSungwoon</b>
+                    <span class="insp-tag">Tag: Client</span>
+                </div>
+                <div class="insp-comp">
+                    <div class="insp-comp-head"><span class="insp-fold">&#9662;</span><span class="insp-cs">#</span>Developer <em>(Script)</em></div>
+                    <dl class="insp-fields">
+                        <div><dt>Name</dt><dd>Yang Sungwoon</dd></div>
+                        <div><dt>Role</dt><dd>Client Programmer</dd></div>
+                        <div><dt>Engine</dt><dd>Unity 6 · C#</dd></div>
+                        <div><dt>Studio</dt><dd>StarCloudGames</dd></div>
+                        <div><dt>Since</dt><dd>2023.11</dd></div>
+                    </dl>
+                </div>
+                <div class="insp-comp">
+                    <div class="insp-comp-head"><span class="insp-fold">&#9662;</span><span class="insp-cs">#</span>Shipped Games <em>(11)</em></div>
+                    <ul class="shipped" aria-label="출시한 게임 11종"><li><a href="#g-blazemage" data-tab="g-blazemage"><img src="Resources/BlazeMage/Icon_192.png" alt="활활법사" width="96" height="96"></a></li><li><a href="#g-meowflow" data-tab="g-meowflow"><img src="Resources/MeowFlow/Icon_192.png" alt="Meow Flow!" width="96" height="96"></a></li><li><a href="#g-kittyblast" data-tab="g-kittyblast"><img src="Resources/KittyBlast/Icon_192.png" alt="Kitty Blast: Color Sort Puzzle" width="96" height="96"></a></li><li><a href="#g-jigsaw" data-tab="g-jigsaw"><img src="Resources/Jigsaw/Icon_192.png" alt="Jigsaw puzzle- Easy Brain Game" width="96" height="96"></a></li><li><a href="#g-bubblepops" data-tab="g-bubblepops"><img src="Resources/BubblePops/Icon_192.jpg" alt="Bubble Pops - Blast in 3D" width="96" height="96"></a></li><li><a href="#g-hellokitty" data-tab="g-hellokitty"><img src="Resources/HelloKittyFriendMatch/Icon_192.jpg" alt="헬로키티 프렌즈 매치" width="96" height="96"></a></li><li><a href="#g-tailsome" data-tab="g-tailsome"><img src="Resources/TailSome/Icon_192.jpg" alt="테일썸 - 빗방울 피하기" width="96" height="96"></a></li><li><a href="#g-dungeonparty" data-tab="g-dungeonparty"><img src="Resources/DungeonParty/Icon_192.png" alt="던전파티 키우기" width="96" height="96"></a></li><li><a href="#g-bouncewall" data-tab="g-bouncewall"><img src="Resources/BounceWall/Icon_192.png" alt="Bounce Wall" width="96" height="96"></a></li><li><a href="#g-circlecircle" data-tab="g-circlecircle"><img src="Resources/CircleCircle/Icon_192.png" alt="Circle Circle" width="96" height="96"></a></li><li><a href="#g-zigrun" data-tab="g-zigrun"><img src="Resources/ZigRun/Icon_192.png" alt="Zig Run" width="96" height="96"></a></li></ul>
+                </div>
+            </div>
+
+            <div class="hero-text">
+                <div class="chips">
+                    <span class="chip chip-accent">Unity Client</span>
+                    <span class="chip">StarCloudGames</span>
+                    <span class="chip">since 2023</span>
+                </div>
                 <p class="greeting">안녕하세요, 저는</p>
-                <h1>양성운</h1>
+                <h1 class="name">양성운</h1>
+                <p class="role">Unity 클라이언트 프로그래머</p>
                 <p class="hero-desc">새로운 기술을 배우고 적용하는 것을 좋아합니다. 최적화, 자동화, 그리고 데이터 기반 개선에 진심인 클라이언트 프로그래머입니다.</p>
-                <div class="cta-group">
+                <ul class="hero-points">
+                    <li><b>출시 11종</b><span>회사 5종, 1인 개발 6종을 기획부터 출시까지</span></li>
+                    <li><b>빌드 자동화</b><span>빌드, 인앱 상품, 스토어 등록정보까지 Jenkins 로 배포</span></li>
+                    <li><b>AI 개발 도구</b><span>기획부터 검증까지 AI 와 일하는 도구를 직접 만들어 씀</span></li>
+                </ul>
+                <div class="hero-actions">
                     <a href="#projects" class="btn btn-primary">프로젝트 보기</a>
-                    <a href="#contact" class="btn btn-outline">연락하기</a>
-                </div>
-            </div>
-            <ul class="hero-shipped" aria-label="출시한 게임 9종">
-                <li><img src="Resources/TailSome/Icon.jpg" alt="테일썸 - 빗방울 피하기" width="120" height="120"></li>
-                <li><img src="Resources/HelloKittyFriendMatch/Icon.jpg" alt="헬로키티 프렌즈 매치" width="120" height="120">
-                </li>
-                <li><img src="Resources/BubblePops/Icon.jpg" alt="Bubble Pops - Blast in 3D" width="120" height="120">
-                </li>
-                <li><img src="Resources/KittyBlast/Icon.png" alt="Kitty Blast: Color Sort Puzzle" width="120"
-                        height="120"></li>
-                <li><img src="Resources/Jigsaw/Icon.png" alt="Jigsaw puzzle- Easy Brain Game" width="120" height="120">
-                </li>
-                <li><img src="Resources/DungeonParty/Icon.png" alt="던전파티 키우기" width="120" height="120"></li>
-                <li><img src="Resources/BounceWall/Icon.png" alt="Bounce Wall" width="120" height="120"></li>
-                <li><img src="Resources/CircleCircle/Icon.png" alt="Circle Circle" width="120" height="120"></li>
-                <li><img src="Resources/ZigRun/Icon.png" alt="Zig Run" width="120" height="120"></li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="about" class="fade-up">
-        <h2>소개</h2>
-        <p class="section-subtitle">저에 대해 간단히 알려드립니다.</p>
-
-        <div class="bento">
-            <div class="bento-intro">
-                <p>클라이언트 프로그래머 양성운입니다. 방치형 RPG와 하이퍼 캐주얼 게임 3종을 1인 개발로 출시한 경험이 있으며, 개발 과정에서 CI/CD 파이프라인과 인프라 구축 등 DevOps
-                    환경을 직접 설계하고 템플릿화하는 작업을 즐깁니다.</p>
-                <p>광고, 결제, 인증, DB 연동 등 다양한 서드파티 SDK 연동 경험이 있으며, 개인 프로젝트를 통해 실제 수익화까지 이어본 경험을 바탕으로 기획부터 출시 및 운영까지 전 과정을
-                    주도적으로 수행할 수 있습니다.</p>
-                <p>출시 이후에도 이벤트 로그 설계 및 수집, 리텐션·퍼널 등 핵심 지표 분석과 마케팅 성과 추적을 통해 데이터 기반으로 서비스를 개선하는 과정을 즐기며 꾸준히 경험을 쌓고 있습니다.
-                </p>
-            </div>
-            <div class="bento-card bento-stat stat-main">
-                <div class="number" id="career-duration">-</div>
-                <div class="label">경력</div>
-            </div>
-            <div class="bento-card stat-group">
-                <div class="bento-stat stat-sub">
-                    <div class="number">9</div>
-                    <div class="label">출시 완료한 프로젝트</div>
-                </div>
-                <div class="bento-stat stat-sub">
-                    <div class="number">4</div>
-                    <div class="label">개인 프로젝트</div>
-                </div>
-                <div class="bento-stat stat-sub">
-                    <div class="number">5</div>
-                    <div class="label">회사 프로젝트</div>
+                    <a href="mailto:sung_woonie@naver.com" class="btn">이메일 보내기</a>
+                    <a href="https://github.com/sungwoonie" target="_blank" rel="noopener" class="btn">GitHub</a>
+                    <a href="https://starcloudgames.com" target="_blank" rel="noopener" class="btn">starcloudgames.com</a>
                 </div>
             </div>
         </div>
+    </header>
 
-        <div class="group-head">
-            <h3>핵심 역량</h3>
-            <p class="section-subtitle">제가 가진 강점입니다.</p>
-        </div>
-        <div class="bento bento-skills">
-            <div class="skill-card">
-                <h4>클라이언트 개발</h4>
-                <p>Unity, C#을 기반으로 방치형 RPG, 하이퍼 캐주얼 등 다양한 장르의 게임을 1인 개발 및 출시.</p>
-            </div>
-            <div class="skill-card">
-                <h4>DevOps / CI·CD</h4>
-                <p>빌드 자동화, CI/CD 파이프라인 구축, 프로젝트 템플릿화 및 인프라 설계.</p>
-            </div>
-            <div class="skill-card">
-                <h4>서드파티 연동</h4>
-                <p>광고, 결제, 인증, DB 연동 등 다양한 서드파티 SDK 연동 및 수익화 경험.</p>
-            </div>
-            <div class="skill-card">
-                <h4>BaaS / 서버 연동</h4>
-                <p>Firebase, 뒤끝 등 BaaS를 활용한 데이터베이스 연동 및 서버 구축.</p>
-            </div>
-            <div class="skill-card">
-                <h4>데이터 분석 / 라이브 운영</h4>
-                <p>이벤트 로그 설계, 리텐션·퍼널 분석, 마케팅 지표 추적을 통한 데이터 기반 서비스 개선.</p>
-            </div>
-            <div class="skill-card">
-                <h4>AI 활용 개발</h4>
-                <p>Claude, Codex, Gemini 등 AI 코딩 에이전트를 적극 활용하여 개발 생산성과 코드 품질을 향상.</p>
-            </div>
-            <div class="skill-card">
-                <h4>협업 도구</h4>
-                <p>Jira, Slack, Notion, Confluence, Git 등 협업 툴을 활용한 팀 커뮤니케이션 및 프로젝트 관리.</p>
-            </div>
-            <div class="skill-card">
-                <h4>성능 최적화</h4>
-                <p>LitMotion, ZString, R3, UniTask 등 고성능 라이브러리를 활용한 메모리 최적화 및 GC 부하 최소화.</p>
-            </div>
-        </div>
+    <main>
+        <section id="about" class="block fade-up">
+            <div class="wrap">
+                <div class="block-head">
+                    <span class="block-idx">01</span>
+                    <h2>소개</h2>
+                    <p class="block-sub">저에 대해 간단히 알려드립니다.</p>
+                </div>
 
-        <div class="group-head">
-            <h3>기술 스택</h3>
-            <p class="section-subtitle">실제 사용하는 도구와 라이브러리입니다.</p>
-        </div>
-        <div class="stack-card">
-            <div class="stack-row">
-                <div class="stack-category">Engine / Language</div>
-                <div class="stack-tags">
-                    <span class="tag">Unity</span>
-                    <span class="tag">C#</span>
+                <div class="about-grid">
+                    <div class="intro">
+                        <p>클라이언트 프로그래머 양성운입니다. 1인 스튜디오 StarCloudGames 를 운영하며 방치형 RPG, 서바이버 액션 RPG, 퍼즐, 하이퍼 캐주얼까지 게임 6종을 혼자 기획부터 출시까지 끝냈습니다. 개발 과정에서 CI/CD 파이프라인과 인프라 구축 등 DevOps 환경을 직접 설계하고 템플릿화하는 작업을 즐깁니다.</p>
+                        <p>광고, 결제, 인증, DB 연동 등 다양한 서드파티 SDK 연동 경험이 있으며, 개인 프로젝트를 통해 실제 수익화까지 이어본 경험을 바탕으로 기획부터 출시 및 운영까지 전 과정을 주도적으로 수행할 수 있습니다.</p>
+                        <p>출시 이후에도 이벤트 로그 설계 및 수집, 리텐션·퍼널 등 핵심 지표 분석과 마케팅 성과 추적을 통해 데이터 기반으로 서비스를 개선하는 과정을 즐기며 꾸준히 경험을 쌓고 있습니다.</p>
+                        <p>요즘은 기획, 리소스, 개발, 빌드와 스토어 등록까지 이어지는 제작 과정을 AI 에이전트와 Jenkins 에 맡기는 도구를 직접 만들어 씁니다.</p>
+                    </div>
+                    <dl class="stats">
+                        <div class="stat stat-main"><dt>경력</dt><dd id="career-duration">-</dd></div>
+                        <div class="stat"><dt>출시 완료한 프로젝트</dt><dd>11</dd></div>
+                        <div class="stat"><dt>개인 프로젝트</dt><dd>6</dd></div>
+                        <div class="stat"><dt>회사 프로젝트</dt><dd>5</dd></div>
+                    </dl>
                 </div>
-            </div>
-            <div class="stack-row">
-                <div class="stack-category">Performance / Optimization</div>
-                <div class="stack-tags">
-                    <span class="tag">LitMotion</span>
-                    <span class="tag">ZString</span>
-                    <span class="tag">R3</span>
-                    <span class="tag">UniTask</span>
-                    <span class="tag">Job System</span>
-                    <span class="tag">Spatial Hashing</span>
-                </div>
-            </div>
-            <div class="stack-row">
-                <div class="stack-category">Design Pattern</div>
-                <div class="stack-tags">
-                    <span class="tag">Singleton</span>
-                    <span class="tag">Object Pooling</span>
-                    <span class="tag">State Pattern</span>
-                    <span class="tag">Observer Pattern</span>
-                    <span class="tag">Command Pattern</span>
-                    <span class="tag">Factory Pattern</span>
-                </div>
-            </div>
-            <div class="stack-row">
-                <div class="stack-category">UI / Animation</div>
-                <div class="stack-tags">
-                    <span class="tag">UGUI</span>
-                    <span class="tag">TextMeshPro</span>
-                    <span class="tag">DOTween</span>
-                    <span class="tag">LitMotion</span>
-                </div>
-            </div>
-            <div class="stack-row">
-                <div class="stack-category">Third-party SDK</div>
-                <div class="stack-tags">
-                    <span class="tag">Firebase</span>
-                    <span class="tag">AppsFlyer</span>
-                    <span class="tag">Adjust</span>
-                    <span class="tag">MAX</span>
-                    <span class="tag">ironSource</span>
-                    <span class="tag">Unity IAP</span>
-                    <span class="tag">AdMob</span>
-                </div>
-            </div>
-            <div class="stack-row">
-                <div class="stack-category">Asset Management</div>
-                <div class="stack-tags">
-                    <span class="tag">Addressables</span>
-                    <span class="tag">AssetBundle</span>
-                </div>
-            </div>
-            <div class="stack-row">
-                <div class="stack-category">DevOps / CI·CD</div>
-                <div class="stack-tags">
-                    <span class="tag">Jenkins</span>
-                    <span class="tag">GitHub Actions</span>
-                    <span class="tag">Fastlane</span>
-                </div>
-            </div>
-            <div class="stack-row">
-                <div class="stack-category">Collaboration</div>
-                <div class="stack-tags">
-                    <span class="tag">Git</span>
-                    <span class="tag">GitHub</span>
-                    <span class="tag">Jira</span>
-                    <span class="tag">Slack</span>
-                    <span class="tag">Notion</span>
-                    <span class="tag">Confluence</span>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section id="career" class="fade-up">
-        <h2>커리어</h2>
-        <p class="section-subtitle">지금까지의 경력입니다.</p>
-        <div class="career-timeline career-jobs">
-            <div class="career-item current">
-                <div class="period">2026.05 ~ 현재</div>
-                <div class="company">아보카도 <span class="employment-type">계약직</span></div>
-                <div class="role">클라이언트 프로그래머</div>
-                <div class="projects"></div>
-            </div>
-            <div class="career-item">
-                <div class="period">2026.03 ~ 2026.04</div>
-                <div class="company">게이밍고 <span class="employment-type">정규직</span></div>
-                <div class="role">클라이언트 프로그래머</div>
-                <div class="projects">- Kitty Blast: Color Sort Puzzle<br>- Jigsaw puzzle- Easy Brain Game</div>
-            </div>
-            <div class="career-item">
-                <div class="period">2025.10 ~ 2026.02</div>
-                <div class="company">쿡앱스 <span class="employment-type">계약직</span></div>
-                <div class="role">클라이언트 프로그래머</div>
-                <div class="projects">- Bubble Pops - Blast in 3D</div>
-            </div>
-            <div class="career-item">
-                <div class="period">2024.11 ~ 2025.10</div>
-                <div class="company">슈퍼어썸 <span class="employment-type">정규직</span></div>
-                <div class="role">클라이언트 프로그래머</div>
-                <div class="projects">- 헬로키티 프렌즈 매치</div>
-            </div>
-            <div class="career-item">
-                <div class="period">2023.11 ~ 2024.11</div>
-                <div class="company">에버웨이브 <span class="employment-type">정규직</span></div>
-                <div class="role">클라이언트 프로그래머</div>
-                <div class="projects">- 테일썸 - 빗방울 피하기</div>
-            </div>
-        </div>
+                <div class="gh" id="github">
+                    <div class="gh-head">
+                        <div>
+                            <h3 class="gh-title">GitHub 활동</h3>
+                            <p class="gh-sub">지난 1년 기여 <b id="gh-total">-</b>회 · 개인 계정과 스튜디오 계정 합산 · 저장소는 비공개라 활동만 보입니다</p>
+                        </div>
+                        <div class="gh-links">
+                            <a class="btn" href="https://github.com/sungwoonie" target="_blank" rel="noopener">sungwoonie</a>
+                            <a class="btn" href="https://github.com/StarCloudgames-Official" target="_blank" rel="noopener">StarCloudgames-Official</a>
+                        </div>
+                    </div>
+                    <div class="gh-scroll"><div class="gh-graph" id="gh-graph" role="img" aria-label="지난 1년 GitHub 기여 그래프"></div></div>
+                    <div class="gh-legend"><span>적음</span><i class="gh-l0"></i><i class="gh-l1"></i><i class="gh-l2"></i><i class="gh-l3"></i><i class="gh-l4"></i><span>많음</span></div>
+                </div>
 
-        <div class="group-head">
-            <h3>기타 이력</h3>
-            <p class="section-subtitle">학력, 자격증, 병역 사항입니다.</p>
-        </div>
-        <div class="extra-grid">
-            <div class="bento-card">
-                <h4 class="about-category">학력</h4>
-                <div class="career-timeline">
-                    <div class="career-item">
-                        <div class="period">2021.06 ~ 2023.08</div>
-                        <div class="company">학점은행제 <span class="employment-type">졸업</span></div>
-                        <div class="role">컴퓨터공학</div>
-                    </div>
-                    <div class="career-item">
-                        <div class="period">2019.08 ~ 2021.03</div>
-                        <div class="company">학점은행제 <span class="employment-type">중퇴</span></div>
-                        <div class="role">게임프로그래밍학과</div>
-                    </div>
-                    <div class="career-item">
-                        <div class="period">2017</div>
-                        <div class="company">검정고시 <span class="employment-type">졸업</span></div>
-                    </div>
+                <h3 class="sub-title">핵심 역량</h3>
+                <div class="skills">
+                    <div class="skill"><h4>클라이언트 개발</h4><p>Unity, C#을 기반으로 방치형 RPG, 서바이버 액션, 퍼즐, 하이퍼 캐주얼 등 다양한 장르의 게임을 1인 개발 및 출시.</p></div>
+                    <div class="skill"><h4>DevOps / CI·CD</h4><p>빌드 자동화, CI/CD 파이프라인 구축, 프로젝트 템플릿화 및 인프라 설계. 빌드부터 인앱 상품, 스토어 등록정보까지 Jenkins 로 배포.</p></div>
+                    <div class="skill"><h4>성능 최적화</h4><p>LitMotion, ZString, R3, UniTask, Job System 등을 활용한 메모리 최적화 및 GC 부하 최소화.</p></div>
+                    <div class="skill"><h4>BaaS / 서버 연동</h4><p>Firebase(Auth, Realtime Database, Remote Config), 뒤끝 등 BaaS를 활용한 클라우드 세이브, 계정 연동, 서버 구축.</p></div>
+                    <div class="skill"><h4>서드파티 연동</h4><p>광고, 결제, 인증, DB 연동 등 다양한 서드파티 SDK 연동 및 수익화 경험.</p></div>
+                    <div class="skill"><h4>데이터 분석 / 라이브 운영</h4><p>이벤트 로그 설계, 리텐션·퍼널 분석, 마케팅 지표 추적을 통한 데이터 기반 서비스 개선.</p></div>
+                    <div class="skill"><h4>AI 활용 개발</h4><p>Claude Code, Codex, Gemini 등 AI 코딩 에이전트를 적극 활용하고, 스킬과 하네스를 직접 만들어 개발 생산성과 코드 품질을 향상.</p></div>
+                    <div class="skill"><h4>협업 도구</h4><p>Jira, Slack, Notion, Confluence, Git 등 협업 툴을 활용한 팀 커뮤니케이션 및 프로젝트 관리.</p></div>
                 </div>
-            </div>
-            <div class="bento-card">
-                <h4 class="about-category">자격증</h4>
-                <div class="career-timeline">
-                    <div class="career-item">
-                        <div class="period">2023.08</div>
-                        <div class="company">게임기획전문가</div>
-                        <div class="role">한국콘텐츠진흥원</div>
-                    </div>
-                    <div class="career-item">
-                        <div class="period">2022.12</div>
-                        <div class="company">정보처리산업기사</div>
-                        <div class="role">한국산업인력공단</div>
-                    </div>
-                </div>
-            </div>
-            <div class="bento-card">
-                <h4 class="about-category">병역</h4>
-                <div class="career-timeline">
-                    <div class="career-item">
-                        <div class="period">2021.09 ~ 2023.03</div>
-                        <div class="company">육군 병장 <span class="employment-type">군필</span></div>
-                        <div class="role">만기 전역</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section id="projects" class="fade-up">
-        <h2>프로젝트</h2>
-        <p class="section-subtitle">제가 만든 작업물입니다. 카드를 클릭하면 상세 정보를 볼 수 있습니다.</p>
-        <p class="project-category">회사 프로젝트</p>
-        <div class="projects-grid">
-            <div class="project-card" data-folder="TailSome" data-previews="4">
-                <div class="project-thumb"><img loading="lazy" src="Resources/TailSome/Icon.jpg" alt="테일썸 - 빗방울 피하기"></div>
-                <div class="project-info">
-                    <h3>테일썸 - 빗방울 피하기</h3>
-                    <p>인게임·아웃게임 전반 개발 및 서드파티 SDK 연동 등 다양한 파트를 담당.</p>
-                    <div class="tags">
-                        <span class="tag">Unity</span>
-                        <span class="tag">C#</span>
-                        <span class="tag">캐주얼</span>
-                    </div>
-                    <div class="store-links">
-                        <a href="https://play.google.com/store/apps/details?id=com.everwavegames.dodgetherain&hl=ko"
-                            target="_blank" class="store-btn">Google Play</a>
-                        <a href="https://apps.apple.com/us/app/%ED%85%8C%EC%9D%BC%EC%8D%B8-%EB%B9%97%EB%B0%A9%EC%9A%B8-%ED%94%BC%ED%95%98%EA%B8%B0/id6475923843?l=ko"
-                            target="_blank" class="store-btn">App Store</a>
-                    </div>
-                </div>
-                <div class="project-details">
-                    <div class="project-details-inner">
-                        <video src="Resources/TailSome/PlayVideo.mp4#t=5" controls preload="none"
-                            playsinline></video>
-                        <h4>담당 업무</h4>
-                        <ul>
-                            <li>인게임 핵심 로직 및 아웃게임 UI 전반 개발</li>
-                            <li>광고, 결제, 인증 등 서드파티 SDK 연동</li>
-                            <li>게임 최적화 및 버그 수정</li>
-                        </ul>
-                        <h4>기술 스택</h4>
-                        <ul>
-                            <li>Firebase (Analytics, Crashlytics, Remote Config)</li>
-                            <li>AdMob, Unity Ads (광고 수익화)</li>
-                            <li>Unity IAP (인앱 결제)</li>
-                            <li>Google Play / Apple 로그인 연동</li>
-                            <li>DOTween (애니메이션)</li>
-                        </ul>
-                        <h4>배운 점</h4>
-                        <ul>
-                            <li>CI/CD 파이프라인의 중요성을 깨닫고 빌드 자동화 환경을 직접 구축</li>
-                            <li>재사용 가능한 라이브러리와 템플릿의 필요성을 인식하고 체계적인 코드 구조화 학습</li>
-                            <li>서드파티 SDK 연동 및 플랫폼별 이슈 대응 경험 축적</li>
-                        </ul>
-                        <h4>개발 기간</h4>
-                        <p>2023.11 ~ 2024.11 (약 1년)</p>
-                    </div>
+                <h3 class="sub-title">기술 스택</h3>
+                <div class="stack">
+                    <div class="stack-row"><div class="stack-category">Engine / Language</div><div class="stack-items"><span>Unity 6</span><span>C#</span><span>URP</span></div></div>
+                    <div class="stack-row"><div class="stack-category">Performance</div><div class="stack-items"><span>Job System</span><span>Spatial Hashing</span><span>UniTask</span><span>R3</span><span>ZString</span><span>ZLinq</span><span>LitMotion</span></div></div>
+                    <div class="stack-row"><div class="stack-category">Data</div><div class="stack-items"><span>MemoryPack</span><span>Addressables</span><span>AssetBundle</span><span>Unity Localization</span></div></div>
+                    <div class="stack-row"><div class="stack-category">Design Pattern</div><div class="stack-items"><span>Object Pooling</span><span>State</span><span>Observer</span><span>Command</span><span>Factory</span><span>Singleton</span></div></div>
+                    <div class="stack-row"><div class="stack-category">UI / Animation</div><div class="stack-items"><span>UGUI</span><span>TextMeshPro</span><span>DOTween</span><span>LitMotion</span></div></div>
+                    <div class="stack-row"><div class="stack-category">Backend / Auth</div><div class="stack-items"><span>Firebase Auth</span><span>Realtime Database</span><span>Remote Config</span><span>Crashlytics</span><span>뒤끝</span><span>Apple · Google Sign-In</span></div></div>
+                    <div class="stack-row"><div class="stack-category">Monetization / Analytics</div><div class="stack-items"><span>LevelPlay</span><span>MAX</span><span>AdMob</span><span>Unity IAP</span><span>AppsFlyer</span><span>Adjust</span><span>GA4</span></div></div>
+                    <div class="stack-row"><div class="stack-category">DevOps / CI·CD</div><div class="stack-items"><span>Jenkins</span><span>GitHub Actions</span><span>Fastlane</span><span>Play Developer API</span><span>App Store Connect API</span><span>Cloudflare Workers</span></div></div>
+                    <div class="stack-row"><div class="stack-category">AI / Tooling</div><div class="stack-items"><span>Claude Code</span><span>Codex</span><span>Unity MCP</span><span>Electron</span><span>TypeScript</span><span>React</span><span>Python</span></div></div>
+                    <div class="stack-row"><div class="stack-category">Collaboration</div><div class="stack-items"><span>Git</span><span>GitHub</span><span>Jira</span><span>Slack</span><span>Notion</span><span>Confluence</span></div></div>
                 </div>
             </div>
-            <div class="project-card" data-folder="HelloKittyFriendMatch" data-previews="4">
-                <div class="project-thumb"><img loading="lazy" src="Resources/HelloKittyFriendMatch/Icon.jpg" alt="헬로키티 프렌즈 매치"></div>
-                <div class="project-info">
-                    <h3>헬로키티 프렌즈 매치</h3>
-                    <p>컨텐츠 프로그래밍 및 UGUI 기반 아웃게임 UI 개발을 담당.</p>
-                    <div class="tags">
-                        <span class="tag">Unity</span>
-                        <span class="tag">C#</span>
-                        <span class="tag">매치 퍼즐</span>
-                        <span class="tag">IP</span>
-                    </div>
-                    <div class="store-links">
-                        <a href="https://play.google.com/store/apps/details?id=com.linegames.hkfm&hl=ko" target="_blank"
-                            class="store-btn">Google Play</a>
-                        <a href="https://apps.apple.com/kr/app/%ED%97%AC%EB%A1%9C%ED%82%A4%ED%8B%B0-%ED%94%84%EB%A0%8C%EC%A6%88-%EB%A7%A4%EC%B9%98/id6742533643"
-                            target="_blank" class="store-btn">App Store</a>
-                    </div>
-                </div>
-                <div class="project-details">
-                    <div class="project-details-inner">
-                        <video src="Resources/HelloKittyFriendMatch/PlayVideo.mp4#t=5" controls preload="none"
-                            playsinline></video>
-                        <h4>담당 업무</h4>
-                        <ul>
-                            <li>컨텐츠 프로그래밍 및 이벤트 시스템 개발</li>
-                            <li>UGUI 기반 아웃게임 UI 개발</li>
-                            <li>IP 가이드라인에 맞춘 UI/UX 구현</li>
-                        </ul>
-                        <h4>기술 스택</h4>
-                        <ul>
-                            <li>Firebase (Analytics, Crashlytics, Remote Config, A/B Testing)</li>
-                            <li>AppsFlyer (어트리뷰션 및 마케팅 성과 분석)</li>
-                            <li>Adjust (유저 어트리뷰션)</li>
-                            <li>MAX / ironSource (광고 미디에이션)</li>
-                            <li>Unity IAP (인앱 결제)</li>
-                            <li>GameAnalytics (게임 지표 분석)</li>
-                            <li>AssetBundle (에셋 관리)</li>
-                            <li>DOTween Pro (애니메이션)</li>
-                        </ul>
-                        <h4>배운 점</h4>
-                        <ul>
-                            <li>Unity Profiler를 활용한 메모리 최적화 및 Draw Call 개선으로 저사양 기기 대응</li>
-                            <li>대규모 라이브 서비스에서의 협업 프로세스와 코드 리뷰 문화 체득</li>
-                        </ul>
-                        <h4>개발 기간</h4>
-                        <p>2024.11 ~ 2025.10 (약 11개월)</p>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card" data-folder="BubblePops" data-previews="4">
-                <div class="project-thumb"><img loading="lazy" src="Resources/BubblePops/Icon.jpg" alt="Bubble Pops - Blast in 3D">
-                </div>
-                <div class="project-info">
-                    <h3>Bubble Pops - Blast in 3D</h3>
-                    <p>인게임·아웃게임 클라이언트 전체를 단독으로 개발. 회사 템플릿을 활용하여 빌드 및 배포.</p>
-                    <div class="tags">
-                        <span class="tag">Unity</span>
-                        <span class="tag">C#</span>
-                        <span class="tag">3D 퍼즐</span>
-                    </div>
-                    <div class="store-links">
-                        <a href="https://play.google.com/store/apps/details?id=com.mintry.crystalblast&hl=ko"
-                            target="_blank" class="store-btn">Google Play</a>
-                        <a href="https://apps.apple.com/kr/app/bubble-pops-blast-in-3d/id6755452733" target="_blank"
-                            class="store-btn">App Store</a>
-                    </div>
-                </div>
-                <div class="project-details">
-                    <div class="project-details-inner">
-                        <video src="Resources/BubblePops/PlayVideo.mp4#t=5" controls preload="none"
-                            playsinline></video>
-                        <h4>담당 업무</h4>
-                        <ul>
-                            <li>인게임·아웃게임 클라이언트 전체 단독 개발</li>
-                            <li>회사 템플릿을 활용한 빌드 및 배포</li>
-                            <li>3D 퍼즐 게임 핵심 메카닉 구현</li>
-                        </ul>
-                        <h4>기술 스택</h4>
-                        <ul>
-                            <li>Firebase (Analytics, Crashlytics, Remote Config, A/B Testing)</li>
-                            <li>AppsFlyer / Adjust (어트리뷰션)</li>
-                            <li>MAX / ironSource (광고 미디에이션)</li>
-                            <li>Unity IAP (인앱 결제)</li>
-                            <li>Unity Job System (멀티스레드 최적화)</li>
-                            <li>Spatial Hashing (물리 연산 대체)</li>
-                            <li>Addressables (에셋 관리)</li>
-                            <li>DOTween Pro (애니메이션)</li>
-                            <li>UniTask (비동기 처리)</li>
-                        </ul>
-                        <h4>배운 점</h4>
-                        <ul>
-                            <li>재사용 가능한 라이브러리의 중요성을 다시 한번 체감, 나만의 템플릿/라이브러리 구축을 결심하고 실행</li>
-                            <li>Unity Profiler를 통한 병목 분석 및 메모리/물리엔진 최적화 역량 강화</li>
-                            <li><strong>수천~수만 개 오브젝트의 물리 연산에서 수십~수백 ms 병목 발생 → 콜라이더 기반 물리엔진을 제거하고 Job System + Spatial
-                                    Hashing으로 대체하여 프레임 드랍 완전 해결</strong></li>
-                            <li>대규모 오브젝트 처리를 위한 최적화 기법과 멀티스레드 프로그래밍 실무 적용 경험</li>
-                        </ul>
-                        <h4>개발 기간</h4>
-                        <p>약 1개월</p>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card" data-folder="KittyBlast" data-previews="3">
-                <div class="project-thumb"><img loading="lazy" src="Resources/KittyBlast/Icon.png" alt="Kitty Blast: Color Sort Puzzle">
-                </div>
-                <div class="project-info">
-                    <h3>Kitty Blast: Color Sort Puzzle</h3>
-                    <p>그래픽 담당자 1명과 2인 제작, 클라이언트 개발은 단독으로 맡아 1주 만에 완성한 MVP 퍼즐 게임.</p>
-                    <div class="tags">
-                        <span class="tag">Unity</span>
-                        <span class="tag">C#</span>
-                        <span class="tag">컬러 정렬 퍼즐</span>
-                        <span class="tag">MVP</span>
-                    </div>
-                    <div class="store-links">
-                        <a href="https://play.google.com/store/apps/details?id=com.gamingo.gg002&hl=en"
-                            target="_blank" class="store-btn">Google Play</a>
-                    </div>
-                </div>
-                <div class="project-details">
-                    <div class="project-details-inner">
-                        <h4>담당 업무</h4>
-                        <ul>
-                            <li>Pixel Flow 레퍼런스 분석을 바탕으로 컬러 정렬 퍼즐 핵심 재미와 UX를 빠르게 프로토타이핑</li>
-                            <li>그래픽 담당자 1명과 협업하며 클라이언트 개발 전반을 단독으로 담당</li>
-                            <li>인게임·아웃게임 클라이언트 개발 및 Google Play 출시 대응</li>
-                        </ul>
-                        <h4>성과</h4>
-                        <ul>
-                            <li>짧은 개발 기간 안에 시장 검증용 MVP를 완성해 테스트 가능한 상태까지 구현</li>
-                            <li>1차 KPI를 통과하며 후속 검토가 가능한 프로젝트로 검증</li>
-                        </ul>
-                        <h4>기술 스택</h4>
-                        <ul>
-                            <li>Unity</li>
-                            <li>C#</li>
-                            <li>Firebase</li>
-                            <li>Unity IAP (인앱 결제)</li>
-                            <li>LevelPlay (광고 수익화)</li>
-                            <li>Google Play</li>
-                        </ul>
-                        <h4>개발 기간</h4>
-                        <p>약 1주</p>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card" data-folder="Jigsaw" data-previews="2">
-                <div class="project-thumb"><img loading="lazy" src="Resources/Jigsaw/Icon.png" alt="Jigsaw puzzle- Easy Brain Game">
-                </div>
-                <div class="project-info">
-                    <h3>Jigsaw puzzle- Easy Brain Game</h3>
-                    <p>1인 개발로 1주 만에 개발부터 Google Play 출시까지 완료한 직소 퍼즐 게임.</p>
-                    <div class="tags">
-                        <span class="tag">Unity</span>
-                        <span class="tag">C#</span>
-                        <span class="tag">직소 퍼즐</span>
-                        <span class="tag">1인 개발</span>
-                    </div>
-                    <div class="store-links">
-                        <a href="https://play.google.com/store/apps/details?id=com.gamingo.gg004&hl=en-US&gl=US"
-                            target="_blank" class="store-btn">Google Play</a>
-                    </div>
-                </div>
-                <div class="project-details">
-                    <div class="project-details-inner">
-                        <h4>담당 업무</h4>
-                        <ul>
-                            <li>기획 검토부터 인게임·아웃게임 클라이언트 개발까지 전반을 단독으로 담당</li>
-                            <li>직소 퍼즐 플레이 로직, UI 흐름, 보상 구조 구현</li>
-                            <li>Firebase, 인앱 결제, 광고 수익화 연동 및 Google Play 출시 대응</li>
-                        </ul>
-                        <h4>성과</h4>
-                        <ul>
-                            <li>1주일 만에 개발을 완료하고 Google Play 출시까지 진행</li>
-                            <li>마케팅 집행 없이 출시 단계까지 빠르게 검증 가능한 빌드로 완성</li>
-                        </ul>
-                        <h4>기술 스택</h4>
-                        <ul>
-                            <li>Unity</li>
-                            <li>C#</li>
-                            <li>Firebase</li>
-                            <li>Unity IAP (인앱 결제)</li>
-                            <li>LevelPlay (광고 수익화)</li>
-                            <li>Google Play</li>
-                        </ul>
-                        <h4>개발 기간</h4>
-                        <p>약 1주</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </section>
 
-        <p class="project-category" style="margin-top: 3rem;">개인 프로젝트</p>
-        <div class="projects-grid">
-            <div class="project-card" data-folder="DungeonParty" data-previews="4">
-                <div class="project-thumb"><img loading="lazy" src="Resources/DungeonParty/Icon.png" alt="던전파티 키우기"></div>
-                <div class="project-info">
-                    <h3>던전파티 키우기</h3>
-                    <p>1인 개발로 기획부터 출시까지 완료한 방치형 RPG 게임. BaaS 기반 서버 연동, 광고·결제 수익화까지 전 과정을 경험.</p>
-                    <div class="tags">
-                        <span class="tag">Unity</span>
-                        <span class="tag">C#</span>
-                        <span class="tag">방치형 RPG</span>
-                        <span class="tag">BaaS</span>
-                        <span class="tag">수익화</span>
-                    </div>
-                    <div class="store-links">
-                        <a href="https://play.google.com/store/apps/details?id=com.starcloudgames.dungeonparty"
-                            target="_blank" class="store-btn">Google Play</a>
-                    </div>
+        <section id="career" class="block fade-up">
+            <div class="wrap">
+                <div class="block-head">
+                    <span class="block-idx">02</span>
+                    <h2>커리어</h2>
+                    <p class="block-sub">지금까지의 경력입니다.</p>
                 </div>
-                <div class="project-details">
-                    <div class="project-details-inner">
-                        <video src="Resources/DungeonParty/PlayVideo.mp4#t=5" controls preload="none"
-                            playsinline></video>
-                        <h4>주요 기능</h4>
-                        <ul>
-                            <li>방치형 RPG 핵심 시스템 (자동 전투, 성장, 보상)</li>
-                            <li>뒤끝(Backend) BaaS 기반 서버 연동</li>
-                            <li>광고 및 인앱 결제 수익화 구현</li>
-                            <li>CI/CD 파이프라인 구축</li>
-                        </ul>
-                        <h4>개발 기간</h4>
-                        <p>1인 개발 (기획부터 출시까지 전 과정)</p>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card" data-folder="BounceWall" data-previews="4">
-                <div class="project-thumb"><img loading="lazy" src="Resources/BounceWall/Icon.png" alt="Bounce Wall"></div>
-                <div class="project-info">
-                    <h3>Bounce Wall</h3>
-                    <p>직접 제작한 하이퍼 캐주얼 템플릿 기반으로 개발 및 출시한 수익화 테스트 게임.</p>
-                    <div class="tags">
-                        <span class="tag">Unity</span>
-                        <span class="tag">C#</span>
-                        <span class="tag">하이퍼 캐주얼</span>
-                        <span class="tag">템플릿</span>
-                    </div>
-                    <div class="store-links">
-                        <a href="https://play.google.com/store/apps/details?id=com.starcloudgames.BounceWall"
-                            target="_blank" class="store-btn">Google Play</a>
-                    </div>
-                </div>
-                <div class="project-details">
-                    <div class="project-details-inner">
-                        <h4>주요 기능</h4>
-                        <ul>
-                            <li>하이퍼 캐주얼 템플릿 기반 빠른 개발</li>
-                            <li>광고 수익화 테스트</li>
-                            <li>간단한 원터치 게임플레이</li>
-                        </ul>
-                        <h4>개발 기간</h4>
-                        <p>1인 개발</p>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card" data-folder="CircleCircle" data-previews="4">
-                <div class="project-thumb"><img loading="lazy" src="Resources/CircleCircle/Icon.png" alt="Circle Circle"></div>
-                <div class="project-info">
-                    <h3>Circle Circle</h3>
-                    <p>직접 제작한 하이퍼 캐주얼 템플릿 기반으로 개발 및 출시한 수익화 테스트 게임.</p>
-                    <div class="tags">
-                        <span class="tag">Unity</span>
-                        <span class="tag">C#</span>
-                        <span class="tag">하이퍼 캐주얼</span>
-                        <span class="tag">템플릿</span>
-                    </div>
-                    <div class="store-links">
-                        <a href="https://play.google.com/store/apps/details?id=com.starcloudgames.CircleCircle"
-                            target="_blank" class="store-btn">Google Play</a>
-                    </div>
-                </div>
-                <div class="project-details">
-                    <div class="project-details-inner">
-                        <h4>주요 기능</h4>
-                        <ul>
-                            <li>하이퍼 캐주얼 템플릿 기반 빠른 개발</li>
-                            <li>광고 수익화 테스트</li>
-                            <li>간단한 원터치 게임플레이</li>
-                        </ul>
-                        <h4>개발 기간</h4>
-                        <p>1인 개발</p>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card" data-folder="ZigRun" data-previews="4">
-                <div class="project-thumb"><img loading="lazy" src="Resources/ZigRun/Icon.png" alt="Zig Run"></div>
-                <div class="project-info">
-                    <h3>Zig Run</h3>
-                    <p>직접 제작한 하이퍼 캐주얼 템플릿 기반으로 개발 및 출시한 수익화 테스트 게임.</p>
-                    <div class="tags">
-                        <span class="tag">Unity</span>
-                        <span class="tag">C#</span>
-                        <span class="tag">하이퍼 캐주얼</span>
-                        <span class="tag">템플릿</span>
-                    </div>
-                    <div class="store-links">
-                        <a href="https://play.google.com/store/apps/details?id=com.starcloudgames.zigrun"
-                            target="_blank" class="store-btn">Google Play</a>
-                    </div>
-                </div>
-                <div class="project-details">
-                    <div class="project-details-inner">
-                        <h4>주요 기능</h4>
-                        <ul>
-                            <li>하이퍼 캐주얼 템플릿 기반 빠른 개발</li>
-                            <li>광고 수익화 테스트</li>
-                            <li>간단한 원터치 게임플레이</li>
-                        </ul>
-                        <h4>개발 기간</h4>
-                        <p>1인 개발</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section id="ai" class="fade-up">
-        <h2>AI 활용</h2>
-        <p class="section-subtitle">필요한 도구는 사서 쓰지 않고 직접 만들어 씁니다. 넷 다 비공개 저장소라 실제 화면과 설계 판단으로 대신 보여드립니다.</p>
-
-        <div class="ai-grid">
-            <div class="project-card ai-card" data-folder="AI/SCGDEV" data-previews="13">
-                <div class="ai-head">
-                    <img class="ai-icon" loading="lazy" src="Resources/AI/icons/scg-dev.png" alt="">
-                    <div class="ai-head-text">
-                        <h3>SCG Dev</h3>
-                        <span class="ai-meta">Electron · TypeScript · 커밋 245</span>
-                    </div>
-                </div>
-                <div class="project-thumb"><img loading="lazy" src="Resources/AI/scg-dev.png"
-                        alt="SCG Dev 프로젝트 목록 화면"></div>
-                <div class="project-info">
-                    <p>목표는 하나입니다. 책상 앞에 없어도 게임이 만들어지게 하는 것. 폰의 슬랙만으로 기획부터 리소스, 개발 완주까지 끝낼 수 있게 만들고 있습니다. 지금 세 개의 게임이 이 앱 안에서 동시에 개발 단계를 지나고 있습니다.</p>
-                    <div class="tags">
-                        <span class="tag">Electron</span>
-                        <span class="tag">TypeScript</span>
-                        <span class="tag">슬랙 원격</span>
-                        <span class="tag">Auto 모드</span>
-                    </div>
-                </div>
-                <div class="project-details">
-                    <div class="project-details-inner">
-                        <h4>기획 단계</h4>
-                        <ul>
-                            <li>그릴링 세션이 결정을 캐묻고, 답을 고르면 기획 문서가 쌓입니다. 문서 스무 개가 서로를 링크한 채로 자랍니다</li>
-                            <li>밸런싱은 글이 아니라 시뮬레이션으로 봅니다. 처리량 곡선을 확정값과 역산 보정으로 나눠 그려 비교합니다</li>
-                            <li>새 프로젝트를 만들면 org 에 비공개 레포가 생기고, 템플릿이 코드명으로 각인된 채 첫 커밋과 푸시까지 끝납니다</li>
-                        </ul>
-                        <h4>리소스 단계</h4>
-                        <ul>
-                            <li>그래픽, 사운드, UI 를 항목별로 세워 두고 상태와 파일 경로를 추적합니다</li>
-                            <li>필요한 에셋을 실제 스토어에서 찾아 가격까지 비교하고, 예산에 맞는 조합을 추천합니다</li>
-                            <li>사운드는 SCG Sound 로 넘겨 생성하고 결과를 다시 받아옵니다</li>
-                            <li>UI 는 와이어프레임 후보를 여러 안으로 그려 고르게 합니다</li>
-                        </ul>
-                        <h4>개발 단계</h4>
-                        <ul>
-                            <li>마일스톤을 페이즈로 쪼개고, 세션이 페이즈 단위로 구현합니다</li>
-                            <li>검증 게이트를 통과한 것만 다음 페이즈로 넘어갑니다</li>
-                            <li>UI 는 개별 프리팹 그레이박스로 먼저 세우고, 스킨은 나중에 한 번에 전파합니다</li>
-                            <li>기획이 바뀌면 해당 구간만 다시 컷해 재구현합니다</li>
-                        </ul>
-                        <h4>폰만으로 완주하기</h4>
-                        <ul>
-                            <li>명령 문법이 없습니다. 카드의 버튼으로만 조작합니다. 완료면 다음 액션, 작업 중이면 중단, 에러면 재시도</li>
-                            <li>앱 홈에 프로젝트별 상태판이 섭니다. 마일스톤 진행률과 함께 이어서 개발, 페이즈 분해, Auto 끄기 버튼이 상태에 맞춰 붙습니다</li>
-                            <li>새 프로젝트 만들기, 앱 재시작, 앱 업데이트까지 슬랙에서 누릅니다. 맥 앞에 갈 일이 한 번 더 줄어듭니다</li>
-                            <li>스레드 하나가 작업 단위 하나입니다. 채널에 아무 메시지나 보내면 프로젝트별 상태판이 올라옵니다</li>
-                            <li>와이어프레임 후보 고르기 같은 판단도 슬랙에서 그대로 합니다. A안, B안, C안, 다시 그리기, 보류</li>
-                            <li>게이트에 닿거나 Auto 가 멈추면 채널로 알립니다. 상태판을 부르지 않아도 알게 됩니다</li>
-                            <li>공개 서버가 필요 없게 소켓 모드로 붙였고, 창을 닫아도 백그라운드에 남습니다</li>
-                        </ul>
-                        <h4>왜 이렇게 만들었나</h4>
-                        <ul>
-                            <li>개발 진입 전제를 하드로 걸었습니다. MVP 컷 문서와 데이터테이블 시트 연결이 없으면 개발 단계로 못 넘어갑니다. 기획이 흐린 채 출발하면 AI 는 흐린 방향으로 아주 효율적으로 달립니다</li>
-                            <li>MVP 와 프로덕션 사이에는 사람 게이트를 남겼습니다. 자동화가 판단까지 대신하지는 않게 했습니다</li>
-                            <li>사용량 한도는 응답 문구가 아니라 이벤트로 판정합니다. 문구는 바뀌지만 이벤트는 안 바뀝니다. 한도에 걸리면 스스로 멈췄다가 풀리면 재개합니다</li>
-                            <li>스킬마다 모델과 추론 강도를 따로 겁니다. 전부 최고 사양으로 돌리면 한도만 태웁니다</li>
-                            <li>브릿지는 페이로드 중립으로 설계했습니다. 그래서 개발 단계를 붙일 때 슬랙 쪽은 한 줄도 안 고쳤습니다</li>
-                        </ul>
-                        <h4>기술</h4>
-                        <ul>
-                            <li>Electron, TypeScript, macOS. 밸런싱 시뮬은 Python</li>
-                            <li>구독 하네스로 구동합니다. API 키 없이 Claude Code 구독으로만 돕니다</li>
-                            <li>슬랙은 소켓 모드와 웹 API 만 씁니다</li>
-                            <li>기획 문서는 옵시디언 심링크로 앱 밖에서도 봅니다</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card ai-card" data-folder="AI/CLOUDIE" data-previews="8">
-                <div class="ai-head">
-                    <img class="ai-icon" loading="lazy" src="Resources/AI/icons/cloudie.png" alt="">
-                    <div class="ai-head-text">
-                        <h3>CLOUDIE</h3>
-                        <span class="ai-meta">Electron · TypeScript · 커밋 35</span>
-                    </div>
-                </div>
-                <div class="project-thumb"><img loading="lazy" src="Resources/AI/cloudie.png"
-                        alt="CLOUDIE 부채꼴 메뉴가 원형으로 펼쳐진 화면"></div>
-                <div class="project-info">
-                    <p>목표는 기록을 남기려고 따로 시간을 쓰지 않는 것입니다. 화면 구석의 구름이 어제 한 일을 알아서 정리하고 오늘 할 일을 골라 주니, 하루를 돌아보는 일이 따로 마음먹어야 하는 일이 아니게 됩니다.</p>
-                    <div class="tags">
-                        <span class="tag">Electron</span>
-                        <span class="tag">TypeScript</span>
-                        <span class="tag">Obsidian</span>
-                        <span class="tag">읽기 전용</span>
-                    </div>
-                </div>
-                <div class="project-details">
-                    <div class="project-details-inner">
-                        <h4>하는 일</h4>
-                        <ul>
-                            <li>어제 한 일을 정리해 옵시디언 볼트에 남깁니다</li>
-                            <li>오늘 할 일을 프로젝트별로 추천하고 카드에서 체크하게 합니다</li>
-                            <li>주간과 월간 회고를 쌓습니다</li>
-                            <li>로컬 git 저장소를 훑어 최근 작업 맥락을 만듭니다</li>
-                        </ul>
-                        <h4>가장자리 처리</h4>
-                        <ul>
-                            <li>구름은 드래그로 옮기고, 그 위치는 재시작 후에도 유지됩니다</li>
-                            <li>화면 가운데면 온전한 원, 오른쪽 끝이면 왼쪽 반원, 구석이면 사분원으로 접힙니다</li>
-                            <li>공간이 좁다고 메뉴를 숨기거나 버튼을 줄이지 않습니다. 펼치는 각도만 바꾸고 항목이 늘면 반지름을 키웁니다</li>
-                        </ul>
-                        <h4>왜 이렇게 만들었나</h4>
-                        <ul>
-                            <li>읽기 전용이 하드 제약입니다. 쓰기와 실행 도구를 아예 안 싣습니다. 기록하러 띄운 도구가 코드를 고치면 안 됩니다</li>
-                            <li>산출물은 옵시디언 마크다운뿐입니다. 앱이 죽어도 기록은 남습니다</li>
-                            <li>외부로 아무것도 안 보냅니다</li>
-                            <li>화면 좌표를 아는 건 메인 프로세스뿐이라, 부채꼴을 접는 계산은 electron 의존이 없는 순수 함수로 빼고 테스트로 고정했습니다</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card ai-card" data-folder="AI/SCGSOUND" data-previews="2">
-                <div class="ai-head">
-                    <img class="ai-icon" loading="lazy" src="Resources/AI/icons/scg-sound.png" alt="">
-                    <div class="ai-head-text">
-                        <h3>SCG Sound</h3>
-                        <span class="ai-meta">Electron · JavaScript · 커밋 9</span>
-                    </div>
-                </div>
-                <div class="project-thumb"><img loading="lazy" src="Resources/AI/scg-sound.png"
-                        alt="SCG Sound 사운드 라이브러리 화면"></div>
-                <div class="project-info">
-                    <p>목표는 게임에 필요한 소리를 사거나 맡기지 않고 그 자리에서 만들어 쓰는 것입니다. 효과음 하나가 아쉬워 스토어를 뒤지는 대신, 원하는 소리를 말하면 이 맥이 계산해 냅니다.</p>
-                    <div class="tags">
-                        <span class="tag">Stable Audio 3</span>
-                        <span class="tag">MLX</span>
-                        <span class="tag">CLAP</span>
-                        <span class="tag">로컬 추론</span>
-                    </div>
-                </div>
-                <div class="project-details">
-                    <div class="project-details-inner">
-                        <h4>하는 일</h4>
-                        <ul>
-                            <li>효과음이냐 배경음이냐만 고르고, 원하는 소리를 자연어로 적습니다. 장르와 쓰일 자리는 거들 뿐입니다</li>
-                            <li>넘긴 말이 어떤 생성 프롬프트가 됐는지 미리 보고, 마음에 안 들면 그 자리에서 고칩니다</li>
-                            <li>길이와 프롬프트 강도, 스텝, 후보 수를 자동으로 잡아 주고 예상 소요 시간을 먼저 알려 줍니다</li>
-                            <li>후보를 여러 개 뽑아 점수를 매기고, 채택한 것만 라이브러리에 남깁니다</li>
-                            <li>폴더, 태그, 평점으로 정리해 Unity 프로젝트로 내보냅니다</li>
-                            <li>마음에 드는 소리의 변주를 뽑아 같은 결의 세트를 만듭니다</li>
-                            <li>SCG Dev 의 리소스 단계가 여기로 생성을 넘깁니다</li>
-                        </ul>
-                        <h4>어디까지 로컬인가</h4>
-                        <ul>
-                            <li>파형은 Stable Audio 3 가 이 맥에서 직접 계산합니다. 오디오 API 과금이 없습니다</li>
-                            <li>AI 는 소리를 만들지 않습니다. 요청을 프롬프트로 번역하는 역할만 합니다</li>
-                            <li>Apple Silicon 의 MLX 와 Metal 을 씁니다</li>
-                            <li>CLAP 임베딩으로 요청과 결과가 얼마나 맞는지 점수를 매겨 후보를 줄 세웁니다</li>
-                        </ul>
-                        <h4>왜 이렇게 만들었나</h4>
-                        <ul>
-                            <li>효과음은 한 번에 맞는 게 나오지 않습니다. 그래서 한 장이 아니라 후보를 뽑고 고르는 구조로 만들었습니다</li>
-                            <li>생성 비용이 호출당 돈이면 마음껏 못 굽습니다. 로컬 추론이라야 스무 번 다시 뽑는 게 부담이 없습니다</li>
-                            <li>생성기와 정리 도구를 나누지 않았습니다. 만든 소리를 어디에 뒀는지 잊는 게 진짜 비용이라서입니다</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card ai-card">
-                <div class="ai-head">
-                    <img class="ai-icon ai-icon-mono" loading="lazy" src="Resources/AI/ai-skills.png" alt="">
-                    <div class="ai-head-text">
-                        <h3>AI-SKILLS</h3>
-                        <span class="ai-meta">Shell · 스킬 12개 · 커밋 16</span>
-                    </div>
-                </div>
-                <div class="project-thumb"><img loading="lazy" src="Resources/AI/ai-skills.png"
-                        alt="AI-SKILLS 저장소의 스킬 목록 터미널 출력"></div>
-                <div class="project-info">
-                    <p>목표는 AI 가 흐린 요구사항으로 달리지 않게 하는 것입니다. 묻는 단계와 안 묻는 단계를 갈라 놓아, 결정이 다 잠긴 뒤에는 목표에 닿을 때까지 멈추지 않게 만들었습니다. 이 페이지도 이 스킬로 만들었습니다.</p>
-                    <div class="tags">
-                        <span class="tag">Shell</span>
-                        <span class="tag">Claude Code</span>
-                        <span class="tag">서브에이전트</span>
-                        <span class="tag">Stop 훅</span>
-                    </div>
-                </div>
-                <div class="project-details">
-                    <div class="project-details-inner">
-                        <h4>네 계열</h4>
-                        <ul>
-                            <li>계획: 느슨한 요청 하나를 결정이 마를 때까지 캐묻습니다. 두 라운드 연속으로 새 결정이 안 나올 때 멈춥니다</li>
-                            <li>실행: 잠긴 목표를 전용 브랜치에서 작업 단위마다 검증하고 커밋하며 끝까지 밉니다</li>
-                            <li>검증: 끝난 결과물을 완료 조건 단위로 반박형 에이전트를 붙여 증거로 판정합니다</li>
-                            <li>상시: 부르지 않아도 붙습니다. 가장 게으른 해법을 강제하고, 턴이 끝나면 코드리뷰를 겁니다</li>
-                        </ul>
-                        <h4>왜 이렇게 만들었나</h4>
-                        <ul>
-                            <li>AI 는 요구사항이 흐린 채로 출발하면 흐린 방향으로 아주 효율적으로 달립니다. 그래서 인터뷰를 앞에 붙이고, 넘어간 뒤에는 안 묻습니다</li>
-                            <li>완료 조건을 증거로 판정하게 만들었습니다. 명령 출력과 파일 내용으로 대조하지 않으면 스스로 끝났다고 착각합니다</li>
-                            <li>진전 없는 라운드가 두 번 이어지면 멈추고 왜 막혔는지 보고합니다. 수렴하지 않는 루프는 토큰만 태웁니다</li>
-                            <li>한 세션에 안 끝날 크기로 판정되면 자율 루프에 안 넘깁니다. 대신 맵과 티켓을 남기고 멈춥니다</li>
-                            <li>인터뷰 스킬은 자동 발화를 막았습니다. 사용자를 붙잡는 스킬이 멋대로 뜨면 안 됩니다</li>
-                        </ul>
-                        <h4>설치</h4>
-                        <ul>
-                            <li>원라이너 한 줄로 어느 프로젝트에나 설치됩니다</li>
-                            <li>스킬 12개, 출력 스타일, 코드리뷰 훅, 규약 문서가 함께 깔립니다</li>
-                            <li>이미 설정이 있으면 훅 키만 병합하고 나머지는 안 건드립니다</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="automation" class="fade-up">
-        <h2>자동화</h2>
-        <p class="section-subtitle">출시할 때마다 반복되던 손일을 Jenkins 로 넘겼습니다. 시트를 고치면 스토어 상품이 따라 바뀌고, 폴더명 하나만 넣으면 빌드가 스토어까지 올라갑니다.</p>
-
-        <div class="pipeline-list">
-            <article class="pipeline-row">
-                <div class="pipeline-head">
-                    <h3>인앱 상품 등록</h3>
-                    <span class="pipeline-job">IAP-Deploy</span>
-                </div>
-                <ol class="rail">
-                    <li class="rail-step">
-                        <span class="rail-kind">입력</span>
-                        <span class="rail-label">시트 한 장</span>
+                <ol class="career-jobs">
+                    <li class="job current">
+                        <div class="period">2026.05 ~ 현재</div>
+                        <div class="job-card">
+                            <div class="company">아보카도 <span class="employment-type">계약직</span></div>
+                            <div class="role">클라이언트 프로그래머</div>
+                        </div>
                     </li>
-                    <li class="rail-step rail-step-work">
-                        <span class="rail-kind">처리</span>
-                        <span class="rail-label">상품 비교와 등록</span>
+                    <li class="job">
+                        <div class="period">2026.03 ~ 2026.04</div>
+                        <div class="job-card">
+                            <div class="company">게이밍고 <span class="employment-type">정규직</span></div>
+                            <div class="role">클라이언트 프로그래머</div>
+                            <ul class="job-games">
+                                <li><a href="#g-kittyblast" data-tab="g-kittyblast"><img src="Resources/KittyBlast/Icon_192.png" alt="" width="40" height="40">Kitty Blast: Color Sort Puzzle</a></li>
+                                <li><a href="#g-jigsaw" data-tab="g-jigsaw"><img src="Resources/Jigsaw/Icon_192.png" alt="" width="40" height="40">Jigsaw puzzle- Easy Brain Game</a></li>
+                            </ul>
+                        </div>
                     </li>
-                    <li class="rail-step">
-                        <span class="rail-kind">결과</span>
-                        <span class="rail-label">Google Play</span>
-                        <span class="rail-label">App Store</span>
+                    <li class="job">
+                        <div class="period">2025.10 ~ 2026.02</div>
+                        <div class="job-card">
+                            <div class="company">쿡앱스 <span class="employment-type">계약직</span></div>
+                            <div class="role">클라이언트 프로그래머</div>
+                            <ul class="job-games">
+                                <li><a href="#g-bubblepops" data-tab="g-bubblepops"><img src="Resources/BubblePops/Icon_192.jpg" alt="" width="40" height="40">Bubble Pops - Blast in 3D</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="job">
+                        <div class="period">2024.11 ~ 2025.10</div>
+                        <div class="job-card">
+                            <div class="company">슈퍼어썸 <span class="employment-type">정규직</span></div>
+                            <div class="role">클라이언트 프로그래머</div>
+                            <ul class="job-games">
+                                <li><a href="#g-hellokitty" data-tab="g-hellokitty"><img src="Resources/HelloKittyFriendMatch/Icon_192.jpg" alt="" width="40" height="40">헬로키티 프렌즈 매치</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="job">
+                        <div class="period">2023.11 ~ 2024.11</div>
+                        <div class="job-card">
+                            <div class="company">에버웨이브 <span class="employment-type">정규직</span></div>
+                            <div class="role">클라이언트 프로그래머</div>
+                            <ul class="job-games">
+                                <li><a href="#g-tailsome" data-tab="g-tailsome"><img src="Resources/TailSome/Icon_192.jpg" alt="" width="40" height="40">테일썸 - 빗방울 피하기</a></li>
+                            </ul>
+                        </div>
                     </li>
                 </ol>
-                <p>없던 상품은 새로 만들고, 있던 상품은 바뀐 항목만 고치고, 그대로면 넘어갑니다. 달러 가격 하나만 적으면 각 스토어의 규칙대로 전 지역 가격표가 만들어집니다. 앱스토어 심사용 스크린샷도 같이 올라갑니다.</p>
-            </article>
 
-            <article class="pipeline-row">
-                <div class="pipeline-head">
-                    <h3>안드로이드 빌드와 배포</h3>
-                    <span class="pipeline-job">UnityBuild_AOS</span>
-                </div>
-                <ol class="rail">
-                    <li class="rail-step">
-                        <span class="rail-kind">입력</span>
-                        <span class="rail-label">폴더명 하나</span>
-                    </li>
-                    <li class="rail-step rail-step-work">
-                        <span class="rail-kind">처리</span>
-                        <span class="rail-label">Unity 빌드와 AAB 수집</span>
-                    </li>
-                    <li class="rail-step">
-                        <span class="rail-kind">결과</span>
-                        <span class="rail-label">Google Play</span>
-                    </li>
-                </ol>
-                <p>배포 트랙과 단계적 출시 비율을 파라미터로 받습니다. 한 번에 전체로 풀리지 않게 비율을 잡고 시작할 수 있습니다.</p>
-            </article>
-
-            <article class="pipeline-row">
-                <div class="pipeline-head">
-                    <h3>iOS 빌드와 배포</h3>
-                    <span class="pipeline-job">Unity-IOS-Build</span>
-                </div>
-                <ol class="rail">
-                    <li class="rail-step">
-                        <span class="rail-kind">입력</span>
-                        <span class="rail-label">폴더명 하나</span>
-                    </li>
-                    <li class="rail-step rail-step-work">
-                        <span class="rail-kind">처리</span>
-                        <span class="rail-label">Unity 빌드와 Xcode 아카이브</span>
-                    </li>
-                    <li class="rail-step">
-                        <span class="rail-kind">결과</span>
-                        <span class="rail-label">TestFlight</span>
-                    </li>
-                </ol>
-                <p>크래시 리포트가 바로 읽히도록 심볼 파일을 매 빌드마다 함께 올립니다. 아카이브부터 업로드까지 손이 들어갈 자리가 없습니다.</p>
-            </article>
-        </div>
-    </section>
-
-    <section id="source" class="fade-up">
-        <h2>소스 코드</h2>
-        <p class="section-subtitle">진행 중인 프로젝트의 소스코드입니다.</p>
-        <div class="source-grid">
-
-            <div class="source-card" data-project="SCG002">
-                <div class="source-info">
-                    <h3>SCG002</h3>
-                    <p>랜덤 디펜스 장르의 게임을 SCG001 기반으로 개발 중인 프로젝트입니다.</p>
-                    <div class="tags">
-                        <span class="tag">Unity</span>
-                        <span class="tag">C#</span>
-                        <span class="tag">랜덤 디펜스</span>
-                        <span class="tag">개발 중</span>
+                <div class="studio">
+                    <div class="period">2024 ~ 현재</div>
+                    <div class="job-card">
+                        <div class="company">StarCloudGames <span class="employment-type">1인 스튜디오</span></div>
+                        <div class="role">기획, 개발, 출시, 운영 전부. 출시작 6종은 아래 개인 프로젝트에 있습니다.</div>
                     </div>
-                    <div class="store-links">
-                        <a href="https://github.com/StarCloudgames-Official/SCG002" target="_blank"
-                            class="store-btn">GitHub</a>
-                        <button type="button" class="store-btn preview-video source-preview-btn"
-                            style="display: none;">프리뷰 영상</button>
+                </div>
+
+                <h3 class="sub-title">기타 이력</h3>
+                <div class="extra">
+                    <div class="extra-group">
+                        <h4>학력</h4>
+                        <ol>
+                            <li><div class="period">2021.06 ~ 2023.08</div><div class="company">학점은행제 <span class="employment-type">졸업</span></div><div class="role">컴퓨터공학</div></li>
+                            <li><div class="period">2019.08 ~ 2021.03</div><div class="company">학점은행제 <span class="employment-type">중퇴</span></div><div class="role">게임프로그래밍학과</div></li>
+                            <li><div class="period">2017</div><div class="company">검정고시 <span class="employment-type">졸업</span></div></li>
+                        </ol>
+                    </div>
+                    <div class="extra-group">
+                        <h4>자격증</h4>
+                        <ol>
+                            <li><div class="period">2023.08</div><div class="company">게임기획전문가</div><div class="role">한국콘텐츠진흥원</div></li>
+                            <li><div class="period">2022.12</div><div class="company">정보처리산업기사</div><div class="role">한국산업인력공단</div></li>
+                        </ol>
+                    </div>
+                    <div class="extra-group">
+                        <h4>병역</h4>
+                        <ol>
+                            <li><div class="period">2021.09 ~ 2023.03</div><div class="company">육군 병장 <span class="employment-type">군필</span></div><div class="role">만기 전역</div></li>
+                        </ol>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div class="source-card" data-project="SCG003"
-                data-preview-video-files="PreviewVideo_1_보스.mov,PreviewVideo_2_플레이영상.mov,PreviewVideo_3_에픽몬스터.mov">
-                <div class="source-info">
-                    <h3>SCG003</h3>
-                    <p>로그라이트 장르의 게임을 SCG001 기반으로 개발 중인 프로젝트입니다.</p>
-                    <div class="tags">
-                        <span class="tag">Unity</span>
-                        <span class="tag">C#</span>
-                        <span class="tag">로그라이트</span>
-                        <span class="tag">개발 중</span>
-                    </div>
-                    <div class="store-links">
-                        <a href="https://github.com/StarCloudgames-Official/SCG003" target="_blank"
-                            class="store-btn">GitHub</a>
-                        <button type="button" class="store-btn preview-video source-preview-btn"
-                            style="display: none;">프리뷰 영상</button>
-                    </div>
+        <section id="projects" class="block fade-up">
+            <div class="wrap">
+                <div class="block-head">
+                    <span class="block-idx">03</span>
+                    <h2>프로젝트</h2>
+                    <p class="block-sub">제가 만든 게임입니다. 아이콘을 눌러 게임을 바꾸고, 상세 보기에서 영상과 스크린샷, 담당 업무를 볼 수 있습니다.</p>
+                </div>
+
+                <div class="showcase-head"><h3 class="project-category">개인 프로젝트</h3><span class="showcase-note">StarCloudGames · 1인 개발 6종</span></div>
+                <div class="showcase">
+                    <div class="tabs" role="tablist" aria-label="개인 프로젝트"><button type="button" role="tab" class="tab" aria-selected="true" aria-controls="g-blazemage" data-target="g-blazemage"><img src="Resources/BlazeMage/Icon_192.png" alt="" width="40" height="40"><span class="tab-text"><b>활활법사</b><small>서바이버 액션 RPG</small></span></button><button type="button" role="tab" class="tab" aria-selected="false" aria-controls="g-meowflow" data-target="g-meowflow"><img src="Resources/MeowFlow/Icon_192.png" alt="" width="40" height="40"><span class="tab-text"><b>Meow Flow!</b><small>길 잇기 퍼즐</small></span></button><button type="button" role="tab" class="tab" aria-selected="false" aria-controls="g-dungeonparty" data-target="g-dungeonparty"><img src="Resources/DungeonParty/Icon_192.png" alt="" width="40" height="40"><span class="tab-text"><b>던전파티 키우기</b><small>방치형 RPG</small></span></button><button type="button" role="tab" class="tab" aria-selected="false" aria-controls="g-bouncewall" data-target="g-bouncewall"><img src="Resources/BounceWall/Icon_192.png" alt="" width="40" height="40"><span class="tab-text"><b>Bounce Wall</b><small>하이퍼 캐주얼</small></span></button><button type="button" role="tab" class="tab" aria-selected="false" aria-controls="g-circlecircle" data-target="g-circlecircle"><img src="Resources/CircleCircle/Icon_192.png" alt="" width="40" height="40"><span class="tab-text"><b>Circle Circle</b><small>하이퍼 캐주얼</small></span></button><button type="button" role="tab" class="tab" aria-selected="false" aria-controls="g-zigrun" data-target="g-zigrun"><img src="Resources/ZigRun/Icon_192.png" alt="" width="40" height="40"><span class="tab-text"><b>Zig Run</b><small>하이퍼 캐주얼</small></span></button></div>
+                    
+                    <article class="project-card game" id="g-blazemage" data-folder="BlazeMage" data-previews="5" role="tabpanel">
+                        <div class="project-thumb" hidden><img src="Resources/BlazeMage/Icon_192.png" alt="활활법사"></div>
+                        <div class="game-media media-keyart" style="--tint:#3a2516"><div class="media-visual"><img class="keyart" loading="lazy" src="Resources/BlazeMage/KeyArt.jpg" alt=""><div class="phone"><video class="phone-screen" data-src="Resources/BlazeMage/Preview.mp4" poster="Resources/BlazeMage/Poster.jpg" muted loop playsinline preload="none" aria-label="활활법사 플레이 영상"></video></div></div><div class="media-title"><img src="Resources/BlazeMage/Icon_192.png" alt="" width="56" height="56"><div><h3>활활법사</h3><p class="game-meta">서바이버 액션 RPG · 1인 개발</p></div></div></div>
+                        <div class="game-body project-info">
+                            <div class="game-date-row"><span class="game-date">2026.03 ~ 2026.10</span></div>
+                            <p>몰려오는 적을 불꽃 마법으로 쓸어 내는 서바이버 액션 RPG. 1인 개발로 기획부터 출시까지 끝냈고, 클라우드 세이브와 계정 연동, 가챠와 확률 공개까지 라이브 서비스에 필요한 것을 혼자 갖췄습니다.</p>
+                            <ul class="game-points"><li>레벨업마다 마법 15종과 강화 17종을 골라 조합하는 전투. 영웅 25명, 장비 120종, 던전 4종과 100층 탑</li><li>몬스터 이동·분리·길찾기·충돌 검사를 <b>Burst 잡(Job System) + Spatial Hashing</b> 으로 옮겨 프레임 드랍 해결</li><li>Firebase Auth·Realtime Database 클라우드 세이브, Apple·Google 로그인, 가챠 확률 공개</li><li>에디터 자동 플레이 시나리오 <b>30여 개</b>로 회귀 검증, 스토어 스크린샷도 같은 시나리오로 촬영</li></ul>
+                            <div class="tags">
+                                <span class="tag">Unity 6</span>
+                                <span class="tag">C#</span>
+                                <span class="tag">서바이버 액션 RPG</span>
+                                <span class="tag">Firebase</span>
+                                <span class="tag">1인 개발</span>
+                            </div>
+                            <div class="game-foot">
+                                <div class="store-links">
+                                <a href="https://play.google.com/store/apps/details?id=com.starcloudgames.scg003"
+                                    target="_blank" class="store-btn">Google Play</a>
+                                <span class="store-btn store-pending">App Store 심사 중</span>
+                            </div>
+                                <button type="button" class="more-btn">영상 · 스크린샷 · 상세 보기</button>
+                            </div>
+                        </div>
+                        <div class="project-details"><div class="project-details-inner">
+                                <video src="Resources/BlazeMage/Play.mp4" data-title="플레이 영상" controls preload="none" playsinline></video>
+                                <video src="Resources/BlazeMage/Boss.mp4" data-title="보스" controls preload="none" playsinline></video>
+                                <video src="Resources/BlazeMage/Epic.mp4" data-title="에픽 몬스터" controls preload="none" playsinline></video>
+                                <h4>주요 기능</h4>
+                                <ul>
+                                    <li>레벨업마다 마법 15종과 강화 17종 가운데 하나를 골라 나만의 조합을 만드는 전투</li>
+                                    <li>7개 지역 × 4단계 난이도, 영웅 25명, 장비 120종, 아티팩트 50종</li>
+                                    <li>던전 4종과 100층 시련의 탑</li>
+                                    <li>가챠와 확률 정보 공개, 패스, 7일 출석, 방치 보상, 우편함, 쿠폰</li>
+                                    <li>가이드 퀘스트 단계에 맞춰 로비 기능이 하나씩 열리는 FTUE</li>
+                                    <li>한국어·영어 현지화</li>
+                                </ul>
+                                <h4>기술 스택</h4>
+                                <ul>
+                                    <li>Unity 6, URP, C#</li>
+                                    <li>Firebase (Auth, Realtime Database 클라우드 세이브, Remote Config, Crashlytics, App Check)</li>
+                                    <li>Apple · Google 로그인</li>
+                                    <li>LevelPlay (광고 수익화), Unity IAP (인앱 결제)</li>
+                                    <li>Job System, Spatial Hashing, UniTask, R3, LitMotion, MemoryPack</li>
+                                    <li>Addressables, Unity Localization</li>
+                                </ul>
+                                <h4>해결한 문제</h4>
+                                <ul>
+                                    <li><strong>몰려드는 몬스터 떼의 이동과 충돌 분리가 프레임 드랍을 만들어, 이동(IJobParallelFor)·분리·길찾기·충돌 검사를 Burst 컴파일 잡과 Spatial Hashing 으로 옮겨 해결</strong></li>
+                                    <li>Realtime Database 클라우드 세이브를 바뀐 부분만 쓰도록 바꿔 쓰기 비용과 GC 를 줄임</li>
+                                    <li>Play 콘솔의 16KB 페이지 기기 경고에 맞춰 구글 로그인 네이티브 라이브러리를 NDK r28c 로 다시 빌드</li>
+                                    <li>애플 연동이 실패하던 문제를 기기 진단 로그로 추적해, SDK 가 인증 코드를 빈 값으로 보내던 원인을 찾아 고침</li>
+                                    <li>에디터 자동 플레이 시나리오 30여 개로 FTUE, 던전, 결제 흐름을 회귀 검증하고 스토어 스크린샷도 같은 시나리오로 촬영</li>
+                                    <li>에디터가 다른 플랫폼으로 컴파일된 채 빌드하면 알림 권한 같은 플랫폼 처리가 빠지던 문제를 빌드 스크립트에서 차단</li>
+                                </ul>
+                                <h4>개발 기간</h4>
+                                <p>2026.03 ~ 2026.10 (약 7개월, 1인 개발)</p>
+                            </div></div>
+                    </article>
+                    <article class="project-card game" id="g-meowflow" data-folder="MeowFlow" data-previews="5" role="tabpanel" hidden>
+                        <div class="project-thumb" hidden><img src="Resources/MeowFlow/Icon_192.png" alt="Meow Flow!"></div>
+                        <div class="game-media media-keyart" style="--tint:#23292e"><div class="media-visual"><img class="keyart" loading="lazy" src="Resources/MeowFlow/KeyArt.jpg" alt=""><div class="phone"><img class="phone-screen" loading="lazy" src="Resources/MeowFlow/Preview_1.png" alt="Meow Flow! 플레이 화면"></div></div><div class="media-title"><img src="Resources/MeowFlow/Icon_192.png" alt="" width="56" height="56"><div><h3>Meow Flow!</h3><p class="game-meta">길 잇기 퍼즐 · 1인 개발</p></div></div></div>
+                        <div class="game-body project-info">
+                            <div class="game-date-row"><span class="game-date">2026.10</span></div>
+                            <p>같은 색 고양이와 쿠션을 담요 길로 잇는 퍼즐. 해답이 하나뿐인 퍼즐 1,000판을 생성기로 만들어, 약 2주 만에 개발을 마치고 Google Play 에 출시했습니다.</p>
+                            <ul class="game-points"><li>해답이 정확히 하나인 판만 수록하는 <b>퍼즐 생성기</b>로 1,000판 제작 (Python)</li><li>경로가 자기 자신과 옆으로 닿지 않게 강제해 지그재그 풀이를 막고 해답 유일성 확보</li><li>약 <b>2주</b> 개발. 스토어 등록정보와 인앱 상품은 Jenkins 로 배포</li></ul>
+                            <div class="tags">
+                                <span class="tag">Unity 6</span>
+                                <span class="tag">C#</span>
+                                <span class="tag">퍼즐</span>
+                                <span class="tag">Python</span>
+                                <span class="tag">1인 개발</span>
+                            </div>
+                            <div class="game-foot">
+                                <div class="store-links">
+                                <a href="https://play.google.com/store/apps/details?id=com.starcloudgames.scg005"
+                                    target="_blank" class="store-btn">Google Play</a>
+                                <span class="store-btn store-pending">App Store 심사 중</span>
+                            </div>
+                                <button type="button" class="more-btn">영상 · 스크린샷 · 상세 보기</button>
+                            </div>
+                        </div>
+                        <div class="project-details"><div class="project-details-inner">
+                                <h4>주요 기능</h4>
+                                <ul>
+                                    <li>쉬움부터 어려움까지 1,000개의 퍼즐, 시간 제한 없음</li>
+                                    <li>힌트, 되돌리기, 다시 하기</li>
+                                    <li>매일 출석 보상과 일일 미션</li>
+                                    <li>인터넷 없이 플레이, 로그인 없음</li>
+                                </ul>
+                                <h4>퍼즐 생성기</h4>
+                                <ul>
+                                    <li>보드를 빈틈없이 덮는 완성 경로를 먼저 깔고, 양 끝에 고양이와 쿠션만 남긴 뒤 탐색기로 해답 수를 셉니다</li>
+                                    <li><strong>해답이 정확히 하나인 판만 수록합니다. 풀이가 여럿이면 아무렇게나 채워도 되는 판이 되기 쉽고, 하나뿐이면 끝점 배치가 곧 단서가 됩니다</strong></li>
+                                    <li>경로가 자기 자신과 옆으로 닿지 않게 강제합니다. 지그재그로 칸을 메우는 의미 없는 풀이를 막는 장치이자, 해답 유일성의 조건입니다</li>
+                                    <li>탐색 노드 수를 난이도 지표로 삼아 판 번호에 맞는 퍼즐을 고르고, 같은 검사기로 수록된 1,000판을 다시 검증합니다</li>
+                                </ul>
+                                <h4>기술 스택</h4>
+                                <ul>
+                                    <li>Unity 6, C#</li>
+                                    <li>Python (스테이지 생성·검증기)</li>
+                                    <li>Firebase, LevelPlay (광고 수익화), Unity IAP (인앱 결제)</li>
+                                    <li>스토어 등록정보와 인앱 상품은 Jenkins 로 배포</li>
+                                </ul>
+                                <h4>배운 점</h4>
+                                <ul>
+                                    <li>출시 빌드에서만 광고가 하나도 안 뜨던 문제를 LevelPlay 자동 초기화에서 찾아 출시 전에 고침</li>
+                                    <li>출시 직전 점검 항목을 정리해 활활법사 출시에 그대로 대조</li>
+                                </ul>
+                                <h4>개발 기간</h4>
+                                <p>2026.10 (약 2주, 1인 개발)</p>
+                            </div></div>
+                    </article>
+                    <article class="project-card game" id="g-dungeonparty" data-folder="DungeonParty" data-previews="4" role="tabpanel" hidden>
+                        <div class="project-thumb" hidden><img src="Resources/DungeonParty/Icon_192.png" alt="던전파티 키우기"></div>
+                        <div class="game-media media-wide"><div class="media-visual"><video class="media-video" data-src="Resources/DungeonParty/Preview.mp4" poster="Resources/DungeonParty/Poster.jpg" muted loop playsinline preload="none" aria-label="던전파티 키우기 플레이 영상"></video></div><div class="media-title"><img src="Resources/DungeonParty/Icon_192.png" alt="" width="56" height="56"><div><h3>던전파티 키우기</h3><p class="game-meta">방치형 RPG · 1인 개발</p></div></div></div>
+                        <div class="game-body project-info">
+                            <div class="game-date-row"><span class="game-date">2024</span></div>
+                            <p>1인 개발로 기획부터 출시까지 완료한 방치형 RPG 게임. BaaS 기반 서버 연동, 광고·결제 수익화까지 전 과정을 경험.</p>
+                            <ul class="game-points"><li>방치형 RPG 핵심 시스템 (자동 전투, 성장, 보상)</li><li>뒤끝(Backend) BaaS 기반 서버 연동</li><li>광고 및 인앱 결제 수익화 구현</li><li>CI/CD 파이프라인 구축</li></ul>
+                            <div class="tags">
+                                <span class="tag">Unity</span>
+                                <span class="tag">C#</span>
+                                <span class="tag">방치형 RPG</span>
+                                <span class="tag">BaaS</span>
+                                <span class="tag">수익화</span>
+                            </div>
+                            <div class="game-foot">
+                                <div class="store-links">
+                                <a href="https://play.google.com/store/apps/details?id=com.starcloudgames.dungeonparty"
+                                    target="_blank" class="store-btn">Google Play</a>
+                            </div>
+                                <button type="button" class="more-btn">영상 · 스크린샷 · 상세 보기</button>
+                            </div>
+                        </div>
+                        <div class="project-details"><div class="project-details-inner">
+                                <video src="Resources/DungeonParty/PlayVideo.mp4#t=5" controls preload="none"
+                                    playsinline></video>
+                                <h4>주요 기능</h4>
+                                <ul>
+                                    <li>방치형 RPG 핵심 시스템 (자동 전투, 성장, 보상)</li>
+                                    <li>뒤끝(Backend) BaaS 기반 서버 연동</li>
+                                    <li>광고 및 인앱 결제 수익화 구현</li>
+                                    <li>CI/CD 파이프라인 구축</li>
+                                </ul>
+                                <h4>개발 기간</h4>
+                                <p>1인 개발 (기획부터 출시까지 전 과정)</p>
+                            </div></div>
+                    </article>
+                    <article class="project-card game" id="g-bouncewall" data-folder="BounceWall" data-previews="4" role="tabpanel" hidden>
+                        <div class="project-thumb" hidden><img src="Resources/BounceWall/Icon_192.png" alt="Bounce Wall"></div>
+                        <div class="game-media media-shots" style="--tint:#162a3b"><div class="media-visual"><div class="shots-row"><img loading="lazy" src="Resources/BounceWall/Preview_1.png" alt="Bounce Wall 화면 1"><img loading="lazy" src="Resources/BounceWall/Preview_2.png" alt="Bounce Wall 화면 2"><img loading="lazy" src="Resources/BounceWall/Preview_3.png" alt="Bounce Wall 화면 3"></div></div><div class="media-title"><img src="Resources/BounceWall/Icon_192.png" alt="" width="56" height="56"><div><h3>Bounce Wall</h3><p class="game-meta">하이퍼 캐주얼 · 1인 개발</p></div></div></div>
+                        <div class="game-body project-info">
+                            <div class="game-date-row"><span class="game-date">2025</span></div>
+                            <p>직접 제작한 하이퍼 캐주얼 템플릿 기반으로 개발 및 출시한 수익화 테스트 게임.</p>
+                            <ul class="game-points"><li>직접 제작한 하이퍼 캐주얼 템플릿 기반 빠른 개발</li><li>광고 수익화 테스트</li><li>간단한 원터치 게임플레이</li></ul>
+                            <div class="tags">
+                                <span class="tag">Unity</span>
+                                <span class="tag">C#</span>
+                                <span class="tag">하이퍼 캐주얼</span>
+                                <span class="tag">템플릿</span>
+                            </div>
+                            <div class="game-foot">
+                                <div class="store-links">
+                                <a href="https://play.google.com/store/apps/details?id=com.starcloudgames.BounceWall"
+                                    target="_blank" class="store-btn">Google Play</a>
+                            </div>
+                                <button type="button" class="more-btn">영상 · 스크린샷 · 상세 보기</button>
+                            </div>
+                        </div>
+                        <div class="project-details"><div class="project-details-inner">
+                                <h4>주요 기능</h4>
+                                <ul>
+                                    <li>하이퍼 캐주얼 템플릿 기반 빠른 개발</li>
+                                    <li>광고 수익화 테스트</li>
+                                    <li>간단한 원터치 게임플레이</li>
+                                </ul>
+                                <h4>개발 기간</h4>
+                                <p>1인 개발</p>
+                            </div></div>
+                    </article>
+                    <article class="project-card game" id="g-circlecircle" data-folder="CircleCircle" data-previews="4" role="tabpanel" hidden>
+                        <div class="project-thumb" hidden><img src="Resources/CircleCircle/Icon_192.png" alt="Circle Circle"></div>
+                        <div class="game-media media-shots" style="--tint:#162b3b"><div class="media-visual"><div class="shots-row"><img loading="lazy" src="Resources/CircleCircle/Preview_1.png" alt="Circle Circle 화면 1"><img loading="lazy" src="Resources/CircleCircle/Preview_2.png" alt="Circle Circle 화면 2"><img loading="lazy" src="Resources/CircleCircle/Preview_3.png" alt="Circle Circle 화면 3"></div></div><div class="media-title"><img src="Resources/CircleCircle/Icon_192.png" alt="" width="56" height="56"><div><h3>Circle Circle</h3><p class="game-meta">하이퍼 캐주얼 · 1인 개발</p></div></div></div>
+                        <div class="game-body project-info">
+                            <div class="game-date-row"><span class="game-date">2025</span></div>
+                            <p>직접 제작한 하이퍼 캐주얼 템플릿 기반으로 개발 및 출시한 수익화 테스트 게임.</p>
+                            <ul class="game-points"><li>직접 제작한 하이퍼 캐주얼 템플릿 기반 빠른 개발</li><li>광고 수익화 테스트</li><li>간단한 원터치 게임플레이</li></ul>
+                            <div class="tags">
+                                <span class="tag">Unity</span>
+                                <span class="tag">C#</span>
+                                <span class="tag">하이퍼 캐주얼</span>
+                                <span class="tag">템플릿</span>
+                            </div>
+                            <div class="game-foot">
+                                <div class="store-links">
+                                <a href="https://play.google.com/store/apps/details?id=com.starcloudgames.CircleCircle"
+                                    target="_blank" class="store-btn">Google Play</a>
+                            </div>
+                                <button type="button" class="more-btn">영상 · 스크린샷 · 상세 보기</button>
+                            </div>
+                        </div>
+                        <div class="project-details"><div class="project-details-inner">
+                                <h4>주요 기능</h4>
+                                <ul>
+                                    <li>하이퍼 캐주얼 템플릿 기반 빠른 개발</li>
+                                    <li>광고 수익화 테스트</li>
+                                    <li>간단한 원터치 게임플레이</li>
+                                </ul>
+                                <h4>개발 기간</h4>
+                                <p>1인 개발</p>
+                            </div></div>
+                    </article>
+                    <article class="project-card game" id="g-zigrun" data-folder="ZigRun" data-previews="4" role="tabpanel" hidden>
+                        <div class="project-thumb" hidden><img src="Resources/ZigRun/Icon_192.png" alt="Zig Run"></div>
+                        <div class="game-media media-shots" style="--tint:#162e3b"><div class="media-visual"><div class="shots-row"><img loading="lazy" src="Resources/ZigRun/Preview_1.png" alt="Zig Run 화면 1"><img loading="lazy" src="Resources/ZigRun/Preview_2.png" alt="Zig Run 화면 2"><img loading="lazy" src="Resources/ZigRun/Preview_3.png" alt="Zig Run 화면 3"></div></div><div class="media-title"><img src="Resources/ZigRun/Icon_192.png" alt="" width="56" height="56"><div><h3>Zig Run</h3><p class="game-meta">하이퍼 캐주얼 · 1인 개발</p></div></div></div>
+                        <div class="game-body project-info">
+                            <div class="game-date-row"><span class="game-date">2025</span></div>
+                            <p>직접 제작한 하이퍼 캐주얼 템플릿 기반으로 개발 및 출시한 수익화 테스트 게임.</p>
+                            <ul class="game-points"><li>직접 제작한 하이퍼 캐주얼 템플릿 기반 빠른 개발</li><li>광고 수익화 테스트</li><li>간단한 원터치 게임플레이</li></ul>
+                            <div class="tags">
+                                <span class="tag">Unity</span>
+                                <span class="tag">C#</span>
+                                <span class="tag">하이퍼 캐주얼</span>
+                                <span class="tag">템플릿</span>
+                            </div>
+                            <div class="game-foot">
+                                <div class="store-links">
+                                <a href="https://play.google.com/store/apps/details?id=com.starcloudgames.zigrun"
+                                    target="_blank" class="store-btn">Google Play</a>
+                            </div>
+                                <button type="button" class="more-btn">영상 · 스크린샷 · 상세 보기</button>
+                            </div>
+                        </div>
+                        <div class="project-details"><div class="project-details-inner">
+                                <h4>주요 기능</h4>
+                                <ul>
+                                    <li>하이퍼 캐주얼 템플릿 기반 빠른 개발</li>
+                                    <li>광고 수익화 테스트</li>
+                                    <li>간단한 원터치 게임플레이</li>
+                                </ul>
+                                <h4>개발 기간</h4>
+                                <p>1인 개발</p>
+                            </div></div>
+                    </article>
+                </div>
+
+                <div class="showcase-head"><h3 class="project-category">회사 프로젝트</h3><span class="showcase-note">5종</span></div>
+                <div class="showcase">
+                    <div class="tabs" role="tablist" aria-label="회사 프로젝트"><button type="button" role="tab" class="tab" aria-selected="true" aria-controls="g-kittyblast" data-target="g-kittyblast"><img src="Resources/KittyBlast/Icon_192.png" alt="" width="40" height="40"><span class="tab-text"><b>Kitty Blast</b><small>컬러 정렬 퍼즐</small></span></button><button type="button" role="tab" class="tab" aria-selected="false" aria-controls="g-jigsaw" data-target="g-jigsaw"><img src="Resources/Jigsaw/Icon_192.png" alt="" width="40" height="40"><span class="tab-text"><b>Jigsaw puzzle</b><small>직소 퍼즐</small></span></button><button type="button" role="tab" class="tab" aria-selected="false" aria-controls="g-bubblepops" data-target="g-bubblepops"><img src="Resources/BubblePops/Icon_192.jpg" alt="" width="40" height="40"><span class="tab-text"><b>Bubble Pops</b><small>3D 퍼즐</small></span></button><button type="button" role="tab" class="tab" aria-selected="false" aria-controls="g-hellokitty" data-target="g-hellokitty"><img src="Resources/HelloKittyFriendMatch/Icon_192.jpg" alt="" width="40" height="40"><span class="tab-text"><b>헬로키티 프렌즈 매치</b><small>매치 퍼즐 · IP</small></span></button><button type="button" role="tab" class="tab" aria-selected="false" aria-controls="g-tailsome" data-target="g-tailsome"><img src="Resources/TailSome/Icon_192.jpg" alt="" width="40" height="40"><span class="tab-text"><b>테일썸</b><small>캐주얼</small></span></button></div>
+                    
+                    <article class="project-card game" id="g-kittyblast" data-folder="KittyBlast" data-previews="3" role="tabpanel">
+                        <div class="project-thumb" hidden><img src="Resources/KittyBlast/Icon_192.png" alt="Kitty Blast: Color Sort Puzzle"></div>
+                        <div class="game-media media-shots" style="--tint:#3a2417"><div class="media-visual"><div class="shots-row"><img loading="lazy" src="Resources/KittyBlast/Preview_1.png" alt="Kitty Blast: Color Sort Puzzle 화면 1"><img loading="lazy" src="Resources/KittyBlast/Preview_2.png" alt="Kitty Blast: Color Sort Puzzle 화면 2"><img loading="lazy" src="Resources/KittyBlast/Preview_3.png" alt="Kitty Blast: Color Sort Puzzle 화면 3"></div></div><div class="media-title"><img src="Resources/KittyBlast/Icon_192.png" alt="" width="56" height="56"><div><h3>Kitty Blast: Color Sort Puzzle</h3><p class="game-meta">게이밍고 · 컬러 정렬 퍼즐</p></div></div></div>
+                        <div class="game-body project-info">
+                            <div class="game-date-row"><span class="game-date">2026.03 ~ 2026.04</span></div>
+                            <p>그래픽 담당자 1명과 2인 제작, 클라이언트 개발은 단독으로 맡아 1주 만에 완성한 MVP 퍼즐 게임.</p>
+                            <ul class="game-points"><li>Pixel Flow 레퍼런스 분석을 바탕으로 핵심 재미와 UX를 빠르게 프로토타이핑</li><li>그래픽 1명과 2인 제작, 클라이언트는 단독으로 <b>1주</b> 만에 MVP 완성</li><li>1차 KPI 를 통과해 후속 검토 프로젝트로 검증</li></ul>
+                            <div class="tags">
+                                <span class="tag">Unity</span>
+                                <span class="tag">C#</span>
+                                <span class="tag">컬러 정렬 퍼즐</span>
+                                <span class="tag">MVP</span>
+                            </div>
+                            <div class="game-foot">
+                                <div class="store-links">
+                                <a href="https://play.google.com/store/apps/details?id=com.gamingo.gg002&hl=en"
+                                    target="_blank" class="store-btn">Google Play</a>
+                            </div>
+                                <button type="button" class="more-btn">영상 · 스크린샷 · 상세 보기</button>
+                            </div>
+                        </div>
+                        <div class="project-details"><div class="project-details-inner">
+                                <h4>담당 업무</h4>
+                                <ul>
+                                    <li>Pixel Flow 레퍼런스 분석을 바탕으로 컬러 정렬 퍼즐 핵심 재미와 UX를 빠르게 프로토타이핑</li>
+                                    <li>그래픽 담당자 1명과 협업하며 클라이언트 개발 전반을 단독으로 담당</li>
+                                    <li>인게임·아웃게임 클라이언트 개발 및 Google Play 출시 대응</li>
+                                </ul>
+                                <h4>성과</h4>
+                                <ul>
+                                    <li>짧은 개발 기간 안에 시장 검증용 MVP를 완성해 테스트 가능한 상태까지 구현</li>
+                                    <li>1차 KPI를 통과하며 후속 검토가 가능한 프로젝트로 검증</li>
+                                </ul>
+                                <h4>기술 스택</h4>
+                                <ul>
+                                    <li>Unity</li>
+                                    <li>C#</li>
+                                    <li>Firebase</li>
+                                    <li>Unity IAP (인앱 결제)</li>
+                                    <li>LevelPlay (광고 수익화)</li>
+                                    <li>Google Play</li>
+                                </ul>
+                                <h4>개발 기간</h4>
+                                <p>약 1주</p>
+                            </div></div>
+                    </article>
+                    <article class="project-card game" id="g-jigsaw" data-folder="Jigsaw" data-previews="2" role="tabpanel" hidden>
+                        <div class="project-thumb" hidden><img src="Resources/Jigsaw/Icon_192.png" alt="Jigsaw puzzle- Easy Brain Game"></div>
+                        <div class="game-media media-shots" style="--tint:#3b2c16"><div class="media-visual"><div class="shots-row"><img loading="lazy" src="Resources/Jigsaw/Preview_1.png" alt="Jigsaw puzzle- Easy Brain Game 화면 1"><img loading="lazy" src="Resources/Jigsaw/Preview_2.png" alt="Jigsaw puzzle- Easy Brain Game 화면 2"></div></div><div class="media-title"><img src="Resources/Jigsaw/Icon_192.png" alt="" width="56" height="56"><div><h3>Jigsaw puzzle- Easy Brain Game</h3><p class="game-meta">게이밍고 · 직소 퍼즐</p></div></div></div>
+                        <div class="game-body project-info">
+                            <div class="game-date-row"><span class="game-date">2026.03 ~ 2026.04</span></div>
+                            <p>1인 개발로 1주 만에 개발부터 Google Play 출시까지 완료한 직소 퍼즐 게임.</p>
+                            <ul class="game-points"><li>기획 검토부터 인게임·아웃게임 클라이언트까지 단독 담당</li><li><b>1주</b> 만에 개발을 마치고 Google Play 출시</li><li>Firebase, 인앱 결제, 광고 수익화 연동</li></ul>
+                            <div class="tags">
+                                <span class="tag">Unity</span>
+                                <span class="tag">C#</span>
+                                <span class="tag">직소 퍼즐</span>
+                                <span class="tag">1인 개발</span>
+                            </div>
+                            <div class="game-foot">
+                                <div class="store-links">
+                                <a href="https://play.google.com/store/apps/details?id=com.gamingo.gg004&hl=en-US&gl=US"
+                                    target="_blank" class="store-btn">Google Play</a>
+                            </div>
+                                <button type="button" class="more-btn">영상 · 스크린샷 · 상세 보기</button>
+                            </div>
+                        </div>
+                        <div class="project-details"><div class="project-details-inner">
+                                <h4>담당 업무</h4>
+                                <ul>
+                                    <li>기획 검토부터 인게임·아웃게임 클라이언트 개발까지 전반을 단독으로 담당</li>
+                                    <li>직소 퍼즐 플레이 로직, UI 흐름, 보상 구조 구현</li>
+                                    <li>Firebase, 인앱 결제, 광고 수익화 연동 및 Google Play 출시 대응</li>
+                                </ul>
+                                <h4>성과</h4>
+                                <ul>
+                                    <li>1주일 만에 개발을 완료하고 Google Play 출시까지 진행</li>
+                                    <li>마케팅 집행 없이 출시 단계까지 빠르게 검증 가능한 빌드로 완성</li>
+                                </ul>
+                                <h4>기술 스택</h4>
+                                <ul>
+                                    <li>Unity</li>
+                                    <li>C#</li>
+                                    <li>Firebase</li>
+                                    <li>Unity IAP (인앱 결제)</li>
+                                    <li>LevelPlay (광고 수익화)</li>
+                                    <li>Google Play</li>
+                                </ul>
+                                <h4>개발 기간</h4>
+                                <p>약 1주</p>
+                            </div></div>
+                    </article>
+                    <article class="project-card game" id="g-bubblepops" data-folder="BubblePops" data-previews="4" role="tabpanel" hidden>
+                        <div class="project-thumb" hidden><img src="Resources/BubblePops/Icon_192.jpg" alt="Bubble Pops - Blast in 3D"></div>
+                        <div class="game-media media-wide"><div class="media-visual"><video class="media-video" data-src="Resources/BubblePops/Preview.mp4" poster="Resources/BubblePops/Poster.jpg" muted loop playsinline preload="none" aria-label="Bubble Pops - Blast in 3D 플레이 영상"></video></div><div class="media-title"><img src="Resources/BubblePops/Icon_192.jpg" alt="" width="56" height="56"><div><h3>Bubble Pops - Blast in 3D</h3><p class="game-meta">쿡앱스 · 3D 퍼즐</p></div></div></div>
+                        <div class="game-body project-info">
+                            <div class="game-date-row"><span class="game-date">2025.10 ~ 2026.02</span></div>
+                            <p>인게임·아웃게임 클라이언트 전체를 단독으로 개발. 회사 템플릿을 활용하여 빌드 및 배포.</p>
+                            <ul class="game-points"><li>인게임·아웃게임 클라이언트 전체 단독 개발, 회사 템플릿으로 빌드·배포</li><li>수천~수만 개 오브젝트의 물리 병목을 <b>Job System + Spatial Hashing</b> 으로 대체해 프레임 드랍 해결</li><li>Firebase, AppsFlyer·Adjust, MAX·ironSource, Unity IAP 연동</li></ul>
+                            <div class="tags">
+                                <span class="tag">Unity</span>
+                                <span class="tag">C#</span>
+                                <span class="tag">3D 퍼즐</span>
+                            </div>
+                            <div class="game-foot">
+                                <div class="store-links">
+                                <a href="https://play.google.com/store/apps/details?id=com.mintry.crystalblast&hl=ko"
+                                    target="_blank" class="store-btn">Google Play</a>
+                                <a href="https://apps.apple.com/kr/app/bubble-pops-blast-in-3d/id6755452733" target="_blank"
+                                    class="store-btn">App Store</a>
+                            </div>
+                                <button type="button" class="more-btn">영상 · 스크린샷 · 상세 보기</button>
+                            </div>
+                        </div>
+                        <div class="project-details"><div class="project-details-inner">
+                                <video src="Resources/BubblePops/PlayVideo.mp4#t=5" controls preload="none"
+                                    playsinline></video>
+                                <h4>담당 업무</h4>
+                                <ul>
+                                    <li>인게임·아웃게임 클라이언트 전체 단독 개발</li>
+                                    <li>회사 템플릿을 활용한 빌드 및 배포</li>
+                                    <li>3D 퍼즐 게임 핵심 메카닉 구현</li>
+                                </ul>
+                                <h4>기술 스택</h4>
+                                <ul>
+                                    <li>Firebase (Analytics, Crashlytics, Remote Config, A/B Testing)</li>
+                                    <li>AppsFlyer / Adjust (어트리뷰션)</li>
+                                    <li>MAX / ironSource (광고 미디에이션)</li>
+                                    <li>Unity IAP (인앱 결제)</li>
+                                    <li>Unity Job System (멀티스레드 최적화)</li>
+                                    <li>Spatial Hashing (물리 연산 대체)</li>
+                                    <li>Addressables (에셋 관리)</li>
+                                    <li>DOTween Pro (애니메이션)</li>
+                                    <li>UniTask (비동기 처리)</li>
+                                </ul>
+                                <h4>배운 점</h4>
+                                <ul>
+                                    <li>재사용 가능한 라이브러리의 중요성을 다시 한번 체감, 나만의 템플릿/라이브러리 구축을 결심하고 실행</li>
+                                    <li>Unity Profiler를 통한 병목 분석 및 메모리/물리엔진 최적화 역량 강화</li>
+                                    <li><strong>수천~수만 개 오브젝트의 물리 연산에서 수십~수백 ms 병목 발생 → 콜라이더 기반 물리엔진을 제거하고 Job System + Spatial
+                                            Hashing으로 대체하여 프레임 드랍 완전 해결</strong></li>
+                                    <li>대규모 오브젝트 처리를 위한 최적화 기법과 멀티스레드 프로그래밍 실무 적용 경험</li>
+                                </ul>
+                                <h4>개발 기간</h4>
+                                <p>약 1개월</p>
+                            </div></div>
+                    </article>
+                    <article class="project-card game" id="g-hellokitty" data-folder="HelloKittyFriendMatch" data-previews="4" role="tabpanel" hidden>
+                        <div class="project-thumb" hidden><img src="Resources/HelloKittyFriendMatch/Icon_192.jpg" alt="헬로키티 프렌즈 매치"></div>
+                        <div class="game-media media-wide"><div class="media-visual"><video class="media-video" data-src="Resources/HelloKittyFriendMatch/Preview.mp4" poster="Resources/HelloKittyFriendMatch/Poster.jpg" muted loop playsinline preload="none" aria-label="헬로키티 프렌즈 매치 플레이 영상"></video></div><div class="media-title"><img src="Resources/HelloKittyFriendMatch/Icon_192.jpg" alt="" width="56" height="56"><div><h3>헬로키티 프렌즈 매치</h3><p class="game-meta">슈퍼어썸 · 매치 퍼즐 · IP</p></div></div></div>
+                        <div class="game-body project-info">
+                            <div class="game-date-row"><span class="game-date">2024.11 ~ 2025.10</span></div>
+                            <p>컨텐츠 프로그래밍 및 UGUI 기반 아웃게임 UI 개발을 담당.</p>
+                            <ul class="game-points"><li>컨텐츠 프로그래밍 및 이벤트 시스템 개발</li><li>UGUI 기반 아웃게임 UI, IP 가이드라인에 맞춘 UI/UX</li><li>Unity Profiler 로 메모리와 Draw Call 을 줄여 저사양 기기 대응</li></ul>
+                            <div class="tags">
+                                <span class="tag">Unity</span>
+                                <span class="tag">C#</span>
+                                <span class="tag">매치 퍼즐</span>
+                                <span class="tag">IP</span>
+                            </div>
+                            <div class="game-foot">
+                                <div class="store-links">
+                                <a href="https://play.google.com/store/apps/details?id=com.linegames.hkfm&hl=ko" target="_blank"
+                                    class="store-btn">Google Play</a>
+                                <a href="https://apps.apple.com/kr/app/%ED%97%AC%EB%A1%9C%ED%82%A4%ED%8B%B0-%ED%94%84%EB%A0%8C%EC%A6%88-%EB%A7%A4%EC%B9%98/id6742533643"
+                                    target="_blank" class="store-btn">App Store</a>
+                            </div>
+                                <button type="button" class="more-btn">영상 · 스크린샷 · 상세 보기</button>
+                            </div>
+                        </div>
+                        <div class="project-details"><div class="project-details-inner">
+                                <video src="Resources/HelloKittyFriendMatch/PlayVideo.mp4#t=5" controls preload="none"
+                                    playsinline></video>
+                                <h4>담당 업무</h4>
+                                <ul>
+                                    <li>컨텐츠 프로그래밍 및 이벤트 시스템 개발</li>
+                                    <li>UGUI 기반 아웃게임 UI 개발</li>
+                                    <li>IP 가이드라인에 맞춘 UI/UX 구현</li>
+                                </ul>
+                                <h4>기술 스택</h4>
+                                <ul>
+                                    <li>Firebase (Analytics, Crashlytics, Remote Config, A/B Testing)</li>
+                                    <li>AppsFlyer (어트리뷰션 및 마케팅 성과 분석)</li>
+                                    <li>Adjust (유저 어트리뷰션)</li>
+                                    <li>MAX / ironSource (광고 미디에이션)</li>
+                                    <li>Unity IAP (인앱 결제)</li>
+                                    <li>GameAnalytics (게임 지표 분석)</li>
+                                    <li>AssetBundle (에셋 관리)</li>
+                                    <li>DOTween Pro (애니메이션)</li>
+                                </ul>
+                                <h4>배운 점</h4>
+                                <ul>
+                                    <li>Unity Profiler를 활용한 메모리 최적화 및 Draw Call 개선으로 저사양 기기 대응</li>
+                                    <li>대규모 라이브 서비스에서의 협업 프로세스와 코드 리뷰 문화 체득</li>
+                                </ul>
+                                <h4>개발 기간</h4>
+                                <p>2024.11 ~ 2025.10 (약 11개월)</p>
+                            </div></div>
+                    </article>
+                    <article class="project-card game" id="g-tailsome" data-folder="TailSome" data-previews="4" role="tabpanel" hidden>
+                        <div class="project-thumb" hidden><img src="Resources/TailSome/Icon_192.jpg" alt="테일썸 - 빗방울 피하기"></div>
+                        <div class="game-media media-wide"><div class="media-visual"><video class="media-video" data-src="Resources/TailSome/Preview.mp4" poster="Resources/TailSome/Poster.jpg" muted loop playsinline preload="none" aria-label="테일썸 - 빗방울 피하기 플레이 영상"></video></div><div class="media-title"><img src="Resources/TailSome/Icon_192.jpg" alt="" width="56" height="56"><div><h3>테일썸 - 빗방울 피하기</h3><p class="game-meta">에버웨이브 · 캐주얼</p></div></div></div>
+                        <div class="game-body project-info">
+                            <div class="game-date-row"><span class="game-date">2023.11 ~ 2024.11</span></div>
+                            <p>인게임·아웃게임 전반 개발 및 서드파티 SDK 연동 등 다양한 파트를 담당.</p>
+                            <ul class="game-points"><li>인게임 핵심 로직 및 아웃게임 UI 전반 개발</li><li>광고, 결제, 인증 등 서드파티 SDK 연동</li><li>CI/CD 의 중요성을 깨닫고 빌드 자동화 환경을 직접 구축</li></ul>
+                            <div class="tags">
+                                <span class="tag">Unity</span>
+                                <span class="tag">C#</span>
+                                <span class="tag">캐주얼</span>
+                            </div>
+                            <div class="game-foot">
+                                <div class="store-links">
+                                <a href="https://play.google.com/store/apps/details?id=com.everwavegames.dodgetherain&hl=ko"
+                                    target="_blank" class="store-btn">Google Play</a>
+                                <a href="https://apps.apple.com/us/app/%ED%85%8C%EC%9D%BC%EC%8D%B8-%EB%B9%97%EB%B0%A9%EC%9A%B8-%ED%94%BC%ED%95%98%EA%B8%B0/id6475923843?l=ko"
+                                    target="_blank" class="store-btn">App Store</a>
+                            </div>
+                                <button type="button" class="more-btn">영상 · 스크린샷 · 상세 보기</button>
+                            </div>
+                        </div>
+                        <div class="project-details"><div class="project-details-inner">
+                                <video src="Resources/TailSome/PlayVideo.mp4#t=5" controls preload="none"
+                                    playsinline></video>
+                                <h4>담당 업무</h4>
+                                <ul>
+                                    <li>인게임 핵심 로직 및 아웃게임 UI 전반 개발</li>
+                                    <li>광고, 결제, 인증 등 서드파티 SDK 연동</li>
+                                    <li>게임 최적화 및 버그 수정</li>
+                                </ul>
+                                <h4>기술 스택</h4>
+                                <ul>
+                                    <li>Firebase (Analytics, Crashlytics, Remote Config)</li>
+                                    <li>AdMob, Unity Ads (광고 수익화)</li>
+                                    <li>Unity IAP (인앱 결제)</li>
+                                    <li>Google Play / Apple 로그인 연동</li>
+                                    <li>DOTween (애니메이션)</li>
+                                </ul>
+                                <h4>배운 점</h4>
+                                <ul>
+                                    <li>CI/CD 파이프라인의 중요성을 깨닫고 빌드 자동화 환경을 직접 구축</li>
+                                    <li>재사용 가능한 라이브러리와 템플릿의 필요성을 인식하고 체계적인 코드 구조화 학습</li>
+                                    <li>서드파티 SDK 연동 및 플랫폼별 이슈 대응 경험 축적</li>
+                                </ul>
+                                <h4>개발 기간</h4>
+                                <p>2023.11 ~ 2024.11 (약 1년)</p>
+                            </div></div>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="contact" class="fade-up contact-section">
-        <h2>연락처</h2>
-        <div class="contact-cards">
-            <div class="contact-card">
-                <div class="label">이메일</div>
-                <a href="mailto:sung_woonie@naver.com">sung_woonie@naver.com</a>
+        <section id="ai" class="block fade-up">
+            <div class="wrap">
+                <div class="block-head">
+                    <span class="block-idx">04</span>
+                    <h2>AI 활용</h2>
+                    <p class="block-sub">AI 에게 일을 맡기는 방식과, 그러려고 직접 만든 도구입니다. 전부 비공개 저장소라 실제 화면과 설계 판단으로 대신 보여드립니다.</p>
+                </div>
+
+                <div class="psr">
+                    <div class="psr-col">
+                        <div class="psr-card">
+                            <span class="psr-label label-problem">PROBLEM</span>
+                            <h4>AI 는 흐린 요구사항으로도 아주 효율적으로 달립니다</h4>
+                            <p>구현을 맡기면 빨라지지만, 결정이 덜 된 채 출발하면 엉뚱한 방향으로 끝까지 가고 스스로 끝났다고 판단합니다. 같은 세션이 만들고 검사하면 자기 흐름대로만 확인합니다.</p>
+                        </div>
+                        <div class="psr-card">
+                            <span class="psr-label label-result">RESULT</span>
+                            <ul>
+                                <li>엘레오노르: 화면 <b>72개</b> 구현, 기능 ID <b>550개</b>를 묶음별로 다시 감사</li>
+                                <li>스킬 <b>14개</b>를 Claude Code, Codex, Cursor 가 같이 읽고, 원라이너 한 줄로 설치</li>
+                                <li>SCG Dev 안에서 스팀용 게임 <b>4개</b>가 기획부터 개발 단계까지 진행</li>
+                            </ul>
+                        </div>
+                        <div class="psr-card psr-lesson">
+                            <span class="psr-label">LESSON</span>
+                            <p>자동화가 판단까지 대신하지 않게 합니다. 결정은 사람이 앞에서 잠그고, 완료는 증거로 판정합니다.</p>
+                        </div>
+                    </div>
+                    <div class="psr-card psr-solution">
+                        <span class="psr-label label-solution">SOLUTION</span>
+                        <h4>묻는 단계와 안 묻는 단계, 만드는 쪽과 검사하는 쪽을 나눴습니다</h4>
+                        <div class="sol-grid">
+                            <div class="sol"><h5><span>1</span>결정부터 잠근다</h5><p>느슨한 요청을 결정이 마를 때까지 캐묻고, 잠긴 뒤에는 묻지 않고 목표까지 밉니다. MVP 컷 문서와 데이터테이블 시트가 없으면 개발 단계로 넘어가지 않습니다.</p></div>
+                            <div class="sol"><h5><span>2</span>만드는 세션과 검사하는 세션 분리</h5><p>개발 레인과 검사 레인을 나눴습니다. 검사는 컴파일과 실제 플레이 캡처로만 판정하고, 통과한 것만 머지합니다.</p></div>
+                            <div class="sol"><h5><span>3</span>완료는 증거로</h5><p>완료 조건마다 반박형 에이전트를 붙여 명령 출력과 파일 내용으로 대조합니다. 진전 없는 라운드가 두 번 이어지면 멈추고 왜 막혔는지 보고합니다.</p></div>
+                            <div class="sol"><h5><span>4</span>도구에 묶이지 않는 규칙</h5><p>스킬과 규약은 레포에 두고 Claude Code, Codex, Cursor 가 같은 파일을 읽습니다. 스킬마다 모델과 추론 강도를 따로 걸어 한도를 아낍니다.</p></div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="sub-title">직접 만든 도구</h3>
+                <div class="ai-grid">
+                    <article class="project-card ai-card" data-folder="AI/SCGDEV" data-previews="13">
+                        <div class="project-thumb tool-frame tool-frame-top"><img loading="lazy" src="Resources/AI/scg-dev.png" alt="SCG Dev 프로젝트 목록 화면"></div>
+                        <div class="ai-body">
+                            <div class="ai-head">
+                                <img class="ai-icon" loading="lazy" src="Resources/AI/icons/scg-dev.png" alt="">
+                                <div class="ai-head-text"><h3>SCG Dev</h3><span class="ai-meta">Electron · TypeScript · 커밋 813</span></div>
+                            </div>
+                            <div class="project-info">
+                                <p>목표는 하나입니다. 책상 앞에 없어도 게임이 만들어지게 하는 것. 폰의 슬랙만으로 기획부터 리소스, 개발 완주까지 끝낼 수 있게 만들고 있습니다. 스팀용 게임 네 개가 이 앱 안에서 기획부터 개발 단계까지 진행됐습니다.</p>
+                                <div class="tags">
+                                <span class="tag">Electron</span>
+                                <span class="tag">TypeScript</span>
+                                <span class="tag">슬랙 원격</span>
+                                <span class="tag">Auto 모드</span>
+                            </div>
+                            </div>
+                            <span class="more-link">자세히 보기</span>
+                        </div>
+                        <div class="project-details"><div class="project-details-inner">
+                                <h4>기획 단계</h4>
+                                <ul>
+                                    <li>그릴링 세션이 결정을 캐묻고, 답을 고르면 기획 문서가 쌓입니다. 문서 스무 개가 서로를 링크한 채로 자랍니다</li>
+                                    <li>밸런싱은 글이 아니라 시뮬레이션으로 봅니다. 처리량 곡선을 확정값과 역산 보정으로 나눠 그려 비교합니다</li>
+                                    <li>재미 기둥과 한 판 대본을 먼저 세웁니다. 무엇이 재미있어야 하는지 정하지 않은 기획은 개발로 넘기지 않습니다</li>
+                                    <li>새 프로젝트를 만들면 org 에 비공개 레포가 생기고, 템플릿이 코드명으로 각인된 채 첫 커밋과 푸시까지 끝납니다</li>
+                                </ul>
+                                <h4>리소스 단계</h4>
+                                <ul>
+                                    <li>그래픽, 사운드, UI 를 항목별로 세워 두고 상태와 파일 경로를 추적합니다</li>
+                                    <li>필요한 에셋을 실제 스토어에서 찾아 가격까지 비교하고, 예산에 맞는 조합을 추천합니다</li>
+                                    <li>사운드는 SCG Sound 로 넘겨 생성하고 결과를 다시 받아옵니다</li>
+                                    <li>UI 는 와이어프레임 후보를 여러 안으로 그려 고르게 합니다</li>
+                                </ul>
+                                <h4>개발 단계</h4>
+                                <ul>
+                                    <li>마일스톤을 페이즈로 쪼개고, 세션이 페이즈 단위로 구현합니다</li>
+                                    <li>검증 게이트를 통과한 것만 다음 페이즈로 넘어갑니다</li>
+                                    <li>페이즈를 닫을 때는 플레이 시나리오를 실제로 재생해 한 판이 끝까지 도는지 봅니다. 세션이 스스로 하던 검증을 앱이 대신 돌리고, 구현이 그대로면 결과를 재사용합니다</li>
+                                    <li>막힌 작업은 다시 쪼개고, 그래도 막히면 보류하고 다음으로 갑니다. 하나 때문에 전체가 서지 않습니다</li>
+                                    <li>UI 는 개별 프리팹 그레이박스로 먼저 세우고, 스킨은 나중에 한 번에 전파합니다</li>
+                                    <li>기획이 바뀌면 해당 구간만 다시 컷해 재구현합니다</li>
+                                </ul>
+                                <h4>폰만으로 완주하기</h4>
+                                <ul>
+                                    <li>명령 문법이 없습니다. 카드의 버튼으로만 조작합니다. 완료면 다음 액션, 작업 중이면 중단, 에러면 재시도</li>
+                                    <li>앱 홈에 프로젝트별 상태판이 섭니다. 마일스톤 진행률과 함께 이어서 개발, 페이즈 분해, Auto 끄기 버튼이 상태에 맞춰 붙습니다</li>
+                                    <li>새 프로젝트 만들기, 앱 재시작, 앱 업데이트까지 슬랙에서 누릅니다. 맥 앞에 갈 일이 한 번 더 줄어듭니다</li>
+                                    <li>스레드는 프로젝트와 단계마다 하나입니다. 세션 카드, Auto 알림, 플레이 검증 결과가 그 스레드에 쌓이고 루트 글은 지금 상태로 고쳐 씁니다</li>
+                                    <li>와이어프레임 후보 고르기 같은 판단도 슬랙에서 그대로 합니다. A안, B안, C안, 다시 그리기, 보류</li>
+                                    <li>게이트에 닿거나 Auto 가 멈추면 채널로 알립니다. 상태판을 부르지 않아도 알게 됩니다</li>
+                                    <li>공개 서버가 필요 없게 소켓 모드로 붙였고, 창을 닫아도 백그라운드에 남습니다</li>
+                                </ul>
+                                <h4>왜 이렇게 만들었나</h4>
+                                <ul>
+                                    <li>개발 진입 전제를 하드로 걸었습니다. MVP 컷 문서와 데이터테이블 시트 연결이 없으면 개발 단계로 못 넘어갑니다. 기획이 흐린 채 출발하면 AI 는 흐린 방향으로 아주 효율적으로 달립니다</li>
+                                    <li>MVP 와 프로덕션 사이에는 사람 게이트를 남겼습니다. 자동화가 판단까지 대신하지는 않게 했습니다</li>
+                                    <li>사용량 한도는 응답 문구가 아니라 이벤트로 판정합니다. 문구는 바뀌지만 이벤트는 안 바뀝니다. 한도에 걸리면 스스로 멈췄다가 풀리면 재개합니다</li>
+                                    <li>스킬마다 모델과 추론 강도를 따로 겁니다. 전부 최고 사양으로 돌리면 한도만 태웁니다</li>
+                                    <li>브릿지는 페이로드 중립으로 설계했습니다. 그래서 개발 단계를 붙일 때 슬랙 쪽은 한 줄도 안 고쳤습니다</li>
+                                </ul>
+                                <h4>기술</h4>
+                                <ul>
+                                    <li>Electron, TypeScript, macOS. 밸런싱 시뮬은 Python</li>
+                                    <li>구독 하네스로 구동합니다. API 키 없이 Claude Code 구독으로 돌고, Codex 도 엔진으로 고를 수 있습니다</li>
+                                    <li>슬랙은 소켓 모드와 웹 API 만 씁니다</li>
+                                    <li>기획 문서는 옵시디언 심링크로 앱 밖에서도 봅니다</li>
+                                    <li>템플릿과 설치 절차를 갖춰 팀원 맥에도 설치할 수 있습니다</li>
+                                </ul>
+                            </div></div>
+                    </article>
+                    <article class="project-card ai-card" data-folder="AI/CLOUDIE" data-previews="8">
+                        <div class="project-thumb tool-frame tool-frame-center"><img loading="lazy" src="Resources/AI/cloudie.png" alt="CLOUDIE 부채꼴 메뉴가 원형으로 펼쳐진 화면"></div>
+                        <div class="ai-body">
+                            <div class="ai-head">
+                                <img class="ai-icon" loading="lazy" src="Resources/AI/icons/cloudie.png" alt="">
+                                <div class="ai-head-text"><h3>CLOUDIE</h3><span class="ai-meta">Electron · TypeScript · 커밋 35</span></div>
+                            </div>
+                            <div class="project-info">
+                                <p>목표는 기록을 남기려고 따로 시간을 쓰지 않는 것입니다. 화면 구석의 구름이 어제 한 일을 알아서 정리하고 오늘 할 일을 골라 주니, 하루를 돌아보는 일이 따로 마음먹어야 하는 일이 아니게 됩니다.</p>
+                                <div class="tags">
+                                <span class="tag">Electron</span>
+                                <span class="tag">TypeScript</span>
+                                <span class="tag">Obsidian</span>
+                                <span class="tag">읽기 전용</span>
+                            </div>
+                            </div>
+                            <span class="more-link">자세히 보기</span>
+                        </div>
+                        <div class="project-details"><div class="project-details-inner">
+                                <h4>하는 일</h4>
+                                <ul>
+                                    <li>어제 한 일을 정리해 옵시디언 볼트에 남깁니다</li>
+                                    <li>오늘 할 일을 프로젝트별로 추천하고 카드에서 체크하게 합니다</li>
+                                    <li>주간과 월간 회고를 쌓습니다</li>
+                                    <li>로컬 git 저장소를 훑어 최근 작업 맥락을 만듭니다</li>
+                                </ul>
+                                <h4>가장자리 처리</h4>
+                                <ul>
+                                    <li>구름은 드래그로 옮기고, 그 위치는 재시작 후에도 유지됩니다</li>
+                                    <li>화면 가운데면 온전한 원, 오른쪽 끝이면 왼쪽 반원, 구석이면 사분원으로 접힙니다</li>
+                                    <li>공간이 좁다고 메뉴를 숨기거나 버튼을 줄이지 않습니다. 펼치는 각도만 바꾸고 항목이 늘면 반지름을 키웁니다</li>
+                                </ul>
+                                <h4>왜 이렇게 만들었나</h4>
+                                <ul>
+                                    <li>읽기 전용이 하드 제약입니다. 쓰기와 실행 도구를 아예 안 싣습니다. 기록하러 띄운 도구가 코드를 고치면 안 됩니다</li>
+                                    <li>산출물은 옵시디언 마크다운뿐입니다. 앱이 죽어도 기록은 남습니다</li>
+                                    <li>외부로 아무것도 안 보냅니다</li>
+                                    <li>화면 좌표를 아는 건 메인 프로세스뿐이라, 부채꼴을 접는 계산은 electron 의존이 없는 순수 함수로 빼고 테스트로 고정했습니다</li>
+                                </ul>
+                            </div></div>
+                    </article>
+                    <article class="project-card ai-card" data-folder="AI/SCGSOUND" data-previews="2">
+                        <div class="project-thumb tool-frame tool-frame-top"><img loading="lazy" src="Resources/AI/scg-sound.png" alt="SCG Sound 사운드 라이브러리 화면"></div>
+                        <div class="ai-body">
+                            <div class="ai-head">
+                                <img class="ai-icon" loading="lazy" src="Resources/AI/icons/scg-sound.png" alt="">
+                                <div class="ai-head-text"><h3>SCG Sound</h3><span class="ai-meta">Electron · JavaScript · 커밋 11</span></div>
+                            </div>
+                            <div class="project-info">
+                                <p>목표는 게임에 필요한 소리를 사거나 맡기지 않고 그 자리에서 만들어 쓰는 것입니다. 효과음 하나가 아쉬워 스토어를 뒤지는 대신, 원하는 소리를 말하면 이 맥이 계산해 냅니다.</p>
+                                <div class="tags">
+                                <span class="tag">Stable Audio 3</span>
+                                <span class="tag">MLX</span>
+                                <span class="tag">CLAP</span>
+                                <span class="tag">로컬 추론</span>
+                            </div>
+                            </div>
+                            <span class="more-link">자세히 보기</span>
+                        </div>
+                        <div class="project-details"><div class="project-details-inner">
+                                <h4>하는 일</h4>
+                                <ul>
+                                    <li>효과음이냐 배경음이냐만 고르고, 원하는 소리를 자연어로 적습니다. 장르와 쓰일 자리는 거들 뿐입니다</li>
+                                    <li>넘긴 말이 어떤 생성 프롬프트가 됐는지 미리 보고, 마음에 안 들면 그 자리에서 고칩니다</li>
+                                    <li>길이와 프롬프트 강도, 스텝, 후보 수를 자동으로 잡아 주고 예상 소요 시간을 먼저 알려 줍니다</li>
+                                    <li>후보를 여러 개 뽑아 점수를 매기고, 채택한 것만 라이브러리에 남깁니다</li>
+                                    <li>폴더, 태그, 평점으로 정리해 Unity 프로젝트로 내보냅니다</li>
+                                    <li>마음에 드는 소리의 변주를 뽑아 같은 결의 세트를 만듭니다</li>
+                                    <li>SCG Dev 의 리소스 단계가 여기로 생성을 넘깁니다</li>
+                                </ul>
+                                <h4>어디까지 로컬인가</h4>
+                                <ul>
+                                    <li>파형은 Stable Audio 3 가 이 맥에서 직접 계산합니다. 오디오 API 과금이 없습니다</li>
+                                    <li>AI 는 소리를 만들지 않습니다. 요청을 프롬프트로 번역하는 역할만 합니다</li>
+                                    <li>Apple Silicon 의 MLX 와 Metal 을 씁니다</li>
+                                    <li>CLAP 임베딩으로 요청과 결과가 얼마나 맞는지 점수를 매겨 후보를 줄 세웁니다</li>
+                                </ul>
+                                <h4>왜 이렇게 만들었나</h4>
+                                <ul>
+                                    <li>효과음은 한 번에 맞는 게 나오지 않습니다. 그래서 한 장이 아니라 후보를 뽑고 고르는 구조로 만들었습니다</li>
+                                    <li>생성 비용이 호출당 돈이면 마음껏 못 굽습니다. 로컬 추론이라야 스무 번 다시 뽑는 게 부담이 없습니다</li>
+                                    <li>생성기와 정리 도구를 나누지 않았습니다. 만든 소리를 어디에 뒀는지 잊는 게 진짜 비용이라서입니다</li>
+                                </ul>
+                            </div></div>
+                    </article>
+                    <article class="project-card ai-card" data-folder="AI/SCGSHEETS" data-previews="9">
+                        <div class="project-thumb tool-frame"><img loading="lazy" src="Resources/AI/scg-sheets.png" alt="SCG Sheets 데이터테이블 그리드 화면"></div>
+                        <div class="ai-body">
+                            <div class="ai-head">
+                                <img class="ai-icon" loading="lazy" src="Resources/AI/icons/scg-sheets.png" alt="">
+                                <div class="ai-head-text"><h3>SCG Sheets</h3><span class="ai-meta">Electron · TypeScript · 커밋 39</span></div>
+                            </div>
+                            <div class="project-info">
+                                <p>목표는 유니티와 AI 가 토큰 없이 구글 시트를 다루게 하는 것입니다. 구글 로그인은 이 앱이 한 번만 하고, 프로젝트는 코드명 하나만 말하면 시트를 찾거나 만들어 받습니다. 데이터테이블은 앱 안에서 바로 고치고, Claude 는 스킬로 같은 API 를 부릅니다.</p>
+                                <div class="tags">
+                                <span class="tag">Electron</span>
+                                <span class="tag">React</span>
+                                <span class="tag">로컬 REST API</span>
+                                <span class="tag">Google Sheets</span>
+                            </div>
+                            </div>
+                            <span class="more-link">자세히 보기</span>
+                        </div>
+                        <div class="project-details"><div class="project-details-inner">
+                                <h4>하는 일</h4>
+                                <ul>
+                                    <li>127.0.0.1 루프백에 REST API 를 엽니다. 유니티의 데이터테이블 생성기와 Claude 스킬이 여기로 시트를 읽고 씁니다</li>
+                                    <li>프로젝트는 코드명만 말합니다. 장부에 있으면 그 시트, 없으면 드라이브에서 같은 이름을 찾고, 그래도 없으면 SCG 기본 탭 세트로 새로 만듭니다</li>
+                                    <li>SCG Dev 가 새 프로젝트를 만들 때 이 앱으로 시트를 확보합니다. 시트가 없으면 개발 단계로 못 넘어갑니다</li>
+                                    <li>앱 안에서 셀 편집, 복사와 붙여넣기, 되돌리기, 행과 열 삽입과 삭제, 정렬, 찾기, 탭 관리, 배경색과 드롭다운까지 됩니다. 틀 고정 행은 스크롤해도 붙어 있습니다</li>
+                                    <li>새 시트를 만들 때 숫자와 불이 아닌 열은 텍스트 서식으로 깔아 둡니다. 3.0 이 3 으로 변하는 왜곡을 막는 유니티 업로더와 같은 규칙입니다</li>
+                                </ul>
+                                <h4>되돌리기</h4>
+                                <ul>
+                                    <li>범위 작업은 값과 배경색과 검증 규칙을 스냅샷으로 들고 있다가, 되돌릴 때 그 범위를 통째로 돌려놓습니다. 구글 호출 한 번입니다</li>
+                                    <li>표시값이 아니라 원본 타입을 되돌립니다. 표시값으로 되돌리면 숫자와 날짜와 수식이 문자열로 굳습니다</li>
+                                    <li>되돌리기가 실패하면 스택을 통째로 버립니다. 행이나 열 변경이 실패한 뒤 남은 항목을 그대로 되돌리면 엉뚱한 행을 덮어씁니다</li>
+                                </ul>
+                                <h4>왜 이렇게 만들었나</h4>
+                                <ul>
+                                    <li>토큰은 앱 밖으로 안 나갑니다. 토큰을 돌려주는 엔드포인트가 없고 시트 트래픽은 전부 앱을 거칩니다. 프로젝트 레포에는 토큰도 시트 ID 도 들어가지 않습니다</li>
+                                    <li>로컬 서버라고 무방비가 아닙니다. 방문한 웹페이지도 127.0.0.1 로 요청을 보낼 수 있어서 Host, Origin, content-type 셋을 보고 거릅니다. 검증에서 실제로 뚫렸던 자리입니다</li>
+                                    <li>서식은 배경색과 드롭다운만 봅니다. 밴딩이나 조건부서식으로 칠해진 색은 표시도 복원도 안 합니다. 되돌릴 수 없는 것은 보여주지 않는다는 원칙입니다</li>
+                                    <li>재시도는 중복을 만들지 않는 선에서만 겁니다. 행 삽입은 429 만, 값 쓰기는 429 와 503, 뒤에 붙이기는 아예 안 합니다. 응답만 잃은 503 을 다시 걸면 행이 두 벌 생깁니다</li>
+                                    <li>충돌은 마지막 쓰기가 이깁니다. 실시간 동기화, 수식 계산, 차트, 병합은 만들지 않았습니다</li>
+                                </ul>
+                                <h4>기술</h4>
+                                <ul>
+                                    <li>Electron, React, TypeScript, Vite. 서버는 순수 Node http 이고 구글 SDK 없이 raw REST 로 붙습니다</li>
+                                    <li>런타임 의존성 0. 전부 esbuild 로 번들합니다. 테스트는 node --test 로 상태를 가진 가짜 구글 시트에 붙여 돌립니다</li>
+                                    <li>토큰은 AES-256-GCM 으로 로컬에 둡니다. 키체인은 ad-hoc 서명 앱이 재설치될 때마다 암호를 물어서 안 씁니다</li>
+                                    <li>Claude 스킬이 같이 설치됩니다. 유니티 프로젝트 세션에서 시트에 탭을 추가해 달라고 하면 이 API 를 부릅니다</li>
+                                </ul>
+                            </div></div>
+                    </article>
+                    <article class="project-card ai-card" data-folder="AI/SCGDASHBOARD" data-previews="7">
+                        <div class="project-thumb tool-frame"><img loading="lazy" src="Resources/AI/scg-dashboard.png" alt="SCG Dashboard 개요 화면. 공개 페이지라 수치는 가렸습니다"></div>
+                        <div class="ai-body">
+                            <div class="ai-head">
+                                <img class="ai-icon" loading="lazy" src="Resources/AI/icons/scg-dashboard.png" alt="">
+                                <div class="ai-head-text"><h3>SCG Dashboard</h3><span class="ai-meta">Node · Cloudflare Workers · 커밋 13</span></div>
+                            </div>
+                            <div class="project-info">
+                                <p>목표는 출시한 게임의 숫자를 콘솔을 돌아다니지 않고 한 화면에서 보는 것입니다. 매일 아침 GA4 에서 지표를 받아 레포에 쌓고, 게임별 대시보드를 다시 만들어 올립니다. 등록한 IP 에서만 열립니다.</p>
+                                <div class="tags">
+                                <span class="tag">GA4 Data API</span>
+                                <span class="tag">GitHub Actions</span>
+                                <span class="tag">Cloudflare Workers</span>
+                                <span class="tag">의존성 0</span>
+                            </div>
+                            </div>
+                            <span class="more-link">자세히 보기</span>
+                        </div>
+                        <div class="project-details"><div class="project-details-inner">
+                                <h4>하는 일</h4>
+                                <ul>
+                                    <li>GA4 Admin API 로 볼 수 있는 게임을 스스로 찾습니다. 새 게임을 출시해도 설정을 고칠 일이 없습니다</li>
+                                    <li>매일 09시 GitHub Actions 가 GA4 에서 지표를 받아 레포에 커밋합니다. 지난 날짜는 계속 쌓입니다</li>
+                                    <li>개요에는 활성 유저, 신규 유저, 매출, ARPDAU, ARPPU, 결제 유저, 1인당 플레이 시간, DAU/MAU 를 둡니다</li>
+                                    <li>D1~D30 리텐션 곡선과 설치일별 히트맵, 이벤트 표와 추이, 퍼널과 분포 분석을 봅니다</li>
+                                    <li>GA4 에 등록된 맞춤 측정기준을 읽어 파라미터 탭에 자동으로 붙입니다. Jenkins 의 GA-Params-Deploy 와 짝입니다</li>
+                                    <li>7일, 30일, 90일, 전체 기간을 오가고 일별 표는 CSV 로 받습니다</li>
+                                </ul>
+                                <h4>왜 이렇게 만들었나</h4>
+                                <ul>
+                                    <li>GA4 키는 GitHub Secret 에만 있습니다. 브라우저로는 내려가지 않습니다</li>
+                                    <li>허용하지 않은 IP 에는 페이지도 데이터 파일도 내려가지 않습니다. 막는 건 Cloudflare 서버입니다</li>
+                                    <li>원본 숫자가 쌓이는 레포라 비공개로 둡니다. 이 카드의 캡처도 수치를 가렸습니다</li>
+                                    <li>외부 의존성이 없습니다. GA4 인증용 JWT 도 fetch 와 crypto 로 직접 서명하고, 차트도 SVG 로 직접 그립니다</li>
+                                </ul>
+                                <h4>기술</h4>
+                                <ul>
+                                    <li>Node 20, 바닐라 JS, SVG 차트</li>
+                                    <li>GA4 Data API, Admin API</li>
+                                    <li>GitHub Actions, Cloudflare Workers</li>
+                                </ul>
+                            </div></div>
+                    </article>
+                    <article class="project-card ai-card" data-folder="AI/SCGPM" data-previews="6">
+                        <div class="project-thumb tool-frame"><img loading="lazy" src="Resources/AI/scg-pm.png" alt="SCG PM 칸반 화면"></div>
+                        <div class="ai-body">
+                            <div class="ai-head">
+                                <img class="ai-icon" loading="lazy" src="Resources/AI/icons/scg-pm.png" alt="">
+                                <div class="ai-head-text"><h3>SCG PM</h3><span class="ai-meta">Electron · React · TypeScript · 커밋 54</span></div>
+                            </div>
+                            <div class="project-info">
+                                <p>목표는 여러 레포의 할 일을 한 보드에서 AI 에게 나눠 맡기는 것입니다. 카드를 만들면 AI 가 먼저 질문해 명세를 잠그고, 난이도에 맞는 엔진과 모델이 카드 전용 워크트리에서 작업한 뒤 검수 열로 올립니다.</p>
+                                <div class="tags">
+                                <span class="tag">Electron</span>
+                                <span class="tag">React</span>
+                                <span class="tag">node-pty</span>
+                                <span class="tag">워크트리</span>
+                            </div>
+                            </div>
+                            <span class="more-link">자세히 보기</span>
+                        </div>
+                        <div class="project-details"><div class="project-details-inner">
+                                <h4>하는 일</h4>
+                                <ul>
+                                    <li>여러 레포를 사이드바로 오가며 할일, 작업중, 검수, 완료 네 열의 칸반으로 관리합니다</li>
+                                    <li>카드를 만들면 AI 가 한 라운드에 질문을 여러 개 던지고, 답이 모여 명세가 잠긴 뒤에만 작업이 시작됩니다</li>
+                                    <li>라우팅 표가 난이도에 따라 Claude, Codex, Cursor 중 엔진과 모델, 추론 강도를 고릅니다</li>
+                                    <li>카드마다 워크트리를 따로 열고 앱 안 터미널에서 CLI 를 돌립니다. 끝나면 검증 명령을 거쳐 검수 열로 갑니다</li>
+                                    <li>diff 를 보고 승인하면 커밋과 머지까지 끝납니다</li>
+                                    <li>타임라인, 캘린더, 기간별 사용량, tree-sitter 정적 스캔 하네스, 자동 모드가 있습니다</li>
+                                </ul>
+                                <h4>왜 이렇게 만들었나</h4>
+                                <ul>
+                                    <li>카드 상태를 상태 머신으로 묶었습니다. 앱이 꺼지면 작업중 카드는 중단으로 돌아가고, 같은 카드가 두 번 작업중으로 들어가지 않습니다</li>
+                                    <li>카드마다 워크트리를 나눠 여러 카드를 동시에 돌려도 서로의 파일을 밟지 않습니다</li>
+                                    <li>새 워크트리에서 CLI 가 폴더 신뢰 확인에 멈추는 경우를 잡아 카드에서 보고 조작할 수 있게 했습니다</li>
+                                    <li>테스트는 가짜 CLI 로 돌립니다. 토큰 없이 208개 시나리오가 끝까지 돕니다</li>
+                                </ul>
+                                <h4>기술</h4>
+                                <ul>
+                                    <li>Electron, React 19, TypeScript, Vite, esbuild</li>
+                                    <li>node-pty, xterm.js, web-tree-sitter</li>
+                                    <li>node:test 와 가짜 CLI 기반 e2e</li>
+                                </ul>
+                                <p>캡처의 칸반은 이 레포의 실제 작업 항목으로 카드를 채워 찍은 시연 화면입니다.</p>
+                            </div></div>
+                    </article>
+                    <article class="project-card ai-card">
+                        <div class="project-thumb tool-frame tool-frame-center"><img loading="lazy" src="Resources/AI/ai-skills.png" alt="AI-SKILLS 저장소의 스킬 목록 터미널 출력"></div>
+                        <div class="ai-body">
+                            <div class="ai-head">
+                                <img class="ai-icon ai-icon-mono" loading="lazy" src="Resources/AI/ai-skills.png" alt="">
+                                <div class="ai-head-text"><h3>AI-SKILLS</h3><span class="ai-meta">Shell · 스킬 14개 · 커밋 19</span></div>
+                            </div>
+                            <div class="project-info">
+                                <p>목표는 AI 가 흐린 요구사항으로 달리지 않게 하는 것입니다. 묻는 단계와 안 묻는 단계를 갈라 놓아, 결정이 다 잠긴 뒤에는 목표에 닿을 때까지 멈추지 않게 만들었습니다. 이 페이지도 이 스킬로 만들었습니다.</p>
+                                <div class="tags">
+                                <span class="tag">Shell</span>
+                                <span class="tag">Claude Code</span>
+                                <span class="tag">Codex</span>
+                                <span class="tag">서브에이전트</span>
+                                <span class="tag">Stop 훅</span>
+                            </div>
+                            </div>
+                            <span class="more-link">자세히 보기</span>
+                        </div>
+                        <div class="project-details"><div class="project-details-inner">
+                                <h4>네 계열</h4>
+                                <ul>
+                                    <li>계획: 느슨한 요청 하나를 결정이 마를 때까지 캐묻습니다. 두 라운드 연속으로 새 결정이 안 나올 때 멈춥니다</li>
+                                    <li>실행: 잠긴 목표를 전용 브랜치에서 작업 단위마다 검증하고 커밋하며 끝까지 밉니다. 큰 목표는 단위를 워크트리로 갈라 병렬로 돌리고 웨이브 단위로 머지합니다</li>
+                                    <li>검증: 끝난 결과물을 완료 조건 단위로 반박형 에이전트를 붙여 증거로 판정합니다. 보안 점검도 같은 방식으로 겁니다</li>
+                                    <li>상시: 부르지 않아도 붙습니다. 가장 게으른 해법을 강제하고, 턴이 끝나면 코드리뷰를 겁니다</li>
+                                </ul>
+                                <h4>왜 이렇게 만들었나</h4>
+                                <ul>
+                                    <li>AI 는 요구사항이 흐린 채로 출발하면 흐린 방향으로 아주 효율적으로 달립니다. 그래서 인터뷰를 앞에 붙이고, 넘어간 뒤에는 안 묻습니다</li>
+                                    <li>완료 조건을 증거로 판정하게 만들었습니다. 명령 출력과 파일 내용으로 대조하지 않으면 스스로 끝났다고 착각합니다</li>
+                                    <li>진전 없는 라운드가 두 번 이어지면 멈추고 왜 막혔는지 보고합니다. 수렴하지 않는 루프는 토큰만 태웁니다</li>
+                                    <li>한 세션에 안 끝날 크기로 판정되면 자율 루프에 안 넘깁니다. 대신 맵과 티켓을 남기고 멈춥니다</li>
+                                    <li>인터뷰 스킬은 자동 발화를 막았습니다. 사용자를 붙잡는 스킬이 멋대로 뜨면 안 됩니다</li>
+                                </ul>
+                                <h4>설치</h4>
+                                <ul>
+                                    <li>원라이너 한 줄로 어느 프로젝트에나 설치됩니다</li>
+                                    <li>스킬 14개, 출력 스타일, 코드리뷰 훅, 규약 문서가 함께 깔립니다</li>
+                                    <li>Claude Code, Codex, Cursor 가 같은 스킬을 읽습니다</li>
+                                    <li>이미 설정이 있으면 훅 키만 병합하고 나머지는 안 건드립니다</li>
+                                </ul>
+                            </div></div>
+                    </article>
+                </div>
             </div>
-            <div class="contact-card">
-                <div class="label">전화번호</div>
-                <a href="tel:010-9943-1105">010-9943-1105</a>
+        </section>
+
+        <section id="automation" class="block fade-up">
+            <div class="wrap">
+                <div class="block-head">
+                    <span class="block-idx">05</span>
+                    <h2>자동화</h2>
+                    <p class="block-sub">출시할 때마다 반복되던 손일을 Jenkins 로 넘겼습니다. 시트를 고치면 스토어 상품이 따라 바뀌고, 폴더명 하나만 넣으면 빌드가 스토어까지 올라갑니다. 스토어 페이지와 분석 설정도 코드에서 나갑니다.</p>
+                </div>
+                <div class="pipeline-list">
+                    <article class="pipeline-row">
+                        <div class="pipeline-head">
+                            <h3>인앱 상품 등록</h3>
+                            <span class="pipeline-job">IAP-Deploy</span>
+                        </div>
+                        <ol class="rail">
+                            <li class="rail-step">
+                                <span class="rail-kind">입력</span>
+                                <span class="rail-label">시트 한 장</span>
+                            </li>
+                            <li class="rail-step rail-step-work">
+                                <span class="rail-kind">처리</span>
+                                <span class="rail-label">상품 비교와 등록</span>
+                            </li>
+                            <li class="rail-step">
+                                <span class="rail-kind">결과</span>
+                                <span class="rail-label">Google Play</span>
+                                <span class="rail-label">App Store</span>
+                            </li>
+                        </ol>
+                        <p>없던 상품은 새로 만들고, 있던 상품은 바뀐 항목만 고치고, 그대로면 넘어갑니다. 달러 가격 하나만 적으면 각 스토어의 규칙대로 전 지역 가격표가 만들어집니다. 앱스토어 심사용 스크린샷도 같이 올라갑니다.</p>
+                    </article>
+
+                    <article class="pipeline-row">
+                        <div class="pipeline-head">
+                            <h3>안드로이드 빌드와 배포</h3>
+                            <span class="pipeline-job">UnityBuild_AOS</span>
+                        </div>
+                        <ol class="rail">
+                            <li class="rail-step">
+                                <span class="rail-kind">입력</span>
+                                <span class="rail-label">폴더명 하나</span>
+                            </li>
+                            <li class="rail-step rail-step-work">
+                                <span class="rail-kind">처리</span>
+                                <span class="rail-label">Unity 빌드와 AAB 수집</span>
+                            </li>
+                            <li class="rail-step">
+                                <span class="rail-kind">결과</span>
+                                <span class="rail-label">Google Play</span>
+                            </li>
+                        </ol>
+                        <p>배포 트랙과 단계적 출시 비율을 파라미터로 받습니다. 한 번에 전체로 풀리지 않게 비율을 잡고 시작할 수 있습니다.</p>
+                    </article>
+
+                    <article class="pipeline-row">
+                        <div class="pipeline-head">
+                            <h3>iOS 빌드와 배포</h3>
+                            <span class="pipeline-job">Unity-IOS-Build</span>
+                        </div>
+                        <ol class="rail">
+                            <li class="rail-step">
+                                <span class="rail-kind">입력</span>
+                                <span class="rail-label">폴더명 하나</span>
+                            </li>
+                            <li class="rail-step rail-step-work">
+                                <span class="rail-kind">처리</span>
+                                <span class="rail-label">Unity 빌드와 Xcode 아카이브</span>
+                            </li>
+                            <li class="rail-step">
+                                <span class="rail-kind">결과</span>
+                                <span class="rail-label">TestFlight</span>
+                            </li>
+                        </ol>
+                        <p>크래시 리포트가 바로 읽히도록 심볼 파일을 매 빌드마다 함께 올립니다. 아카이브부터 업로드까지 손이 들어갈 자리가 없습니다.</p>
+                    </article>
+
+                    <article class="pipeline-row">
+                        <div class="pipeline-head">
+                            <h3>스토어 등록정보 배포</h3>
+                            <span class="pipeline-job">Store-Listing-Deploy</span>
+                        </div>
+                        <ol class="rail">
+                            <li class="rail-step">
+                                <span class="rail-kind">입력</span>
+                                <span class="rail-label">레포의 등록정보 폴더</span>
+                            </li>
+                            <li class="rail-step rail-step-work">
+                                <span class="rail-kind">처리</span>
+                                <span class="rail-label">문구와 스크린샷 비교</span>
+                            </li>
+                            <li class="rail-step">
+                                <span class="rail-kind">결과</span>
+                                <span class="rail-label">Google Play</span>
+                                <span class="rail-label">App Store</span>
+                            </li>
+                        </ol>
+                        <p>제목, 설명, 스크린샷, 카테고리, 연령 등급까지 스토어 페이지를 게임 레포의 파일로 관리합니다. DRY RUN 으로 바뀔 내용을 먼저 보고, 확인한 뒤 APPLY 로 반영합니다. 스크린샷은 에디터 자동 플레이 시나리오가 찍습니다.</p>
+                    </article>
+
+                    <article class="pipeline-row">
+                        <div class="pipeline-head">
+                            <h3>분석 파라미터 등록</h3>
+                            <span class="pipeline-job">GA-Params-Deploy</span>
+                        </div>
+                        <ol class="rail">
+                            <li class="rail-step">
+                                <span class="rail-kind">입력</span>
+                                <span class="rail-label">게임 코드</span>
+                            </li>
+                            <li class="rail-step rail-step-work">
+                                <span class="rail-kind">처리</span>
+                                <span class="rail-label">이벤트 파라미터 추출</span>
+                            </li>
+                            <li class="rail-step">
+                                <span class="rail-kind">결과</span>
+                                <span class="rail-label">GA4 맞춤 측정기준</span>
+                            </li>
+                        </ol>
+                        <p>코드에서 Firebase Analytics 이벤트 파라미터를 찾아 GA4 맞춤 측정기준으로 등록합니다. 콘솔에서 하나씩 만들다 빠뜨려 리포트에 안 잡히는 일이 없습니다.</p>
+                    </article>
+                </div>
+                <p class="block-note">잡 정의는 Jenkinsfile 로 레포에 두고, AI 에이전트가 같은 잡을 실행하고 로그를 읽도록 CLI 와 스킬을 붙였습니다.</p>
             </div>
-        </div>
-        <footer>
-            <p>&copy; 2026 양성운. All rights reserved.</p>
-        </footer>
-    </section>
+        </section>
+
+        <section id="wip" class="block fade-up">
+            <div class="wrap">
+                <div class="block-head">
+                    <span class="block-idx">06</span>
+                    <h2>개발 중</h2>
+                    <p class="block-sub">지금 만들고 있는 게임입니다. 화면은 개발 빌드에서 플레이하며 찍은 그대로입니다.</p>
+                </div>
+                <article class="wip">
+                    <div class="wip-body">
+                        <h3>엘레오노르 <span class="status-chip">개발 중</span></h3>
+                        <p class="wip-meta">세로형 픽셀 방치 RPG · 1인 개발 · Unity 6 · 2026.10 ~</p>
+                        <p>마녀 엘레오노르가 망치로 장비를 단조하고, 더 좋은 장비는 끼고 나머지는 분해하며 사냥하는 방치형 RPG 입니다. 기획 문서를 정본으로 두고, 개발 에이전트와 검사 에이전트를 나눈 AI 개발 루프로 화면 72개를 구현했습니다.</p>
+                        <ul>
+                            <li>개발 레인과 검사 레인을 나눴습니다. 검사는 컴파일과 실제 플레이 캡처로만 판정하고, 통과한 것만 머지합니다</li>
+                            <li>기획의 기능 ID 550개를 60개 이하 묶음으로 나눠 다시 감사했고, 묶음마다 플레이 증거를 남겼습니다</li>
+                            <li>지금은 직접 플레이하며 남긴 피드백을 칸반 카드로 받아 전투, 단조, 해금 순서를 다듬고 있습니다</li>
+                        </ul>
+                    </div>
+                    <div class="wip-shots">
+                        <img loading="lazy" src="Resources/Eleonore/Shot_1.png" alt="엘레오노르 모험 던전 목록 화면" width="315" height="560">
+                        <img loading="lazy" src="Resources/Eleonore/Shot_2.png" alt="엘레오노르 장착 장비와 새 장비 비교 화면" width="315" height="560">
+                        <img loading="lazy" src="Resources/Eleonore/Shot_3.png" alt="엘레오노르 단조 결과 화면" width="315" height="560">
+                        <img loading="lazy" src="Resources/Eleonore/Shot_4.png" alt="엘레오노르 모루 업그레이드 등급 확률 화면" width="315" height="560">
+                        <img loading="lazy" src="Resources/Eleonore/Shot_5.png" alt="엘레오노르 어비스 자이언트 보스전 화면" width="315" height="560">
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="contact" class="block fade-up contact-section">
+            <div class="wrap">
+                <div class="block-head">
+                    <span class="block-idx">07</span>
+                    <h2>연락처</h2>
+                </div>
+                <div class="contact-cards">
+                    <div class="contact-card">
+                        <div class="label">이메일</div>
+                        <a href="mailto:sung_woonie@naver.com">sung_woonie@naver.com</a>
+                    </div>
+                    <div class="contact-card">
+                        <div class="label">전화번호</div>
+                        <a href="tel:010-9943-1105">010-9943-1105</a>
+                    </div>
+                    <div class="contact-card">
+                        <div class="label">GitHub</div>
+                        <a href="https://github.com/sungwoonie" target="_blank" rel="noopener">sungwoonie</a>
+                        <a href="https://github.com/StarCloudgames-Official" target="_blank" rel="noopener">StarCloudgames-Official</a>
+                    </div>
+                    <div class="contact-card">
+                        <div class="label">스튜디오</div>
+                        <a href="https://starcloudgames.com" target="_blank" rel="noopener">starcloudgames.com</a>
+                    </div>
+                </div>
+                <footer>
+                    <p>&copy; 2026 양성운. All rights reserved.</p>
+                </footer>
+            </div>
+        </section>
+    </main>
 
     <script src="script.js"></script>
 </body>

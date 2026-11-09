@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""정적 검사 C1~C9. 하나라도 걸리면 exit 1."""
+"""정적 검사. 하나라도 걸리면 exit 1."""
 import os
 import re
 import sys
@@ -29,7 +29,7 @@ def ok(code, msg):
 
 # ---------- HTML 파싱 ----------
 class Collector(HTMLParser):
-    """로컬 에셋 경로, 섹션 앵커, 히어로 안의 아이콘 이미지를 모은다."""
+    """로컬 에셋 경로, 섹션 앵커, 출시작 목록(.shipped) 안의 아이콘 이미지를 모은다."""
 
     def __init__(self):
         super().__init__(convert_charrefs=True)
@@ -47,7 +47,7 @@ class Collector(HTMLParser):
             self.anchors.add(a["id"])
 
         classes = (a.get("class") or "").split()
-        if self._hero_depth == 0 and "hero" in classes:
+        if self._hero_depth == 0 and "shipped" in classes:
             self._hero_depth = self._depth
 
         if tag in ("img", "video", "source"):
@@ -89,7 +89,7 @@ else:
     ok("C1", f"로컬 에셋 {len(col.assets)}건 전부 존재")
 
 # ---------- C2 섹션 앵커 ----------
-required = {"about", "career", "ai", "automation", "projects", "source", "contact"}
+required = {"about", "career", "projects", "ai", "automation", "wip", "contact"}
 lost = sorted(required - col.anchors)
 if lost:
     fail("C2", f"앵커 누락: {', '.join('#' + a for a in lost)}")
@@ -165,11 +165,26 @@ else:
     else:
         ok("C7", "JetBrains Mono 로드 + --font-mono 참조")
 
-# ---------- C8 히어로 앱 아이콘 9개 ----------
-if len(col.hero_icons) != 9:
-    fail("C8", f"히어로 앱 아이콘 {len(col.hero_icons)}개 (기대: 9)")
+# ---------- C8 출시작 아이콘 = 프로젝트 장부 항목 수 ----------
+# 출시작이 늘면 인스펙터 아이콘, 프로젝트 탭 패널, 소개 숫자가 같이 늘어야 한다. 서로 대조한다
+games = re.findall(r'<article class="project-card game" id="(g-[a-z]+)"', html)
+icon_links = re.findall(r'<li><a href="#(g-[a-z]+)" data-tab="g-[a-z]+"><img src="Resources/', html)
+stat = re.search(r"<dt>출시 완료한 프로젝트</dt>\s*<dd>(\d+)</dd>", html)
+shipped_n = re.search(r'Shipped Games <em>\((\d+)\)</em>', html)
+counts = {
+    "출시작 아이콘": len(col.hero_icons),
+    "장부 항목": len(games),
+    "소개 숫자": int(stat.group(1)) if stat else -1,
+    "인스펙터 숫자": int(shipped_n.group(1)) if shipped_n else -1,
+    "아이콘 링크(중복 제외)": len(set(icon_links)),
+}
+dead = sorted(set(icon_links) - set(games))
+if len(set(counts.values())) != 1:
+    fail("C8", "출시작 수가 어긋남: " + ", ".join(f"{k} {v}" for k, v in counts.items()))
+elif dead:
+    fail("C8", f"아이콘이 없는 항목을 가리킴: {', '.join(dead)}")
 else:
-    ok("C8", "히어로 앱 아이콘 9개")
+    ok("C8", f"출시작 {len(games)}개: 아이콘 · 탭 패널 · 숫자 일치")
 
 # ---------- C9 본문 텍스트 보존 ----------
 baseline = os.path.join(ROOT, ".verify", "baseline-text.txt")
@@ -194,18 +209,22 @@ else:
     else:
         ok("C9", f"기존 본문 {len(base)}줄 보존 (추가 {sum(added.values())}줄)")
 
-# ---------- C11 AI 카드 4장 + 썸네일 실존 ----------
-ai_cards = re.findall(r'<div class="project-card ai-card"[^>]*>(.*?)(?=<div class="project-card ai-card"|</div>\s*</section>)',
-                      html, re.S)
-ai_imgs = re.findall(r'class="project-thumb[^"]*"><img[^>]+src="(Resources/AI/[^"]+)"', html)
-if len(ai_imgs) != 4:
-    fail("C11", f"AI 카드 썸네일 {len(ai_imgs)}개 (기대: 4)")
+# ---------- C11 AI 카드 수 + 썸네일 실존 ----------
+# 카드 수와 썸네일 수를 따로 센다. 썸네일만 세면 썸네일 없는 카드가 끼어도 통과한다
+ai_cards = re.findall(r'<article class="project-card ai-card"[^>]*>(.*?)</article>', html, re.S)
+AI_THUMB = r'class="project-thumb[^"]*"><img[^>]+src="(Resources/AI/[^"]+)"'
+EXPECTED_AI = 7
+ai_imgs = re.findall(AI_THUMB, html)
+# 총합만 비교하면 한 카드의 썸네일이 빠지고 다른 카드에 두 개가 붙어도 통과한다. 카드마다 센다
+thumbs_per_card = [len(re.findall(AI_THUMB, body)) for body in ai_cards]
+if len(ai_cards) != EXPECTED_AI or any(n != 1 for n in thumbs_per_card):
+    fail("C11", f"AI 카드 {len(ai_cards)}장, 카드별 썸네일 {thumbs_per_card} (기대: {EXPECTED_AI}장, 각 1개)")
 else:
     lost = [s for s in ai_imgs if not os.path.exists(os.path.join(ROOT, s))]
     if lost:
         fail("C11", f"AI 썸네일 경로 유실: {', '.join(lost)}")
     else:
-        ok("C11", "AI 카드 4장, 썸네일 전부 존재")
+        ok("C11", f"AI 카드 {len(ai_cards)}장, 썸네일 전부 존재")
 
 # ---------- C18 캐러셀 이미지 실존 ----------
 # 캐러셀은 JS 가 data-folder/data-previews 로 경로를 만든다. 정적 검사가 안 잡는 사각지대다
@@ -241,7 +260,7 @@ else:
         ok("C12", f"흐름 레일 {rails}개, 입력/처리/결과 {steps}칸")
 
 # ---------- C13 네비 링크 7개 ----------
-nav = re.search(r"<nav>.*?</nav>", html, re.S)
+nav = re.search(r"<nav[^>]*>.*?</nav>", html, re.S)
 nav_links = re.findall(r'<a href="#([a-z]+)"', nav.group(0)) if nav else []
 if len(nav_links) != 7:
     fail("C13", f"네비 링크 {len(nav_links)}개 (기대: 7) -> {nav_links}")
