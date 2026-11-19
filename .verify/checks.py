@@ -213,7 +213,7 @@ else:
 # 카드 수와 썸네일 수를 따로 센다. 썸네일만 세면 썸네일 없는 카드가 끼어도 통과한다
 ai_cards = re.findall(r'<article class="project-card ai-card"[^>]*>(.*?)</article>', html, re.S)
 AI_THUMB = r'class="project-thumb[^"]*"><img[^>]+src="(Resources/AI/[^"]+)"'
-EXPECTED_AI = 7
+EXPECTED_AI = 8
 ai_imgs = re.findall(AI_THUMB, html)
 # 총합만 비교하면 한 카드의 썸네일이 빠지고 다른 카드에 두 개가 붙어도 통과한다. 카드마다 센다
 thumbs_per_card = [len(re.findall(AI_THUMB, body)) for body in ai_cards]

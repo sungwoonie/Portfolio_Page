@@ -72,8 +72,8 @@ for (const width of WIDTHS) {
     // C11 AI 카드 수가 맞고 렌더 폭이 전부 같은지. 개수 오류를 폭 오류로 보고하지 않게 나눈다
     const widths = await page.evaluate(() =>
       [...document.querySelectorAll('.ai-card')].map((c) => Math.round(c.getBoundingClientRect().width)));
-    if (widths.length !== 7) {
-      console.log(`  \x1b[31mFAIL\x1b[0m  C11  ${width}px AI 카드 ${widths.length}장 (기대: 7)`);
+    if (widths.length !== 8) {
+      console.log(`  \x1b[31mFAIL\x1b[0m  C11  ${width}px AI 카드 ${widths.length}장 (기대: 8)`);
       failed = true;
     } else if (new Set(widths).size !== 1) {
       console.log(`  \x1b[31mFAIL\x1b[0m  C11  ${width}px AI 카드 폭이 제각각: ${widths.join(', ')}`);
