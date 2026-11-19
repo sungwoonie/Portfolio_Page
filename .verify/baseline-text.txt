@@ -81,6 +81,7 @@
 AD-FACTORY
 AI / Tooling
 AI 개발 도구
+AI 개발 루프
 AI 는 소리를 만들지 않습니다. 요청을 프롬프트로 번역하는 역할만 합니다
 AI 는 요구사항이 흐린 채로 출발하면 흐린 방향으로 아주 효율적으로 달립니다. 그래서 인터뷰를 앞에 붙이고, 넘어간 뒤에는 안 묻습니다
 AI 는 흐린 요구사항으로도 아주 효율적으로 달립니다
@@ -191,6 +192,7 @@ Fastlane
 Firebase
 Firebase
 Firebase
+Firebase
 Firebase (Analytics, Crashlytics, Remote Config)
 Firebase (Analytics, Crashlytics, Remote Config, A/B Testing)
 Firebase (Analytics, Crashlytics, Remote Config, A/B Testing)
@@ -210,6 +212,9 @@ GA4 Data API, Admin API
 GA4 맞춤 측정기준
 GA4 에 등록된 맞춤 측정기준을 읽어 파라미터 탭에 자동으로 붙입니다. Jenkins 의 GA-Params-Deploy 와 짝입니다
 GA4 키는 GitHub Secret 에만 있습니다. 브라우저로는 내려가지 않습니다
+GDExtension
+GDScript
+GDScript
 GameAnalytics (게임 지표 분석)
 Git
 GitHub
@@ -219,6 +224,8 @@ GitHub Actions
 GitHub Actions
 GitHub Actions, Cloudflare Workers
 GitHub 활동
+Godot 4.7
+Godot 4.7
 Google Play
 Google Play
 Google Play
@@ -354,6 +361,7 @@ Unity
 Unity
 Unity
 Unity
+Unity 6
 Unity 6
 Unity 6
 Unity 6
@@ -746,6 +754,9 @@ sungwoonie
 자세히 보기
 자세히 보기
 자세히 보기
+자세히 보기
+자세히 보기
+자세히 보기
 잡 정의는 Jenkinsfile 로 레포에 두고, AI 에이전트가 같은 잡을 실행하고 로그를 읽도록 CLI 와 스킬을 붙였습니다.
 재미 기둥과 한 판 대본을 먼저 세웁니다. 무엇이 재미있어야 하는지 정하지 않은 기획은 개발로 넘기지 않습니다
 재사용 가능한 라이브러리와 템플릿의 필요성을 인식하고 체계적인 코드 구조화 학습
@@ -755,6 +766,7 @@ sungwoonie
 적음
 전투 연출은 플레이 영상을 프레임 단위로 보며 뽑은 규칙 18개로 맞췄습니다. 스킬 투사체, 피격 번쩍임, 데미지 숫자 합치기, 보스 등장 줌까지입니다
 전화번호
+절차 생성 맵
 정규직
 정규직
 정규직
@@ -806,6 +818,7 @@ sungwoonie
 카드를 만들면 AI 가 한 라운드에 질문을 여러 개 던지고, 답이 모여 명세가 잠긴 뒤에만 작업이 시작됩니다
 카드마다 워크트리를 나눠 여러 카드를 동시에 돌려도 서로의 파일을 밟지 않습니다
 카드마다 워크트리를 따로 열고 앱 안 터미널에서 CLI 를 돌립니다. 끝나면 검증 명령을 거쳐 검수 열로 갑니다
+칸반 피드백
 캐주얼
 캐주얼
 캡처의 칸반은 이 레포의 실제 작업 항목으로 카드를 채워 찍은 시연 화면입니다.
@@ -855,6 +868,8 @@ sungwoonie
 프로젝트 보기
 프로젝트는 코드명만 말합니다. 장부에 있으면 그 시트, 없으면 드라이브에서 같은 이름을 찾고, 그래도 없으면 SCG 기본 탭 세트로 새로 만듭니다
 프로젝트를 읽어 장르와 비슷한 게임을 찾고, 레퍼런스 광고를 모아 장면 단위로 분석합니다
+픽셀 아트
+픽셀 아트
 필요한 에셋을 실제 스토어에서 찾아 가격까지 비교하고, 예산에 맞는 조합을 추천합니다
 하는 일
 하는 일
@@ -877,6 +892,9 @@ sungwoonie
 학점은행제
 학점은행제
 한 세션에 안 끝날 크기로 판정되면 자율 루프에 안 넘깁니다. 대신 맵과 티켓을 남기고 멈춥니다
+한 일
+한 일
+한 일
 한국산업인력공단
 한국어·영어 현지화
 한국콘텐츠진흥원
@@ -889,6 +907,9 @@ sungwoonie
 헬로키티 프렌즈 매치
 헬로키티 프렌즈 매치
 협업 도구
+화면
+화면
+화면
 화면 가운데면 온전한 원, 오른쪽 끝이면 왼쪽 반원, 구석이면 사분원으로 접힙니다
 화면 좌표를 아는 건 메인 프로세스뿐이라, 부채꼴을 접는 계산은 electron 의존이 없는 순수 함수로 빼고 테스트로 고정했습니다
 활활법사

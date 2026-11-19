@@ -1341,65 +1341,121 @@
                     <h2>개발 중</h2>
                     <p class="block-sub">지금 만들고 있는 게임 세 개입니다. 화면은 개발 빌드에서 찍은 그대로입니다.</p>
                 </div>
-                <article class="wip">
-                    <div class="wip-body">
-                        <h3>엘레오노르 <span class="status-chip">개발 중</span></h3>
-                        <p class="wip-meta">세로형 픽셀 방치 RPG · 1인 개발 · Unity 6 · 2026.10 ~</p>
-                        <p>마녀 엘레오노르가 망치로 장비를 단조하고, 더 좋은 장비는 끼고 나머지는 분해하며 사냥하는 방치형 RPG 입니다. 기획 문서를 정본으로 두고, 개발 에이전트와 검사 에이전트를 나눈 AI 개발 루프로 화면 72개를 구현했습니다.</p>
-                        <ul>
-                            <li>개발 레인과 검사 레인을 나눴습니다. 검사는 컴파일과 실제 플레이 캡처로만 판정하고, 통과한 것만 머지합니다</li>
-                            <li>기획의 기능 ID 550개를 60개 이하 묶음으로 나눠 다시 감사했고, 묶음마다 플레이 증거를 남겼습니다</li>
-                            <li>지금은 직접 플레이하며 남긴 피드백을 칸반 카드로 받아 전투, 단조, 해금 순서를 다듬고 있습니다</li>
-                        </ul>
-                    </div>
-                    <div class="wip-shots">
-                        <img loading="lazy" src="Resources/Eleonore/Shot_1.png" alt="엘레오노르 모험 던전 목록 화면" width="315" height="560">
-                        <img loading="lazy" src="Resources/Eleonore/Shot_2.png" alt="엘레오노르 장착 장비와 새 장비 비교 화면" width="315" height="560">
-                        <img loading="lazy" src="Resources/Eleonore/Shot_3.png" alt="엘레오노르 단조 결과 화면" width="315" height="560">
-                        <img loading="lazy" src="Resources/Eleonore/Shot_4.png" alt="엘레오노르 모루 업그레이드 등급 확률 화면" width="315" height="560">
-                        <img loading="lazy" src="Resources/Eleonore/Shot_5.png" alt="엘레오노르 어비스 자이언트 보스전 화면" width="315" height="560">
-                    </div>
-                </article>
-                <article class="wip">
-                    <div class="wip-body">
-                        <h3>SCGGD002 <span class="status-chip">개발 중</span></h3>
-                        <p class="wip-meta">세로형 마법사 방치 RPG · 1인 개발 · Godot 4.7 · 2026.11 ~</p>
-                        <p>마법사 한 명을 스탯, 장비, 스킬, 유물, 펫 같은 여러 성장 축으로 겹겹이 키우는 방치형 RPG 입니다. Unity 사내 템플릿을 Godot 4 로 옮긴 템플릿 위에서, 기능 ID 1,480개를 페이즈 15개로 나눠 AI 개발 루프로 구현했습니다.</p>
-                        <ul>
-                            <li>Unity 템플릿의 규약과 검증 하네스를 Godot 로 옮겼습니다. UI 스택, 암호화 세이브, 시트(TSV)에서 생성하는 데이터 클래스, 큰 수 표기, 광고·결제·서버 파사드까지 같은 구조입니다</li>
-                            <li>네이티브는 직접 붙였습니다. LevelPlay 광고, UMP 동의, Firebase, Play Billing 과 StoreKit 2 를 안드로이드 플러그인과 iOS GDExtension 으로 감쌌습니다</li>
-                            <li>검증은 디버그 빌드에만 들어가는 로컬 HTTP 브릿지로 합니다. 좌표를 누르기 전에 맨 위 컨트롤이 무엇인지 확인하고, 화면을 1080x1920 으로 고정해 찍습니다</li>
-                            <li>지금은 방치형 RPG 플레이 영상과 웹 자료에서 뽑은 규칙으로 전투 연출과 UX 흐름을 다듬고 있습니다</li>
-                        </ul>
-                    </div>
-                    <div class="wip-shots">
-                        <img loading="lazy" src="Resources/SCGGD002/Shot_1.png" alt="SCGGD002 필드 보스전 화면" width="315" height="560">
-                        <img loading="lazy" src="Resources/SCGGD002/Shot_2.png" alt="SCGGD002 몬스터 무리와 보스가 나온 전투 화면" width="315" height="560">
-                        <img loading="lazy" src="Resources/SCGGD002/Shot_3.png" alt="SCGGD002 지팡이 장비 목록 화면" width="315" height="560">
-                        <img loading="lazy" src="Resources/SCGGD002/Shot_4.png" alt="SCGGD002 액티브 스킬 프리셋 화면" width="315" height="560">
-                        <img loading="lazy" src="Resources/SCGGD002/Shot_5.png" alt="SCGGD002 던전 목록 화면" width="315" height="560">
-                    </div>
-                </article>
-                <article class="wip">
-                    <div class="wip-body">
-                        <h3>SCGGD003 <span class="status-chip">개발 중</span></h3>
-                        <p class="wip-meta">세로 발판 던전 방치 RPG · 1인 개발 · Godot 4.7 · 2026.11 ~</p>
-                        <p>용사가 발판 사이를 점프로 오가며 층마다 몬스터를 정리하고 아래층으로 내려가는 방치형 RPG 입니다. 5층마다 보스가 나오고, 막히면 환생해 더 강해진 채로 다시 내려갑니다. SCGGD002 와 같은 템플릿과 AI 개발 루프로 기능 ID 1,470개를 페이즈 13개로 나눠 구현했습니다.</p>
-                        <ul>
-                            <li>층 맵은 층 번호를 시드로 생성합니다. 같은 층은 언제나 같은 맵이고, 줄마다 엇갈린 발판에 모두 닿을 수 있게 만듭니다</li>
-                            <li>용사와 층 보스는 발판 그래프로 길을 찾습니다. 발판이 겹치면 수직으로 뛰거나 뚫고 내려가고, 아니면 발판 끝에서 건너뜁니다</li>
-                            <li>전투 연출은 플레이 영상을 프레임 단위로 보며 뽑은 규칙 18개로 맞췄습니다. 스킬 투사체, 피격 번쩍임, 데미지 숫자 합치기, 보스 등장 줌까지입니다</li>
-                            <li>용사와 몹의 픽셀 크기가 서로 달라 보이던 것을 화소 4px 로 통일했습니다</li>
-                        </ul>
-                    </div>
-                    <div class="wip-shots">
-                        <img loading="lazy" src="Resources/SCGGD003/Shot_1.png" alt="SCGGD003 층 보스 등장 화면" width="315" height="560">
-                        <img loading="lazy" src="Resources/SCGGD003/Shot_2.png" alt="SCGGD003 발판 위 전투와 스킬 연출 화면" width="315" height="560">
-                        <img loading="lazy" src="Resources/SCGGD003/Shot_3.png" alt="SCGGD003 도전 모드 승리 결과 화면" width="315" height="560">
-                        <img loading="lazy" src="Resources/SCGGD003/Shot_4.png" alt="SCGGD003 스킬 장착 화면" width="315" height="560">
-                        <img loading="lazy" src="Resources/SCGGD003/Shot_5.png" alt="SCGGD003 동료 인형 목록 화면" width="315" height="560">
-                    </div>
-                </article>
+                <div class="wip-grid">
+                    <article class="project-card wip-card">
+                        <div class="project-thumb wip-thumb">
+                            <img loading="lazy" src="Resources/Eleonore/Shot_5.png" alt="엘레오노르 어비스 자이언트 보스전 화면" width="315" height="560">
+                            <img loading="lazy" src="Resources/Eleonore/Shot_1.png" alt="엘레오노르 모험 던전 목록 화면" width="315" height="560">
+                            <img loading="lazy" src="Resources/Eleonore/Shot_3.png" alt="엘레오노르 단조 결과 화면" width="315" height="560">
+                        </div>
+                        <div class="ai-body">
+                            <div class="wip-head"><h3>엘레오노르</h3><span class="status-chip">개발 중</span></div>
+                            <span class="wip-meta">세로형 픽셀 방치 RPG · 1인 개발 · Unity 6 · 2026.10 ~</span>
+                            <div class="project-info">
+                                <p>마녀 엘레오노르가 망치로 장비를 단조하고, 더 좋은 장비는 끼고 나머지는 분해하며 사냥하는 방치형 RPG 입니다. 기획 문서를 정본으로 두고, 개발 에이전트와 검사 에이전트를 나눈 AI 개발 루프로 화면 72개를 구현했습니다.</p>
+                                <div class="tags">
+                                    <span class="tag">Unity 6</span>
+                                    <span class="tag">픽셀 아트</span>
+                                    <span class="tag">AI 개발 루프</span>
+                                    <span class="tag">칸반 피드백</span>
+                                </div>
+                            </div>
+                            <span class="more-link">자세히 보기</span>
+                        </div>
+                        <div class="project-details"><div class="project-details-inner">
+                            <h4>한 일</h4>
+                            <ul>
+                                <li>개발 레인과 검사 레인을 나눴습니다. 검사는 컴파일과 실제 플레이 캡처로만 판정하고, 통과한 것만 머지합니다</li>
+                                <li>기획의 기능 ID 550개를 60개 이하 묶음으로 나눠 다시 감사했고, 묶음마다 플레이 증거를 남겼습니다</li>
+                                <li>지금은 직접 플레이하며 남긴 피드백을 칸반 카드로 받아 전투, 단조, 해금 순서를 다듬고 있습니다</li>
+                            </ul>
+                            <h4>화면</h4>
+                            <div class="wip-shots">
+                                <img loading="lazy" src="Resources/Eleonore/Shot_1.png" alt="엘레오노르 모험 던전 목록 화면" width="315" height="560">
+                                <img loading="lazy" src="Resources/Eleonore/Shot_2.png" alt="엘레오노르 장착 장비와 새 장비 비교 화면" width="315" height="560">
+                                <img loading="lazy" src="Resources/Eleonore/Shot_3.png" alt="엘레오노르 단조 결과 화면" width="315" height="560">
+                                <img loading="lazy" src="Resources/Eleonore/Shot_4.png" alt="엘레오노르 모루 업그레이드 등급 확률 화면" width="315" height="560">
+                                <img loading="lazy" src="Resources/Eleonore/Shot_5.png" alt="엘레오노르 어비스 자이언트 보스전 화면" width="315" height="560">
+                            </div>
+                        </div></div>
+                    </article>
+                    <article class="project-card wip-card">
+                        <div class="project-thumb wip-thumb">
+                            <img loading="lazy" src="Resources/SCGGD002/Shot_1.png" alt="SCGGD002 필드 보스전 화면" width="315" height="560">
+                            <img loading="lazy" src="Resources/SCGGD002/Shot_2.png" alt="SCGGD002 몬스터 무리와 보스가 나온 전투 화면" width="315" height="560">
+                            <img loading="lazy" src="Resources/SCGGD002/Shot_3.png" alt="SCGGD002 지팡이 장비 목록 화면" width="315" height="560">
+                        </div>
+                        <div class="ai-body">
+                            <div class="wip-head"><h3>SCGGD002</h3><span class="status-chip">개발 중</span></div>
+                            <span class="wip-meta">세로형 마법사 방치 RPG · 1인 개발 · Godot 4.7 · 2026.11 ~</span>
+                            <div class="project-info">
+                                <p>마법사 한 명을 스탯, 장비, 스킬, 유물, 펫 같은 여러 성장 축으로 겹겹이 키우는 방치형 RPG 입니다. Unity 사내 템플릿을 Godot 4 로 옮긴 템플릿 위에서, 기능 ID 1,480개를 페이즈 15개로 나눠 AI 개발 루프로 구현했습니다.</p>
+                                <div class="tags">
+                                    <span class="tag">Godot 4.7</span>
+                                    <span class="tag">GDScript</span>
+                                    <span class="tag">GDExtension</span>
+                                    <span class="tag">Firebase</span>
+                                </div>
+                            </div>
+                            <span class="more-link">자세히 보기</span>
+                        </div>
+                        <div class="project-details"><div class="project-details-inner">
+                            <h4>한 일</h4>
+                            <ul>
+                                <li>Unity 템플릿의 규약과 검증 하네스를 Godot 로 옮겼습니다. UI 스택, 암호화 세이브, 시트(TSV)에서 생성하는 데이터 클래스, 큰 수 표기, 광고·결제·서버 파사드까지 같은 구조입니다</li>
+                                <li>네이티브는 직접 붙였습니다. LevelPlay 광고, UMP 동의, Firebase, Play Billing 과 StoreKit 2 를 안드로이드 플러그인과 iOS GDExtension 으로 감쌌습니다</li>
+                                <li>검증은 디버그 빌드에만 들어가는 로컬 HTTP 브릿지로 합니다. 좌표를 누르기 전에 맨 위 컨트롤이 무엇인지 확인하고, 화면을 1080x1920 으로 고정해 찍습니다</li>
+                                <li>지금은 방치형 RPG 플레이 영상과 웹 자료에서 뽑은 규칙으로 전투 연출과 UX 흐름을 다듬고 있습니다</li>
+                            </ul>
+                            <h4>화면</h4>
+                            <div class="wip-shots">
+                                <img loading="lazy" src="Resources/SCGGD002/Shot_1.png" alt="SCGGD002 필드 보스전 화면" width="315" height="560">
+                                <img loading="lazy" src="Resources/SCGGD002/Shot_2.png" alt="SCGGD002 몬스터 무리와 보스가 나온 전투 화면" width="315" height="560">
+                                <img loading="lazy" src="Resources/SCGGD002/Shot_3.png" alt="SCGGD002 지팡이 장비 목록 화면" width="315" height="560">
+                                <img loading="lazy" src="Resources/SCGGD002/Shot_4.png" alt="SCGGD002 액티브 스킬 프리셋 화면" width="315" height="560">
+                                <img loading="lazy" src="Resources/SCGGD002/Shot_5.png" alt="SCGGD002 던전 목록 화면" width="315" height="560">
+                            </div>
+                        </div></div>
+                    </article>
+                    <article class="project-card wip-card">
+                        <div class="project-thumb wip-thumb">
+                            <img loading="lazy" src="Resources/SCGGD003/Shot_1.png" alt="SCGGD003 층 보스 등장 화면" width="315" height="560">
+                            <img loading="lazy" src="Resources/SCGGD003/Shot_2.png" alt="SCGGD003 발판 위 전투와 스킬 연출 화면" width="315" height="560">
+                            <img loading="lazy" src="Resources/SCGGD003/Shot_4.png" alt="SCGGD003 스킬 장착 화면" width="315" height="560">
+                        </div>
+                        <div class="ai-body">
+                            <div class="wip-head"><h3>SCGGD003</h3><span class="status-chip">개발 중</span></div>
+                            <span class="wip-meta">세로 발판 던전 방치 RPG · 1인 개발 · Godot 4.7 · 2026.11 ~</span>
+                            <div class="project-info">
+                                <p>용사가 발판 사이를 점프로 오가며 층마다 몬스터를 정리하고 아래층으로 내려가는 방치형 RPG 입니다. 5층마다 보스가 나오고, 막히면 환생해 더 강해진 채로 다시 내려갑니다. SCGGD002 와 같은 템플릿과 AI 개발 루프로 기능 ID 1,470개를 페이즈 13개로 나눠 구현했습니다.</p>
+                                <div class="tags">
+                                    <span class="tag">Godot 4.7</span>
+                                    <span class="tag">GDScript</span>
+                                    <span class="tag">절차 생성 맵</span>
+                                    <span class="tag">픽셀 아트</span>
+                                </div>
+                            </div>
+                            <span class="more-link">자세히 보기</span>
+                        </div>
+                        <div class="project-details"><div class="project-details-inner">
+                            <h4>한 일</h4>
+                            <ul>
+                                <li>층 맵은 층 번호를 시드로 생성합니다. 같은 층은 언제나 같은 맵이고, 줄마다 엇갈린 발판에 모두 닿을 수 있게 만듭니다</li>
+                                <li>용사와 층 보스는 발판 그래프로 길을 찾습니다. 발판이 겹치면 수직으로 뛰거나 뚫고 내려가고, 아니면 발판 끝에서 건너뜁니다</li>
+                                <li>전투 연출은 플레이 영상을 프레임 단위로 보며 뽑은 규칙 18개로 맞췄습니다. 스킬 투사체, 피격 번쩍임, 데미지 숫자 합치기, 보스 등장 줌까지입니다</li>
+                                <li>용사와 몹의 픽셀 크기가 서로 달라 보이던 것을 화소 4px 로 통일했습니다</li>
+                            </ul>
+                            <h4>화면</h4>
+                            <div class="wip-shots">
+                                <img loading="lazy" src="Resources/SCGGD003/Shot_1.png" alt="SCGGD003 층 보스 등장 화면" width="315" height="560">
+                                <img loading="lazy" src="Resources/SCGGD003/Shot_2.png" alt="SCGGD003 발판 위 전투와 스킬 연출 화면" width="315" height="560">
+                                <img loading="lazy" src="Resources/SCGGD003/Shot_3.png" alt="SCGGD003 도전 모드 승리 결과 화면" width="315" height="560">
+                                <img loading="lazy" src="Resources/SCGGD003/Shot_4.png" alt="SCGGD003 스킬 장착 화면" width="315" height="560">
+                                <img loading="lazy" src="Resources/SCGGD003/Shot_5.png" alt="SCGGD003 동료 인형 목록 화면" width="315" height="560">
+                            </div>
+                        </div></div>
+                    </article>
+                </div>
             </div>
         </section>
 
