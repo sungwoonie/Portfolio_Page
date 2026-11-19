@@ -278,11 +278,11 @@ function openModal(card) {
     const isAi = card.classList.contains('ai-card');
     // AI 카드는 앱 아이콘이 아니라 화면 캡처를 머리에 둔다
     modal.classList.toggle('ai-mode', isAi);
-    // 개발 중 카드는 아이콘이 없다. 머리엔 제목만, 화면은 본문의 스크린샷 줄로
-    modal.classList.toggle('wip-mode', card.classList.contains('wip-card'));
+    // 개발 중 카드는 게임처럼 아이콘을 머리에 두고, 화면은 본문의 스크린샷 줄로 보인다
+    const isWip = card.classList.contains('wip-card');
 
-    const img = card.querySelector('.project-thumb img');
-    const meta = card.querySelector('.game-meta, .ai-meta, .wip-meta');
+    const img = card.querySelector(isWip ? '.ai-icon' : '.project-thumb img');
+    const meta = card.querySelector('.game-meta, .ai-meta');
     const detailsEl = card.querySelector('.project-details .project-details-inner');
 
     modal.querySelector('.modal-thumb img').src = img.src;
@@ -321,7 +321,7 @@ function closeModal() {
     modal.querySelectorAll('video').forEach(video => video.pause());
     overlay.classList.remove('active');
     modal.classList.remove('active');
-    modal.classList.remove('ai-mode', 'wip-mode');
+    modal.classList.remove('ai-mode');
     lockScroll(false);
     visibleShowcases.forEach(sc => playPanel(activePanel(sc)));
 }
