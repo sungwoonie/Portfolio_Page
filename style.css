@@ -1111,6 +1111,11 @@ h5 {
     object-fit: cover;
 }
 
+/* 로고가 왼쪽에 있는 키아트는 왼쪽을 붙여 둔다. 좁은 화면에서 잘리는 쪽이 폰 뒤가 된다 */
+.keyart-left {
+    object-position: left center;
+}
+
 /* 키아트 위에 세로 폰 화면 하나 */
 .phone {
     position: absolute;
@@ -1122,6 +1127,11 @@ h5 {
     background: var(--color-phone);
     border-radius: var(--radius-device);
     box-shadow: var(--shadow-phone);
+}
+
+/* 9:16 으로 찍은 영상은 폰도 9:16 으로 둬서 양옆이 안 잘리게 한다 */
+.phone-169 {
+    aspect-ratio: 9 / 16;
 }
 
 .phone-screen {
